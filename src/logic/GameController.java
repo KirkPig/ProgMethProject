@@ -34,8 +34,8 @@ public class GameController {
 		int command = scanner.nextInt();
 		if(command == 1) {
 			GameController gameController = new GameController();
-			Owner owner1 = new Owner("33");
-			Owner owner2 = new Owner("44");
+			Owner owner1 = new Owner("MUN");
+			Owner owner2 = new Owner("LFC");
 			int turn = 0;
 			
 			while(true) {
@@ -76,25 +76,30 @@ public class GameController {
 					int y = scanner.nextInt();
 					switch(command) {
 					case 1:
-						gameBoard.addUnit(new Captain(playerTurn), x, y);
+						if(playerTurn.isPlaceCaptain()) {
+							gameBoard.addUnit(new Captain(playerTurn), x, y);
+							playerTurn.setPlaceCaptain(true);
+						}else {
+							System.out.println("-----GameRuleException-----");
+						}
 						break;
 					case 2:
-						gameBoard.addUnit(new Attacker(playerTurn), x, y);
+						gameBoard.placeUnit(new Attacker(playerTurn), x, y);
 						break;
 					case 3:
-						gameBoard.addUnit(new BoxToBox(playerTurn), x, y);
+						gameBoard.placeUnit(new BoxToBox(playerTurn), x, y);
 						break;
 					case 4:
-						gameBoard.addUnit(new Defender(playerTurn), x, y);
+						gameBoard.placeUnit(new Defender(playerTurn), x, y);
 						break;
 					case 5:
-						gameBoard.addUnit(new Goalkeeper(playerTurn), x, y);
+						gameBoard.placeUnit(new Goalkeeper(playerTurn), x, y);
 						break;
 					case 6:
-						gameBoard.addUnit(new Playmaker(playerTurn), x, y);
+						gameBoard.placeUnit(new Playmaker(playerTurn), x, y);
 						break;
 					case 7:
-						gameBoard.addUnit(new God(playerTurn), x, y);
+						gameBoard.placeUnit(new God(playerTurn), x, y);
 						break;
 					}
 					
@@ -142,6 +147,12 @@ public class GameController {
 					
 				}else {
 					System.out.println("**********ERROR**********");
+				}
+				
+				if(turn%2 == 0) {
+					owner1 = playerTurn;
+				}else {
+					owner2 = playerTurn;
 				}
 				
 				
