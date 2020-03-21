@@ -1,7 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
-
 import unit.Empty;
 import unit.base.Coordinate;
 import unit.base.Unit;
@@ -52,9 +50,14 @@ public class GameBoard {
 	public void placeUnit(Unit unit, int x, int y) {
 		// TODO Auto-generated method stub
 		addUnit(unit, x, y);
-		if(!checkGameBoard()) {
-			addUnit(new Empty(), x, y);
-		}
+	}
+	
+	public boolean isEmpty(int x, int y) {
+		// TODO Auto-generated method stub
+		if(units[x][y] instanceof Empty)
+			return true;
+		else return false;
+
 	}
 	
 	public void addUnit(Unit unit, int x, int y) {
@@ -67,85 +70,12 @@ public class GameBoard {
 		// TODO Auto-generated method stub
 		Unit unit = getUnit(x1, y1);
 		addUnit(new Empty(), x1, y1);
-		if(checkGameBoard()) {
-			addUnit(getUnit(x1, y1), x2, y2);
-			if(!checkGameBoard()) {
-				System.out.println("-----GameRuleException-----");
-				addUnit(unit, x1, y1);
-				addUnit(new Empty(), x2, y2);
-			}
-		}else {
-			System.out.println("-----GameRuleException-----");
-			addUnit(unit, x1, y1);
-		}
+		addUnit(unit, x2, y2);
 		
 	}
 	
 	public Unit getUnit(int x, int y){
 		return units[x][y];
-	}
-	
-	public boolean checkGameBoard() {
-		//All Unit have to connected each other
-		
-		Unit[][] copyBoard = units;
-		ArrayList<Unit> queue = new ArrayList<Unit>();
-		
-		for(Unit[] i: units) {
-			for(Unit j: i) {
-				if(!(j instanceof Empty)) {
-					queue.add(j);
-					break;
-				}
-			}
-		}
-		
-		while(!queue.isEmpty()) {
-			Unit t = queue.get(0);
-			queue.remove(0);
-			if(t instanceof Empty) continue;
-			else {
-				int x = t.getCoordinate().getX();
-				int y = t.getCoordinate().getY();
-				copyBoard[x][y] = new Empty();
-				if(x%2==0) {
-					
-					
-					if(x>0)queue.add(copyBoard[x-1][y]);
-					if(x<width-1)queue.add(copyBoard[x+1][y]);
-					if(y>0)queue.add(copyBoard[x][y-1]);
-					if(y<height-1)queue.add(copyBoard[x][y+1]);
-					
-					if(x>0 && y>0)queue.add(copyBoard[x-1][y-1]);
-					if(x<width-1 && y>0)queue.add(copyBoard[x+1][y-1]);
-					
-					
-					
-				}else {
-					
-					if(x>0)queue.add(copyBoard[x-1][y]);
-					if(x<width-1)queue.add(copyBoard[x+1][y]);
-					if(y>0)queue.add(copyBoard[x][y-1]);
-					if(y<height-1)queue.add(copyBoard[x][y+1]);
-					
-					if(x>0 && y<height-1)queue.add(copyBoard[x-1][y+1]);
-					if(x<width-1 && y<height-1)queue.add(copyBoard[x+1][y+1]);
-					
-				}
-			}
-			
-		}
-		
-		for(Unit[] i: copyBoard) {
-			for(Unit j: i) {
-				if(!(j instanceof Empty)) {
-					return false;
-				}
-			}
-		}
-		
-		return true;
-		
 	}
 
 }

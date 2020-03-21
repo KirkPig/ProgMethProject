@@ -9,6 +9,7 @@ public class Owner {
 	public Owner(String teamName) {
 		// TODO Auto-generated constructor stub
 		setTeamName(teamName);
+		setPlaceCaptain(false);
 	}
 	
 	public boolean isPlaceCaptain() {

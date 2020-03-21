@@ -34,21 +34,17 @@ public class GameController {
 		int command = scanner.nextInt();
 		if(command == 1) {
 			GameController gameController = new GameController();
-			Owner owner1 = new Owner("MUN");
-			Owner owner2 = new Owner("LFC");
+			Owner[] playerTurn = new Owner[2];
+			playerTurn[0] = new Owner("MUN");
+			playerTurn[1] = new Owner("LFC");
+			
 			int turn = 0;
 			
 			while(true) {
-				Owner playerTurn;
-				if(turn%2 == 0) {
-					playerTurn = owner1;
-				}else {
-					playerTurn = owner2;
-				}
 				
 				gameController.printBoard();
 				System.out.println("**********FIFA TIE HEX**********");
-				System.out.println("-->Team " + playerTurn.getTeamName() + " turn to play.");
+				System.out.println("-->Team " + playerTurn[turn%2].getTeamName() + " turn to play.");
 				System.out.println("(1)Place New Unit");
 				System.out.println("(2)Move Unit");
 				System.out.println("(999)Quit");
@@ -74,36 +70,32 @@ public class GameController {
 					int x = scanner.nextInt();
 					System.out.print("Input Y : ");
 					int y = scanner.nextInt();
+					
 					switch(command) {
 					case 1:
-						if(playerTurn.isPlaceCaptain()) {
-							gameBoard.addUnit(new Captain(playerTurn), x, y);
-							playerTurn.setPlaceCaptain(true);
-						}else {
-							System.out.println("-----GameRuleException-----");
-						}
+						gameBoard.addUnit(new Captain(playerTurn[turn%2]), x, y);
 						break;
 					case 2:
-						gameBoard.placeUnit(new Attacker(playerTurn), x, y);
+						gameBoard.placeUnit(new Attacker(playerTurn[turn%2]), x, y);
 						break;
 					case 3:
-						gameBoard.placeUnit(new BoxToBox(playerTurn), x, y);
+						gameBoard.placeUnit(new BoxToBox(playerTurn[turn%2]), x, y);
 						break;
 					case 4:
-						gameBoard.placeUnit(new Defender(playerTurn), x, y);
+						gameBoard.placeUnit(new Defender(playerTurn[turn%2]), x, y);
 						break;
 					case 5:
-						gameBoard.placeUnit(new Goalkeeper(playerTurn), x, y);
+						gameBoard.placeUnit(new Goalkeeper(playerTurn[turn%2]), x, y);
 						break;
 					case 6:
-						gameBoard.placeUnit(new Playmaker(playerTurn), x, y);
+						gameBoard.placeUnit(new Playmaker(playerTurn[turn%2]), x, y);
 						break;
 					case 7:
-						gameBoard.placeUnit(new God(playerTurn), x, y);
+						gameBoard.placeUnit(new God(playerTurn[turn%2]), x, y);
 						break;
 					}
 					
-					turn++;
+					turn+=1;
 					
 				}else if(command == 2) {
 					int x1, y1, x2, y2;
@@ -118,7 +110,7 @@ public class GameController {
 						
 						if(gameBoard.getUnit(x1, y1) instanceof Empty) {
 							System.out.println("-----EmptyUnitSelectException-----");
-						}else if(gameBoard.getUnit(x1, y1).getOwner() != playerTurn) {
+						}else if(gameBoard.getUnit(x1, y1).getOwner() != playerTurn[turn%2]) {
 							System.out.println("-----SelectOpponentUnitException-----");
 						}else {
 							break;
@@ -143,16 +135,10 @@ public class GameController {
 					
 					gameBoard.moveUnit(x1, y1, x2, y2);
 					
-					turn++;
+					turn+=1;
 					
 				}else {
 					System.out.println("**********ERROR**********");
-				}
-				
-				if(turn%2 == 0) {
-					owner1 = playerTurn;
-				}else {
-					owner2 = playerTurn;
 				}
 				
 				
