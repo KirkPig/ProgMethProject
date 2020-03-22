@@ -28,5 +28,11 @@ public class Coordinate {
 		this.x = x;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "(" + getX() + "," + getY() + ")";
+	}
+	
 
 }

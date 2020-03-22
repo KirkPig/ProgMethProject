@@ -16,8 +16,7 @@ public class GameController {
 	public static GameBoard gameBoard;
 	protected static Scanner scanner = new Scanner(System.in);
 	
-	public GameController() {
-		// TODO Auto-generated constructor stub
+	public static void InitializeGame() {
 		gameBoard = new GameBoard();
 	}
 	
@@ -70,32 +69,37 @@ public class GameController {
 					int x = scanner.nextInt();
 					System.out.print("Input Y : ");
 					int y = scanner.nextInt();
+					boolean check = false;
 					
 					switch(command) {
 					case 1:
-						gameBoard.addUnit(new Captain(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new Captain(playerTurn[turn%2]), x, y);
 						break;
 					case 2:
-						gameBoard.placeUnit(new Attacker(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new Attacker(playerTurn[turn%2]), x, y);
 						break;
 					case 3:
-						gameBoard.placeUnit(new BoxToBox(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new BoxToBox(playerTurn[turn%2]), x, y);
 						break;
 					case 4:
-						gameBoard.placeUnit(new Defender(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new Defender(playerTurn[turn%2]), x, y);
 						break;
 					case 5:
-						gameBoard.placeUnit(new Goalkeeper(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new Goalkeeper(playerTurn[turn%2]), x, y);
 						break;
 					case 6:
-						gameBoard.placeUnit(new Playmaker(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new Playmaker(playerTurn[turn%2]), x, y);
 						break;
 					case 7:
-						gameBoard.placeUnit(new God(playerTurn[turn%2]), x, y);
+						check = gameBoard.placeUnit(new God(playerTurn[turn%2]), x, y);
 						break;
 					}
 					
-					turn+=1;
+					if(check) {
+						turn++;
+					}else {
+						System.out.println("-----UnitPlaceException-----");
+					}
 					
 				}else if(command == 2) {
 					int x1, y1, x2, y2;
@@ -133,12 +137,16 @@ public class GameController {
 						
 					}while(true);
 					
-					gameBoard.moveUnit(x1, y1, x2, y2);
+					if(gameBoard.moveUnit(x1, y1, x2, y2)) {
+						turn+=1;
+					}else {
+						System.out.println("-----UnitMoveException-----");
+					}
 					
-					turn+=1;
+					
 					
 				}else {
-					System.out.println("**********ERROR**********");
+					System.out.println("-----NonCommandException-----");
 				}
 				
 				
@@ -147,7 +155,7 @@ public class GameController {
 		}else if(command == 2) {
 			return;
 		}else {
-			System.out.println("**********ERROR**********");
+			System.out.println("-----NonCommandException-----");
 			return;
 		}
 	}

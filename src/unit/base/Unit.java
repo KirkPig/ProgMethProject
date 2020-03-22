@@ -8,6 +8,11 @@ public abstract class Unit {
 	private Coordinate coordinate;
 	private Owner owner;
 	
+	public Unit(int x, int y) {
+		// TODO Auto-generated constructor stub
+		setCoordinate(new Coordinate(x, y));
+	}
+	
 	public abstract int getSprites();
 	
 	public String getName() {
