@@ -66,6 +66,9 @@ public class GameBoard {
 	
 	public boolean placeUnit(Unit unit, int x, int y) {
 		// TODO Auto-generated method stub
+		if(getUnit(x, y) == null) {
+			return false;
+		}
 		if(getUnit(x, y) instanceof Empty) {
 			addUnit(unit, x, y);
 			return true;
@@ -90,7 +93,7 @@ public class GameBoard {
 	
 	public boolean moveUnit(int x1, int y1, int x2, int y2) {
 		// TODO Auto-generated method stub
-		if(!(getUnit(x2, y2) instanceof Empty) || (getUnit(x1, y1) instanceof Empty)) {
+		if(!(getUnit(x2, y2) instanceof Empty) || (getUnit(x1, y1) instanceof Empty) || getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
 			return false;
 		}
 		Unit unit = getUnit(x1, y1);
@@ -111,6 +114,9 @@ public class GameBoard {
 	}
 	
 	public Unit getUnit(int x, int y){
+		if(x < 0|| x >= width || y < 0 || y >= height) {
+			return null;
+		}
 		return units.get(x).get(y);
 	}
 	

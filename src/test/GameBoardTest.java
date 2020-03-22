@@ -40,7 +40,9 @@ public class GameBoardTest extends GameTest {
 	void testPlaceUnit(){
 		
 		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 1, 1));
-		assertEquals(false, GameController.gameBoard.placeUnit(unit2, 1, 1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit2, -1, -1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 1, 1));
+		
 		
 	}
 	
@@ -60,6 +62,8 @@ public class GameBoardTest extends GameTest {
 		GameController.gameBoard.addUnit(unit2, 6, 6);
 		GameController.gameBoard.addUnit(unit3, 7, 6);
 		
+		assertEquals(false, GameController.gameBoard.moveUnit(-1, -1, 7, 7));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, -7, -7));
 		assertEquals(false, GameController.gameBoard.moveUnit(1, 1, 7, 7));
 		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 7, 6));
 		assertEquals(false, GameController.gameBoard.moveUnit(6, 6, 7, 7));

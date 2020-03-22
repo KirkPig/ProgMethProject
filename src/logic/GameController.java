@@ -6,7 +6,6 @@ import unit.Attacker;
 import unit.BoxToBox;
 import unit.Captain;
 import unit.Defender;
-import unit.Empty;
 import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
@@ -20,7 +19,7 @@ public class GameController {
 		gameBoard = new GameBoard();
 	}
 	
-	public void printBoard() {
+	public static void printBoard() {
 		// TODO Auto-generated method stub
 		gameBoard.printBoard();
 	}
@@ -32,7 +31,7 @@ public class GameController {
 		System.out.print("Input Command : ");
 		int command = scanner.nextInt();
 		if(command == 1) {
-			GameController gameController = new GameController();
+			InitializeGame();
 			Owner[] playerTurn = new Owner[2];
 			playerTurn[0] = new Owner("MUN");
 			playerTurn[1] = new Owner("LFC");
@@ -41,7 +40,7 @@ public class GameController {
 			
 			while(true) {
 				
-				gameController.printBoard();
+				printBoard();
 				System.out.println("**********FIFA TIE HEX**********");
 				System.out.println("-->Team " + playerTurn[turn%2].getTeamName() + " turn to play.");
 				System.out.println("(1)Place New Unit");
@@ -104,38 +103,16 @@ public class GameController {
 				}else if(command == 2) {
 					int x1, y1, x2, y2;
 					System.out.println("**********Move Unit**********");
-					
-					do {
-						System.out.println("-->Input Unit Coordinate");
-						System.out.print("Input X : ");
-						x1 = scanner.nextInt();
-						System.out.print("Input Y : ");
-						y1 = scanner.nextInt();
-						
-						if(gameBoard.getUnit(x1, y1) instanceof Empty) {
-							System.out.println("-----EmptyUnitSelectException-----");
-						}else if(gameBoard.getUnit(x1, y1).getOwner() != playerTurn[turn%2]) {
-							System.out.println("-----SelectOpponentUnitException-----");
-						}else {
-							break;
-						}
-						
-					}while(true);
-					
-					do {
-						System.out.println("-->Input New Coordinate");
-						System.out.print("Input X : ");
-						x2 = scanner.nextInt();
-						System.out.print("Input Y : ");
-						y2 = scanner.nextInt();
-						
-						if(!(gameBoard.getUnit(x2, y2) instanceof Empty)) {
-							System.out.println("-----NonEmptyCoordinatePlaceException-----");
-						}else {
-							break;
-						}
-						
-					}while(true);
+					System.out.println("-->Input Unit Coordinate");
+					System.out.print("Input X : ");
+					x1 = scanner.nextInt();
+					System.out.print("Input Y : ");
+					y1 = scanner.nextInt();
+					System.out.println("-->Input New Coordinate");
+					System.out.print("Input X : ");
+					x2 = scanner.nextInt();
+					System.out.print("Input Y : ");
+					y2 = scanner.nextInt();
 					
 					if(gameBoard.moveUnit(x1, y1, x2, y2)) {
 						turn+=1;
