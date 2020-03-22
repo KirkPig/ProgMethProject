@@ -66,8 +66,12 @@ public class GameBoard {
 	
 	public boolean placeUnit(Unit unit, int x, int y) {
 		// TODO Auto-generated method stub
-		addUnit(unit, x, y);
-		return true;
+		if(getUnit(x, y) instanceof Empty) {
+			addUnit(unit, x, y);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public boolean isEmpty(int x, int y) {
@@ -86,10 +90,24 @@ public class GameBoard {
 	
 	public boolean moveUnit(int x1, int y1, int x2, int y2) {
 		// TODO Auto-generated method stub
+		if(!(getUnit(x2, y2) instanceof Empty) || (getUnit(x1, y1) instanceof Empty)) {
+			return false;
+		}
 		Unit unit = getUnit(x1, y1);
-		addUnit(new Empty(x1, y1), x1, y1);
+		addUnit(new Empty(), x1, y1);
+		if(!checkGameBoard()) {
+			addUnit(unit, x1, y1);
+			return false;
+		}
 		addUnit(unit, x2, y2);
-		return true;
+		if(checkGameBoard()) {
+			return true;
+		}else {
+			addUnit(unit, x1, y1);
+			addUnit(new Empty(), x2, y2);
+			return false;
+		}
+		
 	}
 	
 	public Unit getUnit(int x, int y){
@@ -110,10 +128,50 @@ public class GameBoard {
 		return ownerUnit;
 	}
 	
+	public ArrayList<Unit> getAdjacentUnit(int x, int y){
+		ArrayList<Unit> adjacentUnit = new ArrayList<Unit>();
+		
+		if(x>0)
+			adjacentUnit.add(getUnit(x-1, y));
+		if(x<width-1)
+			adjacentUnit.add(getUnit(x+1, y));
+		if(y>0)
+			adjacentUnit.add(getUnit(x, y-1));
+		if(y<height-1)
+			adjacentUnit.add(getUnit(x, y+1));
+		
+		if(x%2 == 0) {
+			
+			
+			if(x>0 && y>0)
+				adjacentUnit.add(getUnit(x-1, y-1));
+			if(x>0 && y<height-1)
+				adjacentUnit.add(getUnit(x-1, y+1));
+			
+		}else {
+			
+			if(x<width-1 && y>0)
+				adjacentUnit.add(getUnit(x+1, y-1));
+			if(x<width-1 && y<height-1)
+				adjacentUnit.add(getUnit(x+1, y+1));
+			
+		}
+		
+		return adjacentUnit;
+	}
+	
 	public boolean checkGameBoard() {
 		
-		ArrayList<ArrayList<Unit>> copyBoard = units;
+		ArrayList<ArrayList<Unit>> copyBoard = new ArrayList<ArrayList<Unit>>();
 		ArrayList<Unit> queue = new ArrayList<Unit>();
+		
+		for(int i = 0;i<width;i++) {
+			ArrayList<Unit> e = new ArrayList<Unit>();
+			for(int j = 0;j<height;j++) {
+				e.add(getUnit(i, j));
+			}
+			copyBoard.add(e);
+		}
 		
 		for(var i: copyBoard) {
 			boolean chk = false;
@@ -140,16 +198,17 @@ public class GameBoard {
 			int y = t.getCoordinate().getY();
 			copyBoard.get(x).set(y, new Empty(x, y));
 			
+			if(x>0)
+				queue.add(copyBoard.get(x-1).get(y));
+			if(x<width-1)
+				queue.add(copyBoard.get(x+1).get(y));
+			if(y>0)
+				queue.add(copyBoard.get(x).get(y-1));
+			if(y<height-1)
+				queue.add(copyBoard.get(x).get(y+1));
+			
 			if(x%2 == 0) {
 				
-				if(x>0)
-					queue.add(copyBoard.get(x-1).get(y));
-				if(x<width-1)
-					queue.add(copyBoard.get(x+1).get(y));
-				if(y>0)
-					queue.add(copyBoard.get(x).get(y-1));
-				if(y<height-1)
-					queue.add(copyBoard.get(x).get(y+1));
 				if(x>0 && y>0)
 					queue.add(copyBoard.get(x-1).get(y-1));
 				if(x>0 && y<height-1)
@@ -157,14 +216,6 @@ public class GameBoard {
 				
 			}else {
 				
-				if(x>0)
-					queue.add(copyBoard.get(x-1).get(y));
-				if(x<width-1)
-					queue.add(copyBoard.get(x+1).get(y));
-				if(y>0)
-					queue.add(copyBoard.get(x).get(y-1));
-				if(y<height-1)
-					queue.add(copyBoard.get(x).get(y+1));
 				if(x<width-1 && y>0)
 					queue.add(copyBoard.get(x+1).get(y-1));
 				if(x<width-1 && y<height-1)
@@ -173,6 +224,8 @@ public class GameBoard {
 			}
 			
 		}
+		
+		//System.out.println("-----------------------------------");
 		
 		for(var i: copyBoard) {
 			for(var j: i) {

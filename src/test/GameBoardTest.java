@@ -36,5 +36,37 @@ public class GameBoardTest extends GameTest {
 		
 	}
 	
+	@Test 
+	void testPlaceUnit(){
+		
+		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 1, 1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit2, 1, 1));
+		
+	}
+	
+	@Test 
+	void testAddUnit() {
+		
+		GameController.gameBoard.addUnit(unit1, 5, 5);
+		assertEquals("(5,5)", GameController.gameBoard.getUnit(5, 5).getCoordinate().toString());
+		assertEquals(2, GameController.gameBoard.getUnit(5, 5).getSprites());
+		
+	}
+	
+	@Test
+	void testMoveUnit() {
+		
+		GameController.gameBoard.addUnit(unit1, 5, 5);
+		GameController.gameBoard.addUnit(unit2, 6, 6);
+		GameController.gameBoard.addUnit(unit3, 7, 6);
+		
+		assertEquals(false, GameController.gameBoard.moveUnit(1, 1, 7, 7));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 7, 6));
+		assertEquals(false, GameController.gameBoard.moveUnit(6, 6, 7, 7));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 2, 2));
+		assertEquals(true, GameController.gameBoard.moveUnit(5, 5, 7, 7));
+		
+	}
+	
 	
 }
