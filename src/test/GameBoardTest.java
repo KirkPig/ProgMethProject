@@ -62,13 +62,14 @@ public class GameBoardTest extends GameTest {
 		GameController.gameBoard.addUnit(unit2, 6, 6);
 		GameController.gameBoard.addUnit(unit3, 7, 6);
 		
-		assertEquals(false, GameController.gameBoard.moveUnit(-1, -1, 7, 7));
-		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, -7, -7));
-		assertEquals(false, GameController.gameBoard.moveUnit(1, 1, 7, 7));
-		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 7, 6));
-		assertEquals(false, GameController.gameBoard.moveUnit(6, 6, 7, 7));
-		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 2, 2));
-		assertEquals(true, GameController.gameBoard.moveUnit(5, 5, 7, 7));
+		assertEquals(false, GameController.gameBoard.moveUnit(-1, -1, 7, 7, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, -7, -7, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(1, 1, 7, 7, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 7, 6, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(6, 6, 7, 7, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 2, 2, owner1));
+		assertEquals(false, GameController.gameBoard.moveUnit(5, 5, 7, 7, owner2));
+		assertEquals(true, GameController.gameBoard.moveUnit(5, 5, 7, 7, owner1));
 		
 	}
 	

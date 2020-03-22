@@ -91,12 +91,16 @@ public class GameBoard {
 		units.get(x).set(y, unit);
 	}
 	
-	public boolean moveUnit(int x1, int y1, int x2, int y2) {
+	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		// TODO Auto-generated method stub
 		if(!(getUnit(x2, y2) instanceof Empty) || (getUnit(x1, y1) instanceof Empty) || getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
 			return false;
 		}
 		Unit unit = getUnit(x1, y1);
+		
+		if(!unit.getOwner().equals(owner)) {
+			return false;
+		}
 		addUnit(new Empty(), x1, y1);
 		if(!checkGameBoard()) {
 			addUnit(unit, x1, y1);

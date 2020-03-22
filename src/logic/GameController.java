@@ -114,7 +114,7 @@ public class GameController {
 					System.out.print("Input Y : ");
 					y2 = scanner.nextInt();
 					
-					if(gameBoard.moveUnit(x1, y1, x2, y2)) {
+					if(gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn%2])) {
 						turn+=1;
 					}else {
 						System.out.println("-----UnitMoveException-----");
