@@ -1,4 +1,7 @@
 package team;
+import unit.base.*;
+
+import java.util.ArrayList;
 
 import unit.Attacker;
 import unit.BoxToBox;
@@ -6,7 +9,6 @@ import unit.Defender;
 import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
-
 public class TeamSet {
 	
 	static Attacker liverpoolAttacker1 = new Attacker("Sadio Mane");
@@ -63,5 +65,64 @@ public class TeamSet {
 	static Goalkeeper spurGoalkeeper1 = new Goalkeeper("Hugo Lloris");
 	static Goalkeeper spurGoalkeeper2 = new Goalkeeper("Paulo Gazzaniga");
 	static God spurGod = new God("Moussa Sissoko");
-
+	
+	static ArrayList<Unit> liverpool = new ArrayList<Unit>(){{
+		add(liverpoolAttacker1);
+		add(liverpoolAttacker2);
+		add(liverpoolAttacker3);
+		add(liverpoolBoxToBox1);
+		add(liverpoolBoxToBox2);
+		add(liverpoolBoxToBox3);
+		add(liverpoolDefender1);
+		add(liverpoolDefender2);
+		add(liverpoolGoalkeeper1);
+		add(liverpoolGoalkeeper2);
+		add(liverpoolGod);
+		add(liverpoolPlaymaker);
+	}};
+	
+	static ArrayList<Unit> manCity = new ArrayList<Unit>(){{
+		add(manCityAttacker1);
+		add(manCityAttacker2);
+		add(manCityAttacker3);
+		add(manCityBoxToBox1);
+		add(manCityBoxToBox2);
+		add(manCityBoxToBox3);
+		add(manCityDefender1);
+		add(manCityDefender2);
+		add(manCityGoalkeeper1);
+		add(manCityGoalkeeper2);
+		add(manCityGod);
+		add(manCityPlaymaker);
+	}};
+	
+	static ArrayList<Unit> manUnited = new ArrayList<Unit>() {{
+		add(manUnitedAttacker1);
+		add(manUnitedAttacker2);
+		add(manUnitedAttacker3);
+		add(manUnitedBoxToBox1);
+		add(manUnitedBoxToBox2);
+		add(manUnitedBoxToBox3);
+		add(manUnitedDefender1);
+		add(manUnitedDefender2);
+		add(manUnitedGoalkeeper1);
+		add(manUnitedGoalkeeper2);
+		add(manUnitedGod);
+		add(manUnitedPlaymaker);
+	}};
+	
+	static ArrayList<Unit> spur = new ArrayList<Unit>() {{
+		add(spurAttacker1);
+		add(spurAttacker2);
+		add(spurAttacker3);
+		add(spurBoxToBox1);
+		add(spurBoxToBox2);
+		add(spurBoxToBox3);
+		add(spurDefender1);
+		add(spurDefender2);
+		add(spurGoalkeeper1);
+		add(spurGoalkeeper2);
+		add(spurGod);
+		add(spurPlaymaker);
+	}};
 }
