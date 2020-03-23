@@ -69,9 +69,15 @@ public class GameBoard {
 		if(getUnit(x, y) == null) {
 			return false;
 		}
-		if(getUnit(x, y) instanceof Empty) {
+		if(isEmpty(x, y)) {
 			addUnit(unit, x, y);
-			return true;
+			if(checkGameBoard()) {
+				return true;
+			}else {
+				addUnit(new Empty(), x, y);
+				return false;
+			}
+			
 		}else {
 			return false;
 		}
