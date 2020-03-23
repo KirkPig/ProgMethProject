@@ -13,6 +13,7 @@ public abstract class Unit {
 	public Unit(int x, int y) {
 		// TODO Auto-generated constructor stub
 		setCoordinate(new Coordinate(x, y));
+		setOwner(null);
 	}
 	
 	public abstract int getSprites();

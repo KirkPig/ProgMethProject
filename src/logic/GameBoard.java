@@ -64,20 +64,39 @@ public class GameBoard {
 		}
 	}
 	
-	public boolean placeUnit(Unit unit, int x, int y) {
-		// TODO Auto-generated method stub
+	public boolean canPlaceUnit(Unit unit, int x, int y) {
 		if(getUnit(x, y) == null) {
 			return false;
 		}
 		if(isEmpty(x, y)) {
+			ArrayList<Unit> adjacentUnit = getAdjacentUnit(x, y);
+			for(var i: adjacentUnit) {
+				if(i.getOwner() != null) {
+					if(i.getOwner() != unit.getOwner()) {
+						return false;
+					}
+				}
+			}
+			
 			addUnit(unit, x, y);
 			if(checkGameBoard()) {
+				addUnit(new Empty(), x, y);
 				return true;
 			}else {
 				addUnit(new Empty(), x, y);
 				return false;
 			}
 			
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean placeUnit(Unit unit, int x, int y) {
+		// TODO Auto-generated method stub
+		if(canPlaceUnit(unit, x, y)) {
+			addUnit(unit, x, y);
+			return true;
 		}else {
 			return false;
 		}
