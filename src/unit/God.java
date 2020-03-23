@@ -1,27 +1,38 @@
 package unit;
 
-import logic.Owner;
+import java.util.ArrayList;
+
 import logic.Sprites;
 import unit.base.Unit;
 
 public class God extends Unit {
 	
-	public God(Owner owner, int x, int y) {
+	public God(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x, y);
-		setOwner(owner);
+		setName(name);
 	}
 	
-	public God(Owner owner) {
+	public God(String name) {
 		// TODO Auto-generated constructor stub
 		super(0, 0);
-		setOwner(owner);
+		setName(name);
+	}
+	
+	public God() {
+		// TODO Auto-generated constructor stub
+		super(0, 0);
+		setName("...");
 	}
 
 	@Override
 	public int getSprites() {
-		// TODO Auto-generated method stub
 		return Sprites.GOD;
+	}
+
+	@Override
+	public ArrayList<Unit> getMoveUnit() {
+		return null;
 	}
 
 }

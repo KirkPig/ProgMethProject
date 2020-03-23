@@ -1,6 +1,5 @@
 package logic;
 
-
 import team.Team;
 
 public class Owner {

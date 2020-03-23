@@ -15,9 +15,9 @@ import unit.base.Unit;
 public class GameBoardTest extends GameTest {
 
 	
-	Unit unit1 = new Attacker(owner1);
-	Unit unit2 = new Defender(owner1);
-	Unit unit3 = new God(owner1);
+	Unit unit1 = new Attacker();
+	Unit unit2 = new Defender();
+	Unit unit3 = new God();
 	
 	@BeforeEach
 	protected void setUpBeforeEachTest() {
@@ -39,10 +39,10 @@ public class GameBoardTest extends GameTest {
 	@Test 
 	void testPlaceUnit(){
 		
-		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 1, 1));
-		assertEquals(false, GameController.gameBoard.placeUnit(unit2, -1, -1));
-		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 1, 1));
-		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 9, 9));
+		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 1, 1, owner1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit2, -1, -1, owner1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 1, 1, owner1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 9, 9, owner1));
 		
 		
 	}
@@ -59,6 +59,9 @@ public class GameBoardTest extends GameTest {
 	@Test
 	void testMoveUnit() {
 		
+		unit1.setOwner(owner1);
+		unit2.setOwner(owner2);
+		unit3.setOwner(owner1);
 		GameController.gameBoard.addUnit(unit1, 5, 5);
 		GameController.gameBoard.addUnit(unit2, 6, 6);
 		GameController.gameBoard.addUnit(unit3, 7, 6);

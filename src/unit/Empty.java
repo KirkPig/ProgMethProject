@@ -1,5 +1,7 @@
 package unit;
 
+import java.util.ArrayList;
+
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -23,6 +25,11 @@ public class Empty extends Unit {
 	@Override
 	public boolean isMovable() {
 		return false;
+	}
+
+	@Override
+	public ArrayList<Unit> getMoveUnit() {
+		return null;
 	}
 
 }
