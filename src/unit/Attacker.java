@@ -1,27 +1,37 @@
 package unit;
 
-import logic.Owner;
+import java.util.ArrayList;
+
 import logic.Sprites;
 import unit.base.Unit;
 
 public class Attacker extends Unit {
 	
-	public Attacker(Owner owner, int x, int y) {
+	public Attacker(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x, y);
-		setOwner(owner);
+		setName(name);
 	}
 	
-	public Attacker(Owner owner) {
+	public Attacker(String name) {
+		super(0, 0);
+		setName(name);
+	}
+	
+	public Attacker() {
 		// TODO Auto-generated constructor stub
 		super(0, 0);
-		setOwner(owner);
+		setName("...");
 	}
 
 	@Override
 	public int getSprites() {
-		// TODO Auto-generated method stub
 		return Sprites.ATTACKER;
+	}
+
+	@Override
+	public ArrayList<Unit> getMoveUnit() {
+		return null;
 	}
 
 }

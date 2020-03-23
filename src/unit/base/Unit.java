@@ -1,5 +1,7 @@
 package unit.base;
 
+import java.util.ArrayList;
+
 import logic.GameController;
 import logic.Owner;
 import unit.Empty;
@@ -17,6 +19,7 @@ public abstract class Unit {
 	}
 	
 	public abstract int getSprites();
+	public abstract ArrayList<Unit> getMoveUnit();
 	
 	public String getName() {
 		return name;

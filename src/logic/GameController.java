@@ -39,11 +39,13 @@ public class GameController {
 			
 			int turn = 0;
 			
+			
+			
 			while(true) {
 				
 				printBoard();
 				System.out.println("**********FIFA TIE HEX**********");
-				System.out.println("-->Team " + playerTurn[turn%2].getTeamName() + " turn to play.");
+				System.out.println("-->Team " + playerTurn[turn%2].getTeam().getName() + " turn to play.");
 				System.out.println("(1)Place New Unit");
 				System.out.println("(2)Move Unit");
 				System.out.println("(999)Quit");
@@ -71,29 +73,33 @@ public class GameController {
 					int y = scanner.nextInt();
 					boolean check = false;
 					
+					Unit[] unit = new Unit[1];
+					
 					switch(command) {
 					case 1:
-						check = gameBoard.placeUnit(new Captain(playerTurn[turn%2]), x, y);
+						unit[0] = new Captain();
 						break;
 					case 2:
-						check = gameBoard.placeUnit(new Attacker(playerTurn[turn%2]), x, y);
+						unit[0] = new Attacker();
 						break;
 					case 3:
-						check = gameBoard.placeUnit(new BoxToBox(playerTurn[turn%2]), x, y);
+						unit[0] = new BoxToBox();
 						break;
 					case 4:
-						check = gameBoard.placeUnit(new Defender(playerTurn[turn%2]), x, y);
+						unit[0] = new Defender();
 						break;
 					case 5:
-						check = gameBoard.placeUnit(new Goalkeeper(playerTurn[turn%2]), x, y);
+						unit[0] = new Goalkeeper();
 						break;
 					case 6:
-						check = gameBoard.placeUnit(new Playmaker(playerTurn[turn%2]), x, y);
+						unit[0] = new Playmaker();
 						break;
 					case 7:
-						check = gameBoard.placeUnit(new God(playerTurn[turn%2]), x, y);
+						unit[0] = new God();
 						break;
 					}
+					
+					check = gameBoard.placeUnit(unit[0], x, y, playerTurn[turn%2]);
 					
 					if(check) {
 						turn++;

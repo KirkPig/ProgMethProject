@@ -92,8 +92,9 @@ public class GameBoard {
 		}
 	}
 	
-	public boolean placeUnit(Unit unit, int x, int y) {
+	public boolean placeUnit(Unit unit, int x, int y, Owner owner) {
 		// TODO Auto-generated method stub
+		unit.setOwner(owner);
 		if(canPlaceUnit(unit, x, y)) {
 			addUnit(unit, x, y);
 			return true;
@@ -118,7 +119,10 @@ public class GameBoard {
 	
 	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		// TODO Auto-generated method stub
-		if(!(getUnit(x2, y2) instanceof Empty) || (getUnit(x1, y1) instanceof Empty) || getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
+		if(getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
+			return false;
+		}
+		if(!(isEmpty(x2, y2)) || isEmpty(x1, y1)) {
 			return false;
 		}
 		Unit unit = getUnit(x1, y1);

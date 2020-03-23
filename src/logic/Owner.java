@@ -1,9 +1,6 @@
 package logic;
 
-import java.util.ArrayList;
-
 import team.Team;
-import unit.base.Unit;
 
 public class Owner {
 	
@@ -39,14 +36,6 @@ public class Owner {
 	
 	public String getName() {
 		return name;
-	}
-	
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
-	}
-	
-	public String getTeamName() {
-		return teamName;
 	}
 	
 
