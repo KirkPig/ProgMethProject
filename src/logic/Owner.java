@@ -1,15 +1,28 @@
 package logic;
 
+import java.util.ArrayList;
+
+import team.Team;
+import unit.base.Unit;
+
 public class Owner {
 	
 	private String name;
-	private String teamName;
 	private boolean placeCaptain;
+	private Team team;
 	
 	public Owner(String teamName) {
 		// TODO Auto-generated constructor stub
-		setTeamName(teamName);
+		setTeam(new Team(teamName));
 		setPlaceCaptain(false);
+	}
+	
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	
+	public Team getTeam() {
+		return team;
 	}
 	
 	public boolean isPlaceCaptain() {
