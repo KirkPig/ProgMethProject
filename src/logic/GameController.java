@@ -9,6 +9,7 @@ import unit.Defender;
 import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
+import unit.base.Unit;
 
 public class GameController {
 	
@@ -113,6 +114,12 @@ public class GameController {
 					x2 = scanner.nextInt();
 					System.out.print("Input Y : ");
 					y2 = scanner.nextInt();
+					
+					if(gameBoard.getUnit(x1, y1).isMovable()) {
+						System.out.println(gameBoard.getUnit(x1, y1).getCoordinate() + " Movable");
+					}else {
+						System.out.println("-----UnitMoveException-----");
+					}
 					
 					if(gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn%2])) {
 						turn+=1;

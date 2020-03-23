@@ -1,6 +1,8 @@
 package unit.base;
 
+import logic.GameController;
 import logic.Owner;
+import unit.Empty;
 
 public abstract class Unit {
 	
@@ -37,6 +39,15 @@ public abstract class Unit {
 	
 	public void setOwner(Owner owner) {
 		this.owner = owner;
+	}
+	
+	public boolean isMovable() {
+		
+		GameController.gameBoard.addUnit(new Empty(), getCoordinate().getX(), getCoordinate().getY());
+		boolean check = GameController.gameBoard.checkGameBoard();
+		GameController.gameBoard.addUnit(this, getCoordinate().getX(), getCoordinate().getY());
+		return check;
+		
 	}
 	
 	
