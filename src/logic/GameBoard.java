@@ -97,6 +97,7 @@ public class GameBoard {
 		unit.setOwner(owner);
 		if(canPlaceUnit(unit, x, y)) {
 			addUnit(unit, x, y);
+			owner.getTeam().useUnit(unit);
 			return true;
 		}else {
 			return false;
