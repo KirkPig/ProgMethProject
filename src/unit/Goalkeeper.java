@@ -3,6 +3,7 @@ package unit;
 import java.util.ArrayList;
 
 import logic.GameBoard;
+import logic.GameController;
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -39,7 +40,7 @@ public class Goalkeeper extends Unit {
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 3) {
-					canMove.add(new Empty(i, j));
+					canMove.add(GameController.gameBoard.getUnit(i, j));
 				}
 				}
 			}

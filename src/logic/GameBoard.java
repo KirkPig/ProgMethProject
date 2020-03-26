@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
+import unit.Defender;
 import unit.Empty;
 import unit.base.Coordinate;
 import unit.base.Unit;
@@ -157,6 +158,9 @@ public class GameBoard {
 			Unit unit = getUnit(x1, y1);
 			addUnit(new Empty(), x1, y1);
 			addUnit(unit, x2, y2);
+			if (unit.getSprites() == 4) {
+				getUnit(x2, y2).setCapture(true);
+			}
 			return true;
 		}else {
 			return false;

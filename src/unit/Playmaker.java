@@ -2,6 +2,8 @@ package unit;
 
 import java.util.ArrayList;
 
+import logic.GameBoard;
+import logic.GameController;
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -32,7 +34,17 @@ public class Playmaker extends Unit{
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
-		return null;
+		ArrayList<Unit> canMove = new ArrayList<Unit>();
+		GameBoard gameBoard = new GameBoard();
+		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), true);
+		for(int i = 0 ; i< distance.size(); i++) {
+			for(int j = 0; j < distance.size();j++) {
+				if(distance.get(i).get(j) == 3) {
+					canMove.add(GameController.gameBoard.getUnit(i, j));
+				}
+				}
+			}
+		return canMove;	
 	}
 
 }
