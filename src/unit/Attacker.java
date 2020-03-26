@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import logic.Sprites;
 import unit.base.Unit;
 
-public class Attacker extends Unit {
+
+public class Attacker extends Unit  {
 	
 	public Attacker(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
@@ -34,4 +35,7 @@ public class Attacker extends Unit {
 		return null;
 	}
 
+	
+	
+	
 }

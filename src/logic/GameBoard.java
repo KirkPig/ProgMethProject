@@ -12,12 +12,14 @@ public class GameBoard {
 	private ArrayList<ArrayList<Unit>> units;
 	private int width;
 	private int height;
+	private int turn;
 	
 	public GameBoard(int width, int height) {
 		// TODO Auto-generated constructor stub
 		this.units = new ArrayList<ArrayList<Unit>>();
 		this.width = width;
 		this.height = height;
+		this.turn = 1;
 		for(int i = 0;i<width;i++) {
 			ArrayList<Unit> e = new ArrayList<Unit>();
 			for(int j = 0;j<height;j++) {
@@ -73,7 +75,7 @@ public class GameBoard {
 			ArrayList<Unit> adjacentUnit = getAdjacentUnit(x, y);
 			for(var i: adjacentUnit) {
 				if(i.getOwner() != null) {
-					if(i.getOwner() != unit.getOwner()) {
+					if(i.getOwner() != unit.getOwner() && this.turn != 1) {
 						return false;
 					}
 				}
@@ -82,6 +84,7 @@ public class GameBoard {
 			addUnit(unit, x, y);
 			if(checkGameBoard()) {
 				addUnit(new Empty(), x, y);
+				this.turn += 1;
 				return true;
 			}else {
 				addUnit(new Empty(), x, y);

@@ -33,6 +33,7 @@ public class Team {
 			ArrayList<Unit> clone = (ArrayList<Unit>) TeamSet.manUnited.clone();
 			this.unitNotUsed = clone;
 		}
+		this.unitNotUsed = unitNotUsed;
 	}
 	
 	public void useUnit(Unit unit) {

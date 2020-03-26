@@ -2,6 +2,7 @@ package unit.base;
 
 import java.util.ArrayList;
 
+
 import logic.GameController;
 import logic.Owner;
 import unit.Empty;
@@ -44,7 +45,6 @@ public abstract class Unit {
 	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
-	
 	public boolean isMovable() {
 		
 		GameController.gameBoard.addUnit(new Empty(), getCoordinate().getX(), getCoordinate().getY());
@@ -54,6 +54,4 @@ public abstract class Unit {
 		
 	}
 	
-	
-
 }

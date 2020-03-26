@@ -129,6 +129,11 @@ public class GameController {
 					
 					if(gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn%2])) {
 						turn+=1;
+//						for(int i = 0; i< 10;i++ ) {
+//							if(int j = 0 ; j<10 ; i++) {
+								
+//							}
+//						}
 					}else {
 						System.out.println("-----UnitMoveException-----");
 					}
@@ -149,5 +154,5 @@ public class GameController {
 			return;
 		}
 	}
-
+	
 }

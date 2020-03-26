@@ -2,6 +2,7 @@ package unit;
 
 import java.util.ArrayList;
 
+import logic.GameBoard;
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -31,7 +32,22 @@ public class BoxToBox extends Unit {
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
-		return null;
+		ArrayList<Unit> canMove = new ArrayList<Unit>();
+		GameBoard gameBoard = new GameBoard();
+		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), false);
+		for(int i = 0 ; i< distance.size(); i++) {
+			for(int j = 0; j < distance.size();j++) {
+				int x = i;
+				int y = j;
+				if (gameBoard.moveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), x, y, this.getOwner())) {
+					gameBoard.isEmpty(x, y);
+					canMove.add(new Empty(x, y));
+				}
+			}
+			
+		}
+		return canMove;
+		
 	}
 
 }

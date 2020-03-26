@@ -2,6 +2,7 @@ package unit;
 
 import java.util.ArrayList;
 
+import logic.GameBoard;
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -32,7 +33,27 @@ public class God extends Unit {
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
-		return null;
+		ArrayList<Unit> canMove = new ArrayList<Unit>();
+		int max = 7; 
+        int min = 2; 
+        int range = max - min + 1; 
+        int rand = (int)(Math.random() * range) + min;
+        if(rand == 2) {
+        	return new Attacker().getMoveUnit();
+        }
+        if(rand == 3) {
+        	return new BoxToBox().getMoveUnit();
+        }
+        if(rand == 4) {
+        	return new Defender().getMoveUnit();
+        }
+        if(rand == 5) {
+        	return new Goalkeeper().getMoveUnit();
+        }
+        if(rand == 6) {
+        	return new Playmaker().getMoveUnit();
+        }
+		return null;	
 	}
 
 }
