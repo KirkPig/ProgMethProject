@@ -8,6 +8,7 @@ import unit.base.Unit;
 
 public class GameBoard {
 	
+	private static final int INF = 1000000000;
 	private ArrayList<ArrayList<Unit>> units;
 	private int width;
 	private int height;
@@ -166,6 +167,144 @@ public class GameBoard {
 			}
 		}
 		return ownerUnit;
+	}
+	
+	public ArrayList<ArrayList<Integer>> getDistance(int x, int y, boolean isThrough){
+		
+		ArrayList<ArrayList<Integer>> distance = new ArrayList<ArrayList<Integer>>();
+		Unit unit = getUnit(x, y);
+		addUnit(new Empty(), x, y);
+		
+		for(int i = 0;i<width;i++) {
+			ArrayList<Integer> e = new ArrayList<Integer>();
+			for(int j = 0;j<height;j++) {
+				e.add(INF);
+			}
+			distance.add(e);
+		}
+		
+		distance.get(x).set(y, 0);
+		
+		for(int k = 0;k<width*height;k++) {
+			
+			boolean chk = false;
+			
+			//Horizontal
+			for(int i = 0;i<width;i++) {
+				for(int j = 0;j<height-1;j++) {
+					if(isThrough || (isEmpty(i, j) && isEmpty(i, j + 1))) {
+						
+						boolean condition = false;
+						
+						if(i%2==0) {
+							
+							if(isEmpty(i-1, j) || isEmpty(i+1, j)){
+								condition = true;
+							}
+							
+							
+						}else {
+							
+							if(isEmpty(i-1, j + 1) || isEmpty(i+1, j + 1)){
+								condition = true;
+							}
+							
+						}
+						
+						//Relax Function
+						if(condition && distance.get(i).get(j + 1) > distance.get(i).get(j) + 1) {
+							distance.get(i).set(j+1, distance.get(i).get(j) + 1);
+							chk = true;
+						}
+						
+						if(condition && distance.get(i).get(j) > distance.get(i).get(j + 1) + 1) {
+							distance.get(i).set(j, distance.get(i).get(j + 1) + 1);
+							chk = true;
+						}
+						
+					}
+				}
+				
+				
+				
+			}
+			
+			//Vertical
+			for(int j = 0;j<height;j++) {
+				for(int i = 0;i<width-1;i++) {
+					
+					if(isThrough || (isEmpty(i, j) && isEmpty(i + 1, j))) {
+						
+						if(distance.get(i + 1).get(j) > distance.get(i).get(j) + 1) {
+							distance.get(i + 1).set(j, distance.get(i).get(j) + 1);
+							chk = true;
+						}
+						
+						if(distance.get(i).get(j) > distance.get(i + 1).get(j) + 1) {
+							distance.get(i).set(j, distance.get(i + 1).get(j) + 1);
+							chk = true;
+						}
+						
+					}
+					
+				}
+			}
+			
+			//swap
+			for(int j = 1;j<height;j++) {
+				
+				for(int i = 0;i<width-1;i++) {
+					
+					if(i%2 == 0) {
+						
+						if(isThrough || (isEmpty(i, j) && isEmpty(i + 1, j - 1))) {
+							
+							if(distance.get(i).get(j) > distance.get(i + 1).get(j - 1) + 1) {
+								distance.get(i).set(j, distance.get(i + 1).get(j - 1) + 1);
+								chk = true;
+							}
+							
+							if(distance.get(i + 1).get(j- 1) > distance.get(i).get(j) + 1) {
+								distance.get(i + 1).set(j - 1, distance.get(i).get(j) + 1);
+								chk = true;
+							}
+							
+						}
+						
+					}else {
+						
+						if(isThrough || (isEmpty(i, j - 1) && isEmpty(i + 1, j))) {
+							
+							if(distance.get(i + 1).get(j) > distance.get(i).get(j - 1) + 1) {
+								distance.get(i + 1).set(j, distance.get(i).get(j - 1) + 1);
+								chk = true;
+							}
+							
+							if(distance.get(i).get(j - 1) > distance.get(i + 1).get(j) + 1) {
+								distance.get(i).set(j - 1, distance.get(i + 1).get(j) + 1);
+								chk = true;
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			
+			
+			if(!chk) {
+				break;
+			}
+			
+		}
+		
+		addUnit(unit, x, y);
+		
+		return distance;
+		
 	}
 	
 	public ArrayList<Unit> getAdjacentUnit(int x, int y){

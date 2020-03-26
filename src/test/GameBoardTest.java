@@ -77,5 +77,21 @@ public class GameBoardTest extends GameTest {
 		
 	}
 	
+	@Test
+	void testGetDistance() {
+		
+		unit1.setOwner(owner1);
+		unit2.setOwner(owner2);
+		unit3.setOwner(owner1);
+		GameController.gameBoard.addUnit(unit1, 5, 5);
+		GameController.gameBoard.addUnit(unit2, 6, 6);
+		GameController.gameBoard.addUnit(unit3, 7, 6);
+		
+		assertEquals(INF, GameController.gameBoard.getDistance(5, 5, false).get(7).get(6));
+		assertEquals(2, GameController.gameBoard.getDistance(5, 5, true).get(7).get(6));
+		assertEquals(4, GameController.gameBoard.getDistance(5, 5, false).get(8).get(7));
+		
+	}
+	
 	
 }
