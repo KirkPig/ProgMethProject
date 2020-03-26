@@ -154,13 +154,30 @@ public class GameBoard {
 	
 	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		// TODO Auto-generated method stub
-		if(canMoveUnit(x1, y1, x2, y2, owner)) {
-			Unit unit = getUnit(x1, y1);
-			addUnit(new Empty(), x1, y1);
-			addUnit(unit, x2, y2);
-			if (unit.getSprites() == 4) {
-				getUnit(x2, y2).setCapture(true);
+		Unit unit = getUnit(x1, y1);
+		Unit k = null;
+		if(unit instanceof Defender) {
+			Defender def = (Defender) unit;
+			if(def.getCaptureUnit() != null) {
+				k = def.getCaptureUnit();
 			}
+			if(!isEmpty(x2, y2)) {
+				
+				def.setCaptureUnit(getUnit(x2, y2));
+				addUnit(new Empty(x2, y2), x2, y2);
+				
+			}
+		}
+		
+		if(canMoveUnit(x1, y1, x2, y2, owner)) {
+			if(k == null) {
+				addUnit(new Empty(), x1, y1);
+				
+			}else {
+				addUnit(k, x1, y1);
+				
+			}
+			addUnit(unit, x2, y2);
 			return true;
 		}else {
 			return false;

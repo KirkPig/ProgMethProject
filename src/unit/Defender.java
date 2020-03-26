@@ -9,6 +9,8 @@ import unit.base.Unit;
 
 public class Defender extends Unit{
 	
+	private Unit captureUnit = null;
+	
 	public Defender(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x, y);
@@ -25,6 +27,14 @@ public class Defender extends Unit{
 		// TODO Auto-generated constructor stub
 		super(0, 0);
 		setName("...");
+	}
+	
+	public Unit getCaptureUnit() {
+		return captureUnit;
+	}
+	
+	public void setCaptureUnit(Unit captureUnit) {
+		this.captureUnit = captureUnit;
 	}
 
 	@Override
@@ -43,8 +53,8 @@ public class Defender extends Unit{
 				if(distance.get(i).get(j) == 1) {
 					canMove.add(GameController.gameBoard.getUnit(i, j));
 				}
-				}
 			}
+		}
 		return canMove;	
 	}
 
