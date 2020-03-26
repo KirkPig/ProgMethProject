@@ -12,11 +12,13 @@ public abstract class Unit {
 	private String name;
 	private Coordinate coordinate;
 	private Owner owner;
+	private boolean isCapture;
 	
 	public Unit(int x, int y) {
 		// TODO Auto-generated constructor stub
 		setCoordinate(new Coordinate(x, y));
 		setOwner(null);
+		setCapture(false);
 	}
 	
 	public abstract int getSprites();
@@ -52,6 +54,14 @@ public abstract class Unit {
 		GameController.gameBoard.addUnit(this, getCoordinate().getX(), getCoordinate().getY());
 		return check;
 		
+	}
+
+	public boolean isCapture() {
+		return isCapture;
+	}
+
+	public void setCapture(boolean isCapture) {
+		this.isCapture = isCapture;
 	}
 	
 }
