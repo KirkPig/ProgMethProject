@@ -122,8 +122,7 @@ public class GameBoard {
 		units.get(x).set(y, unit);
 	}
 	
-	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
-		// TODO Auto-generated method stub
+	public boolean canMoveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		if(getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
 			return false;
 		}
@@ -142,10 +141,24 @@ public class GameBoard {
 		}
 		addUnit(unit, x2, y2);
 		if(checkGameBoard()) {
+			addUnit(unit, x1, y1);
+			addUnit(new Empty(), x2, y2);
 			return true;
 		}else {
 			addUnit(unit, x1, y1);
 			addUnit(new Empty(), x2, y2);
+			return false;
+		}
+	}
+	
+	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
+		// TODO Auto-generated method stub
+		if(canMoveUnit(x1, y1, x2, y2, owner)) {
+			Unit unit = getUnit(x1, y1);
+			addUnit(new Empty(), x1, y1);
+			addUnit(unit, x2, y2);
+			return true;
+		}else {
 			return false;
 		}
 		
