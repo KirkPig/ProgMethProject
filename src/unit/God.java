@@ -34,26 +34,28 @@ public class God extends Unit {
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
+		Unit[] unit = new Unit[1];
 		int max = 7; 
         int min = 2; 
         int range = max - min + 1; 
         int rand = (int)(Math.random() * range) + min;
         if(rand == 2) {
-        	return new Attacker().getMoveUnit();
+        	unit[0] = new Attacker(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
         if(rand == 3) {
-        	return new BoxToBox().getMoveUnit();
+        	unit[0] = new BoxToBox(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
         if(rand == 4) {
-        	return new Defender().getMoveUnit();
+        	unit[0] = new Defender(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
         if(rand == 5) {
-        	return new Goalkeeper().getMoveUnit();
+        	unit[0] = new Goalkeeper(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
         if(rand == 6) {
-        	return new Playmaker().getMoveUnit();
+        	unit[0] = new Playmaker(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
-		return null;	
+        
+        return unit[0].getMoveUnit();	
 	}
 
 }
