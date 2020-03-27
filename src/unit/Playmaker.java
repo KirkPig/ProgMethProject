@@ -35,7 +35,7 @@ public class Playmaker extends Unit{
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
-		GameBoard gameBoard = new GameBoard();
+		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), true);
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {

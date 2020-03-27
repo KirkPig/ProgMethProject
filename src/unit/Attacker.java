@@ -35,7 +35,7 @@ public class Attacker extends Unit  {
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
-		GameBoard gameBoard = new GameBoard();
+		GameBoard gameBoard = GameController.gameBoard;
 		gameBoard.addUnit(new Empty(), this.getCoordinate().getX(), this.getCoordinate().getY());
 		if(gameBoard.checkGameBoard()) {
 			ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(this.getCoordinate().getX(), this.getCoordinate().getY());
