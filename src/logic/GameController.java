@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 import unit.Attacker;
 import unit.BoxToBox;
-import unit.Captain;
 import unit.Defender;
 import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
 import unit.base.Unit;
+import unit.captain.Mcguire;
 
 public class GameController {
 	
@@ -77,7 +77,7 @@ public class GameController {
 					
 					switch(command) {
 					case 1:
-						unit[0] = new Captain();
+						unit[0] = new Mcguire();
 						break;
 					case 2:
 						unit[0] = new Attacker();
@@ -129,11 +129,6 @@ public class GameController {
 					
 					if(gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn%2])) {
 						turn+=1;
-//						for(int i = 0; i< 10;i++ ) {
-//							if(int j = 0 ; j<10 ; i++) {
-								
-//							}
-//						}
 					}else {
 						System.out.println("-----UnitMoveException-----");
 					}
