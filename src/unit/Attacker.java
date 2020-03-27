@@ -2,6 +2,8 @@ package unit;
 
 import java.util.ArrayList;
 
+import logic.GameBoard;
+import logic.GameController;
 import logic.Sprites;
 import unit.base.Unit;
 
@@ -32,7 +34,32 @@ public class Attacker extends Unit  {
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
-		return null;
+		ArrayList<Unit> canMove = new ArrayList<Unit>();
+		GameBoard gameBoard = new GameBoard();
+		gameBoard.addUnit(new Empty(), this.getCoordinate().getX(), this.getCoordinate().getY());
+		if(gameBoard.checkGameBoard()) {
+			ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(this.getCoordinate().getX(), this.getCoordinate().getY());
+			for(int i = 0; i< adjacentUnit.size();i++) {
+				if(adjacentUnit.get(i).getSprites() != 0) {
+					boolean end = true;
+					while(end) {
+						int x2 = adjacentUnit.get(i).getCoordinate().getX();
+						int y2 = adjacentUnit.get(i).getCoordinate().getY();
+						adjacentUnit = gameBoard.getAdjacentUnit(x2, y2);
+						if(adjacentUnit.get(i).getSprites() == 0) {
+							canMove.add(GameController.gameBoard.getUnit(adjacentUnit.get(i).getCoordinate().getX(), adjacentUnit.get(i).getCoordinate().getY()));
+							end = false;
+						}
+					}
+				}
+			}
+			return canMove;
+		}else {
+			gameBoard.addUnit(this, this.getCoordinate().getX(), this.getCoordinate().getY());
+			return null;
+		}
+		
+		
 	}
 
 	
