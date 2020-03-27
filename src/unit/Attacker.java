@@ -40,13 +40,15 @@ public class Attacker extends Unit  {
 		if(gameBoard.checkGameBoard()) {
 			ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(this.getCoordinate().getX(), this.getCoordinate().getY());
 			for(int i = 0; i< adjacentUnit.size();i++) {
-				if(adjacentUnit.get(i).getSprites() != 0) {
+				if(adjacentUnit.get(i).getSprites() != 0 && adjacentUnit.get(i) != null) {
 					boolean end = true;
 					while(end) {
 						int x2 = adjacentUnit.get(i).getCoordinate().getX();
 						int y2 = adjacentUnit.get(i).getCoordinate().getY();
 						adjacentUnit = gameBoard.getAdjacentUnit(x2, y2);
-						if(adjacentUnit.get(i).getSprites() == 0) {
+						if(adjacentUnit.get(i) == null) {
+							end = false;
+						}else if(adjacentUnit.get(i).getSprites() == 0) {
 							canMove.add(GameController.gameBoard.getUnit(adjacentUnit.get(i).getCoordinate().getX(), adjacentUnit.get(i).getCoordinate().getY()));
 							end = false;
 						}
