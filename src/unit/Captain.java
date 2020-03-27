@@ -1,14 +1,10 @@
 package unit;
 
-import java.util.ArrayList;
-
-
-
 import logic.GameController;
 import logic.Sprites;
 import unit.base.Unit;
 
-public class Captain extends Unit  {
+public abstract class Captain extends Unit  {
 	
 	public Captain(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
@@ -42,15 +38,5 @@ public class Captain extends Unit  {
 		}
 		return true;
 	}
-
-	@Override
-	public ArrayList<Unit> getMoveUnit() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	
-	
 
 }
