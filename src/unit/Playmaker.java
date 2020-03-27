@@ -36,14 +36,42 @@ public class Playmaker extends Unit{
 	public ArrayList<Unit> getMoveUnit() {
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
 		GameBoard gameBoard = GameController.gameBoard;
-		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), true);
-		for(int i = 0 ; i< distance.size(); i++) {
-			for(int j = 0; j < distance.size();j++) {
-				if(distance.get(i).get(j) == 3) {
-					canMove.add(GameController.gameBoard.getUnit(i, j));
-				}
+		int x = this.getCoordinate().getX();
+		int y = this.getCoordinate().getY();
+		
+		//move number 1
+		ArrayList<Unit> move1 = new ArrayList<Unit>();
+		for(Unit i : gameBoard.getAdjacentUnit(x, y)) {
+			
+			if(!(i instanceof Empty)) {
+				move1.add(i);
+			}
+			
+		}
+		
+		//move number 2
+		ArrayList<Unit> move2 = new ArrayList<Unit>();
+		for(Unit i: move1) {
+			
+			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
+				if(!(j instanceof Empty) && j.getCoordinate().equals(this.getCoordinate())) {
+					move2.add(j);
 				}
 			}
+			
+		}
+		
+		//move number 3(finished)
+		for(Unit i: move2) {
+			
+			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
+				if(j instanceof Empty) {
+					canMove.add(j);
+				}
+			}
+			
+		}
+		
 		return canMove;	
 	}
 
