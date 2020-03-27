@@ -349,27 +349,44 @@ public class GameBoard {
 		
 		if(x>0)
 			adjacentUnit.add(getUnit(x-1, y));
+		else
+			adjacentUnit.add(null);
+		
 		if(x<width-1)
 			adjacentUnit.add(getUnit(x+1, y));
+		else
+			adjacentUnit.add(null);
 		if(y>0)
 			adjacentUnit.add(getUnit(x, y-1));
+		else
+			adjacentUnit.add(null);
 		if(y<height-1)
 			adjacentUnit.add(getUnit(x, y+1));
+		else
+			adjacentUnit.add(null);
 		
 		if(x%2 == 0) {
 			
 			
 			if(x>0 && y>0)
 				adjacentUnit.add(getUnit(x-1, y-1));
+			else
+				adjacentUnit.add(null);
 			if(x>0 && y<height-1)
 				adjacentUnit.add(getUnit(x-1, y+1));
+			else
+				adjacentUnit.add(null);
 			
 		}else {
 			
 			if(x<width-1 && y>0)
 				adjacentUnit.add(getUnit(x+1, y-1));
+			else
+				adjacentUnit.add(null);
 			if(x<width-1 && y<height-1)
 				adjacentUnit.add(getUnit(x+1, y+1));
+			else
+				adjacentUnit.add(null);
 			
 		}
 		
