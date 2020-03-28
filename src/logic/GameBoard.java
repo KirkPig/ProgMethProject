@@ -75,6 +75,9 @@ public class GameBoard {
 		if(isEmpty(x, y)) {
 			ArrayList<Unit> adjacentUnit = getAdjacentUnit(x, y);
 			for(var i: adjacentUnit) {
+				if(i == null) {
+					continue;
+				}
 				if(i.getOwner() != null) {
 					if(i.getOwner() != unit.getOwner() && this.turn != 1) {
 						return false;
