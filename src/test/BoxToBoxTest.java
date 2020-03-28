@@ -9,25 +9,27 @@ import org.junit.jupiter.api.Test;
 
 import logic.GameController;
 import test.base.GameTest;
-import unit.Attacker;
+import unit.BoxToBox;
+import unit.Empty;
 import unit.base.Unit;
 
-public class AttackerTest extends GameTest {
+public class BoxToBoxTest extends GameTest{
 	
-	Unit unit1 = new Attacker();
-	Unit unit2 = new Attacker();
-	Unit unit3 = new Attacker();
-	Unit unit4 = new Attacker();
-	Unit unit5 = new Attacker();
-	Unit unit6 = new Attacker();
+	Unit unit1 = new BoxToBox();
+	Unit unit2 = new BoxToBox();
+	Unit unit3 = new BoxToBox();
+	Unit unit4 = new BoxToBox();
+	Unit unit5 = new BoxToBox();
+	Unit unit6 = new BoxToBox();
 	
 	@BeforeEach
 	protected void setUpBeforeEachTest() {
 		super.setUpBeforeEachTest();
+		
 	}
 	
 	@Test
-	void testGetMoveUnit() {
+	public void testGetMoveUnit() {
 		unit1.setOwner(owner1);
 		unit2.setOwner(owner2);
 		unit3.setOwner(owner1);
@@ -41,11 +43,23 @@ public class AttackerTest extends GameTest {
 		GameController.gameBoard.addUnit(unit5, 3, 2);
 		GameController.gameBoard.addUnit(unit6, 4, 3);
 		ArrayList<Unit> answer = new ArrayList<Unit>();
-		answer.add(GameController.gameBoard.getUnit(1, 4));
-		answer.add(GameController.gameBoard.getUnit(5, 3));
-		answer.add(GameController.gameBoard.getUnit(1, 1));
-		assertEquals(true, unit1.getMoveUnit().contains(answer.get(0)));
-		assertEquals(true, unit1.getMoveUnit().contains(answer.get(1)));
-		assertEquals(false, unit1.getMoveUnit().contains(answer.get(2)));
+		answer.add(new Empty(0, 2));
+		answer.add(new Empty(0, 3));
+		answer.add(new Empty(0, 4));
+		answer.add(new Empty(1, 4));
+		answer.add(new Empty(2, 1));
+		answer.add(new Empty(2, 3));
+		answer.add(new Empty(3, 1));
+		answer.add(new Empty(3, 3));
+		answer.add(new Empty(4, 2));
+		answer.add(new Empty(4, 4));
+		answer.add(new Empty(5, 2));
+		answer.add(new Empty(5, 3));
+		answer.add(new Empty(5, 4));
+		for(Unit unitTest: answer) {
+			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
+		}
+		
 	}
+
 }

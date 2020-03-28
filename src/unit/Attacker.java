@@ -8,7 +8,6 @@ import logic.Sprites;
 import unit.base.Movable;
 import unit.base.Unit;
 
-
 public class Attacker extends Unit implements Movable{
 	
 	public Attacker(String name, int x, int y) {
@@ -41,19 +40,17 @@ public class Attacker extends Unit implements Movable{
 		if(gameBoard.checkGameBoard()) {
 			ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(this.getCoordinate().getX(), this.getCoordinate().getY());
 			for(int i = 0; i< adjacentUnit.size();i++) {
-				if(adjacentUnit.get(i).getSprites() != 0 && adjacentUnit.get(i) != null) {
+				if(adjacentUnit.get(i) != null && !(adjacentUnit.get(i) instanceof Empty)) {
+					Unit unit = adjacentUnit.get(i);
 					boolean end = true;
 					while(end) {
-						int x2 = adjacentUnit.get(i).getCoordinate().getX();
-						int y2 = adjacentUnit.get(i).getCoordinate().getY();
-						adjacentUnit = gameBoard.getAdjacentUnit(x2, y2);
-						if(adjacentUnit.get(i) == null) {
+						if(unit == null) {
 							end = false;
-						}else if(adjacentUnit.get(i).getSprites() == 0) {
-							if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), x2, y2, this.getOwner())) {
-								canMove.add(GameController.gameBoard.getUnit(adjacentUnit.get(i).getCoordinate().getX(), adjacentUnit.get(i).getCoordinate().getY()));
-								end = false;
-							}
+						}else if(unit.getSprites() == 0) {
+							canMove.add(unit);
+							end = false;
+						}else {
+							unit = gameBoard.getAdjacentUnit(unit.getCoordinate().getX(), unit.getCoordinate().getY()).get(i);
 						}
 					}
 				}
@@ -62,13 +59,10 @@ public class Attacker extends Unit implements Movable{
 			return canMove;
 		}else {
 			gameBoard.addUnit(this, this.getCoordinate().getX(), this.getCoordinate().getY());
-			return null;
+			return canMove;
 		}
 		
 		
 	}
 
-	
-	
-	
 }

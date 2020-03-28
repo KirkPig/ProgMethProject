@@ -37,9 +37,16 @@ public class BoxToBox extends Unit implements Movable{
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
 		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), false);
-		for(int i = 0 ; i< distance.size(); i++) {
+		for(int i = 0 ; i< distance.size();i++) {
 			for(int j = 0; j < distance.size();j++) {
-				if (gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
+				
+			}
+		}
+		for(int i = 0 ; i< distance.size();i++) {
+			for(int j = 0; j < distance.size();j++) {
+				if (distance.get(i).get(j) != 1000000000 && 
+						gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
+					System.out.println(GameController.gameBoard.getUnit(i, j).getCoordinate().toString());
 					canMove.add(GameController.gameBoard.getUnit(i, j));
 				}
 			}

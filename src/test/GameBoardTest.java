@@ -94,4 +94,17 @@ public class GameBoardTest extends GameTest {
 	}
 	
 	
+	@Test
+	void testGetAdjacentUnit() {
+		
+		for(Unit unit: GameController.gameBoard.getAdjacentUnit(1, 0)) {
+			if(unit == null) {
+				System.out.println("NULL");
+			}
+			else
+				System.out.println(unit.getCoordinate().toString());
+		}
+		
+	}
+	
 }
