@@ -15,9 +15,9 @@ public class Silva extends Captain implements Skilled {
 	}
 
 	@Override
-	public boolean useSkill() {
+	public ArrayList<Unit> useSkill() {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }
