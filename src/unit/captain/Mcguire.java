@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import unit.Captain;
-import unit.base.Skilled;
 import unit.base.Unit;
 
 public class Mcguire extends Captain {

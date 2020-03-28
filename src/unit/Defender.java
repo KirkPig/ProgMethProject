@@ -7,6 +7,7 @@ import logic.GameController;
 import logic.Sprites;
 import unit.base.Movable;
 import unit.base.Unit;
+import unit.captain.Mcguire;
 
 public class Defender extends Unit implements Movable{
 	
@@ -51,7 +52,7 @@ public class Defender extends Unit implements Movable{
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), true);
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
-				if(distance.get(i).get(j) == 1) {
+				if(distance.get(i).get(j) == 1 && !(gameBoard.getUnit(i, j) instanceof Mcguire)) {
 					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
 						canMove.add(GameController.gameBoard.getUnit(i, j));
 					}
