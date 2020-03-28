@@ -18,6 +18,7 @@ public class GameController {
 	
 	public static void InitializeGame() {
 		gameBoard = new GameBoard();
+		
 	}
 	
 	public static void printBoard() {
@@ -34,8 +35,8 @@ public class GameController {
 		if(command == 1) {
 			InitializeGame();
 			Owner[] playerTurn = new Owner[2];
-			playerTurn[0] = new Owner("MUN");
-			playerTurn[1] = new Owner("LFC");
+			playerTurn[0] = new Owner("manUnited");
+			playerTurn[1] = new Owner("liverpool");
 			
 			int turn = 0;
 			
@@ -55,6 +56,7 @@ public class GameController {
 				if(command == 999) break;
 				
 				if(command == 1) {
+					
 					System.out.println("**********Place New Unit**********");
 					System.out.println("(1)Captain");
 					System.out.println("(2)Attacker");
@@ -115,6 +117,10 @@ public class GameController {
 					x1 = scanner.nextInt();
 					System.out.print("Input Y : ");
 					y1 = scanner.nextInt();
+					System.out.print("PATH THAT YOU CAN MOVE");
+					for(int i =0; i<gameBoard.getUnit(x1, y1).getMoveUnit().size();i++) {
+						System.out.println(gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate());
+					}
 					System.out.println("-->Input New Coordinate");
 					System.out.print("Input X : ");
 					x2 = scanner.nextInt();
@@ -126,7 +132,13 @@ public class GameController {
 					}else {
 						System.out.println("-----UnitMoveException-----");
 					}
-					
+					for(int i =0; i<gameBoard.getUnit(x1, y1).getMoveUnit().size();i++) {
+						if(x2 == gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate().getX() && y2 == gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate().getY()
+								&& gameBoard.getUnit(x1, y1).isMovable()) {
+							System.out.println(gameBoard.getUnit(x1, y1).getCoordinate() + " Movable");
+							break;
+						}
+					}
 					if(gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn%2])) {
 						turn+=1;
 					}else {
