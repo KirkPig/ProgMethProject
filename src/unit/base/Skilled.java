@@ -1,7 +1,9 @@
 package unit.base;
 
+import java.util.ArrayList;
+
 public interface Skilled {
 	
-	boolean useSkill();
+	ArrayList<Unit> useSkill();
 
 }
