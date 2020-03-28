@@ -7,6 +7,7 @@ import unit.Empty;
 import unit.base.Coordinate;
 import unit.base.Unit;
 
+
 public class GameBoard {
 	
 	private static final int INF = 1000000000;
