@@ -17,7 +17,7 @@ public class Henderson extends Captain {
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), false);
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
-				if(distance.get(i).get(j) == 2) {
+				if(distance.get(i).get(j) == 1 || distance.get(i).get(j) == 2) {
 					canMove.add(GameController.gameBoard.getUnit(i, j));
 				}
 			}
