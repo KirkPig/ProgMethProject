@@ -40,10 +40,12 @@ public class Goalkeeper extends Unit {
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 3) {
-					canMove.add(GameController.gameBoard.getUnit(i, j));
-				}
+					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
+						canMove.add(GameController.gameBoard.getUnit(i, j));
+					}
 				}
 			}
-		return canMove;	
 		}
+		return canMove;	
+	}
 }

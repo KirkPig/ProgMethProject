@@ -2,6 +2,7 @@ package unit.captain;
 
 import java.util.ArrayList;
 
+import logic.GameBoard;
 import logic.GameController;
 import unit.Captain;
 import unit.Empty;
@@ -13,21 +14,18 @@ public class Mcguire extends Captain{
 	public ArrayList<Unit> getMoveUnit() {
 		// TODO Auto-generated method stub
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
-		int x = getCoordinate().getX();
-		int y = getCoordinate().getY();
-		for(Unit i: GameController.gameBoard.getAdjacentUnit(x, y)) {
-			if(i instanceof Empty) {
-				for(var j: GameController.gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
-					if(j.getCoordinate() != this.getCoordinate()) {
-						if(!(j instanceof Empty)) {
-							canMove.add(i);
-							break;
-						}
+		GameBoard gameBoard = GameController.gameBoard;
+		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), false);
+		for(int i = 0 ; i< distance.size(); i++) {
+			for(int j = 0; j < distance.size();j++) {
+				if(distance.get(i).get(j) == 1) {
+					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
+						canMove.add(GameController.gameBoard.getUnit(i, j));
 					}
 				}
 			}
 		}
-		return canMove;
+		return canMove;	
 	}
 	
 	

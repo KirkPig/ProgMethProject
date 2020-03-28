@@ -19,13 +19,8 @@ public class Henderson extends Captain {
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 1 || distance.get(i).get(j) == 2) {
-					for(var k: GameController.gameBoard.getAdjacentUnit(i, j)) {
-						if(k.getCoordinate() != this.getCoordinate()) {
-							if(!(k instanceof Empty)) {
-								canMove.add(k);
-								break;
-							}
-						}
+					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
+						canMove.add(GameController.gameBoard.getUnit(i, j));
 					}
 				}
 			}

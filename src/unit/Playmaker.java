@@ -66,7 +66,10 @@ public class Playmaker extends Unit{
 			
 			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
 				if(j instanceof Empty) {
-					canMove.add(j);
+					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), 
+							j.getCoordinate().getX(), j.getCoordinate().getY(), this.getOwner())) {
+						canMove.add(j);
+					}
 				}
 			}
 			

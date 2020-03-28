@@ -49,12 +49,15 @@ public class Attacker extends Unit  {
 						if(adjacentUnit.get(i) == null) {
 							end = false;
 						}else if(adjacentUnit.get(i).getSprites() == 0) {
-							canMove.add(GameController.gameBoard.getUnit(adjacentUnit.get(i).getCoordinate().getX(), adjacentUnit.get(i).getCoordinate().getY()));
-							end = false;
+							if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), x2, y2, this.getOwner())) {
+								canMove.add(GameController.gameBoard.getUnit(adjacentUnit.get(i).getCoordinate().getX(), adjacentUnit.get(i).getCoordinate().getY()));
+								end = false;
+							}
 						}
 					}
 				}
 			}
+			gameBoard.addUnit(this, this.getCoordinate().getX(), this.getCoordinate().getY());
 			return canMove;
 		}else {
 			gameBoard.addUnit(this, this.getCoordinate().getX(), this.getCoordinate().getY());
