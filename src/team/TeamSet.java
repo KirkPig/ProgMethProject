@@ -1,4 +1,5 @@
 package team;
+
 import unit.base.*;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import unit.Defender;
 import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
+
 public class TeamSet {
 	
 	static Attacker liverpoolAttacker1 = new Attacker("Sadio Mane");
@@ -66,6 +68,7 @@ public class TeamSet {
 	static Goalkeeper spurGoalkeeper2 = new Goalkeeper("Paulo Gazzaniga");
 	static God spurGod = new God("Moussa Sissoko");
 	
+	@SuppressWarnings("serial")
 	static ArrayList<Unit> liverpool = new ArrayList<Unit>(){{
 		add(liverpoolAttacker1);
 		add(liverpoolAttacker2);
@@ -81,6 +84,7 @@ public class TeamSet {
 		add(liverpoolPlaymaker);
 	}};
 	
+	@SuppressWarnings("serial")
 	static ArrayList<Unit> manCity = new ArrayList<Unit>(){{
 		add(manCityAttacker1);
 		add(manCityAttacker2);
@@ -96,6 +100,7 @@ public class TeamSet {
 		add(manCityPlaymaker);
 	}};
 	
+	@SuppressWarnings("serial")
 	static ArrayList<Unit> manUnited = new ArrayList<Unit>() {{
 		add(manUnitedAttacker1);
 		add(manUnitedAttacker2);
@@ -111,6 +116,7 @@ public class TeamSet {
 		add(manUnitedPlaymaker);
 	}};
 	
+	@SuppressWarnings("serial")
 	static ArrayList<Unit> spur = new ArrayList<Unit>() {{
 		add(spurAttacker1);
 		add(spurAttacker2);

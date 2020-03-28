@@ -19,21 +19,20 @@ public class Team {
 	
 	public void setUnitNotUsed(String name) {
 		if(name.equals("liverpool")) {
-			ArrayList<Unit> clone = (ArrayList<Unit>) TeamSet.liverpool.clone();
+			ArrayList<Unit> clone = new ArrayList<Unit>(TeamSet.liverpool);
 			this.unitNotUsed = clone;
 		}else if(name.equals("manCity")) {
-			ArrayList<Unit> clone = (ArrayList<Unit>) TeamSet.manCity.clone();
+			ArrayList<Unit> clone = new ArrayList<Unit>(TeamSet.manCity);
 			this.unitNotUsed = clone;
 		}
 		else if(name.equals("spur")) {
-			ArrayList<Unit> clone = (ArrayList<Unit>) TeamSet.spur.clone();
+			ArrayList<Unit> clone = new ArrayList<Unit>(TeamSet.spur);
 			this.unitNotUsed = clone;
 		}
 		else if(name.equals("manUnited")) {
-			ArrayList<Unit> clone = (ArrayList<Unit>) TeamSet.manUnited.clone();
+			ArrayList<Unit> clone = new ArrayList<Unit>(TeamSet.manUnited);
 			this.unitNotUsed = clone;
 		}
-		this.unitNotUsed = unitNotUsed;
 	}
 	
 	public void useUnit(Unit unit) {
