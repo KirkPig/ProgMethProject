@@ -8,7 +8,7 @@ import unit.Captain;
 import unit.base.Skilled;
 import unit.base.Unit;
 
-public class Mcguire extends Captain implements Skilled{
+public class Mcguire extends Captain {
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
@@ -26,12 +26,6 @@ public class Mcguire extends Captain implements Skilled{
 			}
 		}
 		return canMove;	
-	}
-
-	@Override
-	public ArrayList<Unit> useSkill() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
