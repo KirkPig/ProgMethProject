@@ -2,9 +2,10 @@ package unit;
 
 import logic.GameController;
 import logic.Sprites;
+import unit.base.Movable;
 import unit.base.Unit;
 
-public abstract class Captain extends Unit  {
+public abstract class Captain extends Unit implements Movable{
 	
 	public Captain(String name, int x, int y) {
 		// TODO Auto-generated constructor stub

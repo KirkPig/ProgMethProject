@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import unit.Captain;
-import unit.Empty;
+import unit.base.Skilled;
 import unit.base.Unit;
 
-public class Mcguire extends Captain{
+public class Mcguire extends Captain implements Skilled{
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
@@ -27,7 +27,11 @@ public class Mcguire extends Captain{
 		}
 		return canMove;	
 	}
-	
-	
+
+	@Override
+	public boolean useSkill() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

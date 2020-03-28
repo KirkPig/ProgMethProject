@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import logic.Sprites;
+import unit.base.Movable;
 import unit.base.Unit;
 
 
-public class Attacker extends Unit  {
+public class Attacker extends Unit implements Movable{
 	
 	public Attacker(String name, int x, int y) {
 		// TODO Auto-generated constructor stub

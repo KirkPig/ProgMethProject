@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import logic.Sprites;
+import unit.base.Movable;
 import unit.base.Unit;
 
-public class Goalkeeper extends Unit {
+public class Goalkeeper extends Unit implements Movable{
 	
 	public Goalkeeper(String name, int x, int y) {
 		// TODO Auto-generated constructor stub

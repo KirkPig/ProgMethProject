@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import logic.Sprites;
+import unit.base.Movable;
 import unit.base.Unit;
 
-public class Defender extends Unit{
+public class Defender extends Unit implements Movable{
 	
 	private Unit captureUnit = null;
 	

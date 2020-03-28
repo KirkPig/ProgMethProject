@@ -3,9 +3,10 @@ package unit;
 import java.util.ArrayList;
 
 import logic.Sprites;
+import unit.base.Movable;
 import unit.base.Unit;
 
-public class God extends Unit {
+public class God extends Unit implements Movable{
 	
 	public God(String name, int x, int y) {
 		// TODO Auto-generated constructor stub

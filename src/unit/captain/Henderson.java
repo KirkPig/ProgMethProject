@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import logic.GameBoard;
 import logic.GameController;
 import unit.Captain;
-import unit.Empty;
 import unit.base.Unit;
 
 public class Henderson extends Captain {
