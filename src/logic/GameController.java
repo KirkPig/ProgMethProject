@@ -85,7 +85,53 @@ public class GameController {
 			playerTurn[0] = player1;
 			playerTurn[1] = player2;
 			Unit[] unit = new Unit[2];
-
+			System.out.println("**********SELECT YOUR TEAM**********");
+			System.out.println("PLAYER 1");
+			System.out.println("(1) LIVERPOOL");
+			System.out.println("(2) MAN UNITED");
+			System.out.println("(3) MAN CITY");
+			System.out.println("(4) SPUR");
+			System.out.print("Input Command : ");
+			command = scanner.nextInt();
+			switch(command) {
+			case 1:
+				playerTurn[0] = new Owner("liverpool");
+				break;
+			case 2:
+				playerTurn[0] = new Owner("manUnited");
+				break;
+			case 3:
+				playerTurn[0] = new Owner("manCity");
+				break;
+			case 4:
+				playerTurn[0] = new Owner("spur");
+				break;
+			}
+			
+			System.out.println("PLAYER 2");
+			System.out.println("(1) LIVERPOOL");
+			System.out.println("(2) MAN UNITED");
+			System.out.println("(3) MAN CITY");
+			System.out.println("(4) SPUR");
+			System.out.print("Input Command : ");
+			command = scanner.nextInt();
+			switch(command) {
+			case 1:
+				playerTurn[1] = new Owner("liverpool");
+				break;
+			case 2:
+				playerTurn[1] = new Owner("manUnited");
+				break;
+			case 3:
+				playerTurn[1] = new Owner("manCity");
+				break;
+			case 4:
+				playerTurn[1] = new Owner("spur");
+				break;
+			}
+			
+			Unit[] unit1 = new Unit[1];
+			
 			System.out.println("**********FIFA TIE HEX**********");
 			System.out.println("-->Team " + playerTurn[0].getTeam().getName() + " please select your first unit");
 			System.out.println("**********Place New Unit**********");
@@ -99,7 +145,7 @@ public class GameController {
 			System.out.print("Input Unit : ");
 			int position = scanner.nextInt();
 
-			unit[0] = player1.getTeam().getUnit(position);
+			unit1[0] = player1.getTeam().getUnit(position);
 
 			System.out.println("**********FIFA TIE HEX**********");
 			System.out.println("-->Team " + playerTurn[1].getTeam().getName() + " please select your first unit");
@@ -114,8 +160,8 @@ public class GameController {
 			System.out.print("Input Unit : ");
 			position = scanner.nextInt();
 
-			unit[1] = player2.getTeam().getUnit(position);
-			setupFirstPick(unit[0], unit[1]);
+			unit1[1] = player2.getTeam().getUnit(position);
+			setupFirstPick(unit1[0], unit1[1]);
 
 			while (true) {
 
