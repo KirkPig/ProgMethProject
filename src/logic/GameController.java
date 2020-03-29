@@ -52,8 +52,20 @@ public class GameController {
 	}
 
 	public static void moveUnit(int x1, int y1, int x2, int y2) throws UnitMoveException {
-		
-		
+
+		if (!gameBoard.getUnit(x1, y1).isMovable()) {
+			throw new UnitMoveException();
+		}
+		Unit unit1 = gameBoard.getUnit(x1, y1);
+		Unit unit2 = gameBoard.getUnit(x2, y2);
+		if (!unit1.getMoveUnit().contains(unit2)) {
+			throw new UnitMoveException();
+		}
+		if (gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
+			nextTurn();
+		} else {
+			throw new UnitMoveException();
+		}
 
 	}
 
@@ -84,10 +96,10 @@ public class GameController {
 		System.out.print("Input Command : ");
 		int command = scanner.nextInt();
 		if (command == 1) {
-			
-			//For Setup Game
+
+			// For Setup Game
 			String team1 = "", team2 = "";
-			
+
 			System.out.println("**********SELECT YOUR TEAM**********");
 			System.out.println("PLAYER 1");
 			System.out.println("(1) LIVERPOOL");
@@ -96,7 +108,7 @@ public class GameController {
 			System.out.println("(4) SPUR");
 			System.out.print("Input Command : ");
 			command = scanner.nextInt();
-			switch(command) {
+			switch (command) {
 			case 1:
 				team1 = "liverpool";
 				break;
@@ -110,7 +122,7 @@ public class GameController {
 				team1 = "spur";
 				break;
 			}
-			
+
 			System.out.println("PLAYER 2");
 			System.out.println("(1) LIVERPOOL");
 			System.out.println("(2) MAN UNITED");
@@ -118,7 +130,7 @@ public class GameController {
 			System.out.println("(4) SPUR");
 			System.out.print("Input Command : ");
 			command = scanner.nextInt();
-			switch(command) {
+			switch (command) {
 			case 1:
 				team2 = "liverpool";
 				break;
@@ -132,7 +144,7 @@ public class GameController {
 				team2 = "spur";
 				break;
 			}
-			
+
 			System.out.println("**********FIFA TIE HEX**********");
 			System.out.println("-->PLAYER 1 please select your first unit");
 			System.out.println("**********Place New Unit**********");
@@ -160,7 +172,7 @@ public class GameController {
 			int positionUnit2 = scanner.nextInt();
 
 			InitializeGame(team1, team2, positionUnit1, positionUnit2);
-			
+
 			int position;
 
 			while (true) {
@@ -218,32 +230,22 @@ public class GameController {
 					System.out.print("Input Y : ");
 					y1 = scanner.nextInt();
 					System.out.print("PATH THAT YOU CAN MOVE");
+
 					for (int i = 0; i < gameBoard.getUnit(x1, y1).getMoveUnit().size(); i++) {
 						System.out.println(gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate());
 					}
+
 					System.out.println("-->Input New Coordinate");
 					System.out.print("Input X : ");
 					x2 = scanner.nextInt();
 					System.out.print("Input Y : ");
 					y2 = scanner.nextInt();
 
-					if (gameBoard.getUnit(x1, y1).isMovable()) {
-						System.out.println(gameBoard.getUnit(x1, y1).getCoordinate() + " Movable");
-					} else {
-						System.out.println("-----UnitMoveException-----");
-					}
-					for (int i = 0; i < gameBoard.getUnit(x1, y1).getMoveUnit().size(); i++) {
-						if (x2 == gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate().getX()
-								&& y2 == gameBoard.getUnit(x1, y1).getMoveUnit().get(i).getCoordinate().getY()
-								&& gameBoard.getUnit(x1, y1).isMovable()) {
-							System.out.println(gameBoard.getUnit(x1, y1).getCoordinate() + " Movable");
-							break;
-						}
-					}
-					if (gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
-						nextTurn();
-					} else {
-						System.out.println("-----UnitMoveException-----");
+					try {
+						moveUnit(x1, y1, x2, y2);
+					} catch (UnitMoveException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 
 				} else {
