@@ -14,9 +14,13 @@ public class GameController {
 	public static int turn;
 	protected static Scanner scanner = new Scanner(System.in);
 
-	public static void InitializeGame() {
+	public static void InitializeGame(String team1, String team2, int positionUnit1, int positionUnit2) {
 		gameBoard = new GameBoard();
 		turn = 0;
+		setupTeamPick(team1, team2);
+		Unit unit1 = player1.getTeam().getUnit(positionUnit1);
+		Unit unit2 = player2.getTeam().getUnit(positionUnit2);
+		setupFirstPick(unit1, unit2);
 	}
 
 	public static void printBoard() {
@@ -80,11 +84,10 @@ public class GameController {
 		System.out.print("Input Command : ");
 		int command = scanner.nextInt();
 		if (command == 1) {
-			InitializeGame();
-			Owner[] playerTurn = new Owner[2];
-			playerTurn[0] = player1;
-			playerTurn[1] = player2;
-			Unit[] unit = new Unit[2];
+			
+			//For Setup Game
+			String team1 = "", team2 = "";
+			
 			System.out.println("**********SELECT YOUR TEAM**********");
 			System.out.println("PLAYER 1");
 			System.out.println("(1) LIVERPOOL");
@@ -95,16 +98,16 @@ public class GameController {
 			command = scanner.nextInt();
 			switch(command) {
 			case 1:
-				playerTurn[0] = new Owner("liverpool");
+				team1 = "liverpool";
 				break;
 			case 2:
-				playerTurn[0] = new Owner("manUnited");
+				team1 = "manUnited";
 				break;
 			case 3:
-				playerTurn[0] = new Owner("manCity");
+				team1 = "manCity";
 				break;
 			case 4:
-				playerTurn[0] = new Owner("spur");
+				team1 = "spur";
 				break;
 			}
 			
@@ -117,51 +120,48 @@ public class GameController {
 			command = scanner.nextInt();
 			switch(command) {
 			case 1:
-				playerTurn[1] = new Owner("liverpool");
+				team2 = "liverpool";
 				break;
 			case 2:
-				playerTurn[1] = new Owner("manUnited");
+				team2 = "manUnited";
 				break;
 			case 3:
-				playerTurn[1] = new Owner("manCity");
+				team2 = "manCity";
 				break;
 			case 4:
-				playerTurn[1] = new Owner("spur");
+				team2 = "spur";
 				break;
 			}
 			
-			Unit[] unit1 = new Unit[1];
+			System.out.println("**********FIFA TIE HEX**********");
+			System.out.println("-->PLAYER 1 please select your first unit");
+			System.out.println("**********Place New Unit**********");
+			System.out.println("(1)Captain");
+			System.out.println("(2)Attacker");
+			System.out.println("(3)BoxToBox");
+			System.out.println("(4)Defender");
+			System.out.println("(5)Goalkeeper");
+			System.out.println("(6)Playmaker");
+			System.out.println("(7)God");
+			System.out.print("Input Unit : ");
+			int positionUnit1 = scanner.nextInt();
+
+			System.out.println("**********FIFA TIE HEX**********");
+			System.out.println("-->PLAYER 2 please select your first unit");
+			System.out.println("**********Place New Unit**********");
+			System.out.println("(1)Captain");
+			System.out.println("(2)Attacker");
+			System.out.println("(3)BoxToBox");
+			System.out.println("(4)Defender");
+			System.out.println("(5)Goalkeeper");
+			System.out.println("(6)Playmaker");
+			System.out.println("(7)God");
+			System.out.print("Input Unit : ");
+			int positionUnit2 = scanner.nextInt();
+
+			InitializeGame(team1, team2, positionUnit1, positionUnit2);
 			
-			System.out.println("**********FIFA TIE HEX**********");
-			System.out.println("-->Team " + playerTurn[0].getTeam().getName() + " please select your first unit");
-			System.out.println("**********Place New Unit**********");
-			System.out.println("(1)Captain");
-			System.out.println("(2)Attacker");
-			System.out.println("(3)BoxToBox");
-			System.out.println("(4)Defender");
-			System.out.println("(5)Goalkeeper");
-			System.out.println("(6)Playmaker");
-			System.out.println("(7)God");
-			System.out.print("Input Unit : ");
-			int position = scanner.nextInt();
-
-			unit1[0] = player1.getTeam().getUnit(position);
-
-			System.out.println("**********FIFA TIE HEX**********");
-			System.out.println("-->Team " + playerTurn[1].getTeam().getName() + " please select your first unit");
-			System.out.println("**********Place New Unit**********");
-			System.out.println("(1)Captain");
-			System.out.println("(2)Attacker");
-			System.out.println("(3)BoxToBox");
-			System.out.println("(4)Defender");
-			System.out.println("(5)Goalkeeper");
-			System.out.println("(6)Playmaker");
-			System.out.println("(7)God");
-			System.out.print("Input Unit : ");
-			position = scanner.nextInt();
-
-			unit1[1] = player2.getTeam().getUnit(position);
-			setupFirstPick(unit1[0], unit1[1]);
+			int position;
 
 			while (true) {
 
@@ -240,7 +240,7 @@ public class GameController {
 							break;
 						}
 					}
-					if (gameBoard.moveUnit(x1, y1, x2, y2, playerTurn[turn])) {
+					if (gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
 						nextTurn();
 					} else {
 						System.out.println("-----UnitMoveException-----");
