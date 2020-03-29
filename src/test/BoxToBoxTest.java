@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import logic.GameController;
 import test.base.GameTest;
 import unit.BoxToBox;
-import unit.Empty;
 import unit.base.Unit;
 
 public class BoxToBoxTest extends GameTest{
@@ -43,19 +42,18 @@ public class BoxToBoxTest extends GameTest{
 		GameController.gameBoard.addUnit(unit5, 3, 2);
 		GameController.gameBoard.addUnit(unit6, 4, 3);
 		ArrayList<Unit> answer = new ArrayList<Unit>();
-		answer.add(new Empty(0, 2));
-		answer.add(new Empty(0, 3));
-		answer.add(new Empty(0, 4));
-		answer.add(new Empty(1, 4));
-		answer.add(new Empty(2, 1));
-		answer.add(new Empty(2, 3));
-		answer.add(new Empty(3, 1));
-		answer.add(new Empty(3, 3));
-		answer.add(new Empty(4, 2));
-		answer.add(new Empty(4, 4));
-		answer.add(new Empty(5, 2));
-		answer.add(new Empty(5, 3));
-		answer.add(new Empty(5, 4));
+		answer.add(GameController.gameBoard.getUnit(0, 2));
+		answer.add(GameController.gameBoard.getUnit(0, 4));
+		answer.add(GameController.gameBoard.getUnit(1, 4));
+		answer.add(GameController.gameBoard.getUnit(2, 1));
+		answer.add(GameController.gameBoard.getUnit(2, 3));
+		answer.add(GameController.gameBoard.getUnit(2, 4));
+		answer.add(GameController.gameBoard.getUnit(3, 1));
+		answer.add(GameController.gameBoard.getUnit(3, 3));
+		answer.add(GameController.gameBoard.getUnit(4, 2));
+		answer.add(GameController.gameBoard.getUnit(4, 4));
+		answer.add(GameController.gameBoard.getUnit(5, 2));
+		answer.add(GameController.gameBoard.getUnit(5, 3));
 		for(Unit unitTest: answer) {
 			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
 		}

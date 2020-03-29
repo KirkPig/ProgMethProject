@@ -37,6 +37,88 @@ public class GameController {
 			Owner[] playerTurn = new Owner[2];
 			playerTurn[0] = new Owner("manUnited");
 			playerTurn[1] = new Owner("liverpool");
+			Unit[] unit = new Unit[1];
+			
+			System.out.println("**********FIFA TIE HEX**********");
+			System.out.println("-->Team " + playerTurn[0].getTeam().getName() + " please select your first unit");
+			System.out.println("**********Place New Unit**********");
+			System.out.println("(1)Captain");
+			System.out.println("(2)Attacker");
+			System.out.println("(3)BoxToBox");
+			System.out.println("(4)Defender");
+			System.out.println("(5)Goalkeeper");
+			System.out.println("(6)Playmaker");
+			System.out.println("(7)God");
+			System.out.print("Input Unit : ");
+			command = scanner.nextInt();
+			
+			switch(command) {
+			case 1:
+				unit[0] = new Mcguire();
+				break;
+			case 2:
+				unit[0] = new Attacker();
+				break;
+			case 3:
+				unit[0] = new BoxToBox();
+				break;
+			case 4:
+				unit[0] = new Defender();
+				break;
+			case 5:
+				unit[0] = new Goalkeeper();
+				break;
+			case 6:
+				unit[0] = new Playmaker();
+				break;
+			case 7:
+				unit[0] = new God();
+				break;
+			}
+			
+			unit[0].setOwner(playerTurn[0]);
+			gameBoard.addUnit(unit[0], 4, 4);
+			
+			
+			System.out.println("**********FIFA TIE HEX**********");
+			System.out.println("-->Team " + playerTurn[1].getTeam().getName() + " please select your first unit");
+			System.out.println("**********Place New Unit**********");
+			System.out.println("(1)Captain");
+			System.out.println("(2)Attacker");
+			System.out.println("(3)BoxToBox");
+			System.out.println("(4)Defender");
+			System.out.println("(5)Goalkeeper");
+			System.out.println("(6)Playmaker");
+			System.out.println("(7)God");
+			System.out.print("Input Unit : ");
+			command = scanner.nextInt();
+			
+			switch(command) {
+			case 1:
+				unit[0] = new Mcguire();
+				break;
+			case 2:
+				unit[0] = new Attacker();
+				break;
+			case 3:
+				unit[0] = new BoxToBox();
+				break;
+			case 4:
+				unit[0] = new Defender();
+				break;
+			case 5:
+				unit[0] = new Goalkeeper();
+				break;
+			case 6:
+				unit[0] = new Playmaker();
+				break;
+			case 7:
+				unit[0] = new God();
+				break;
+			}
+			
+			unit[0].setOwner(playerTurn[1]);
+			gameBoard.addUnit(unit[0], 5, 4);
 			
 			int turn = 0;
 			
@@ -75,7 +157,7 @@ public class GameController {
 					int y = scanner.nextInt();
 					boolean check = false;
 					
-					Unit[] unit = new Unit[1];
+					
 					
 					switch(command) {
 					case 1:

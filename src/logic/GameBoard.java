@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
+import unit.Captain;
 import unit.Defender;
 import unit.Empty;
 import unit.base.Coordinate;
@@ -14,21 +15,13 @@ public class GameBoard {
 	private ArrayList<ArrayList<Unit>> units;
 	private int width;
 	private int height;
-	private int turn;
 	
 	public GameBoard(int width, int height) {
 		// TODO Auto-generated constructor stub
 		this.units = new ArrayList<ArrayList<Unit>>();
 		this.width = width;
 		this.height = height;
-		this.turn = 1;
-		for(int i = 0;i<width;i++) {
-			ArrayList<Unit> e = new ArrayList<Unit>();
-			for(int j = 0;j<height;j++) {
-				e.add(new Empty(i, j));
-			}
-			units.add(e);
-		}
+		InitializedBoard();
 	}
 	
 	public GameBoard() {
@@ -36,6 +29,10 @@ public class GameBoard {
 		this.units = new ArrayList<ArrayList<Unit>>();
 		this.width = 10;
 		this.height = 10;
+		InitializedBoard();
+	}
+	
+	public void InitializedBoard() {
 		for(int i = 0;i<width;i++) {
 			ArrayList<Unit> e = new ArrayList<Unit>();
 			for(int j = 0;j<height;j++) {
@@ -79,8 +76,8 @@ public class GameBoard {
 				if(i == null) {
 					continue;
 				}
-				if(i.getOwner() != null) {
-					if(i.getOwner() != unit.getOwner() && this.turn != 1) {
+				if(!(i instanceof Empty)) {
+					if(i.getOwner() != unit.getOwner()) {
 						return false;
 					}
 				}
@@ -89,7 +86,6 @@ public class GameBoard {
 			addUnit(unit, x, y);
 			if(checkGameBoard()) {
 				addUnit(new Empty(), x, y);
-				this.turn += 1;
 				return true;
 			}else {
 				addUnit(new Empty(), x, y);
@@ -134,6 +130,13 @@ public class GameBoard {
 		if(!(isEmpty(x2, y2)) || isEmpty(x1, y1)) {
 			return false;
 		}
+		
+		//If you don't place captain you can't move unit
+		/*for(Unit u: owner.getTeam().getUnitNotUsed()) {
+			if(u instanceof Captain) {
+				return false;
+			}
+		}*/
 		Unit unit = getUnit(x1, y1);
 		
 		if(!unit.getOwner().equals(owner)) {
@@ -190,7 +193,7 @@ public class GameBoard {
 	}
 	
 	public Unit getUnit(int x, int y){
-		if(x < 0|| x >= width || y < 0 || y >= height) {
+		if(x < 0 || x >= width || y < 0 || y >= height) {
 			return null;
 		}
 		return units.get(x).get(y);

@@ -50,9 +50,9 @@ public class GameBoardTest extends GameTest {
 	@Test 
 	void testAddUnit() {
 		
-		GameController.gameBoard.addUnit(unit1, 5, 5);
-		assertEquals("(5,5)", GameController.gameBoard.getUnit(5, 5).getCoordinate().toString());
-		assertEquals(2, GameController.gameBoard.getUnit(5, 5).getSprites());
+		GameController.gameBoard.addUnit(unit1, 0, 3);
+		assertEquals("(0,3)", GameController.gameBoard.getUnit(0, 3).getCoordinate().toString());
+		assertEquals(2, GameController.gameBoard.getUnit(0, 3).getSprites());
 		
 	}
 	

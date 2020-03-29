@@ -2,6 +2,13 @@ package team;
 
 import java.util.ArrayList;
 
+import unit.Attacker;
+import unit.BoxToBox;
+import unit.Captain;
+import unit.Defender;
+import unit.Goalkeeper;
+import unit.God;
+import unit.Playmaker;
 import unit.base.Unit;
 
 public class Team {
@@ -33,6 +40,73 @@ public class Team {
 			ArrayList<Unit> clone = new ArrayList<Unit>(TeamSet.manUnited);
 			this.unitNotUsed = clone;
 		}
+	}
+	
+	public Unit getUnit(int position) {
+		
+		/*Position number
+		 * 1)Captain
+		 * 2)Attacker
+		 * 3)BoxtoBox
+		 * 4)Defender
+		 * 5)Goalkeeper
+		 * 6)Playmaker
+		 * 7)God
+		 */
+		
+		switch(position) {
+		case 1:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof Captain) {
+					return u;
+				}
+			}
+			return null;
+		case 2:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof Attacker) {
+					return u;
+				}
+			}
+			return null;
+		case 3:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof BoxToBox) {
+					return u;
+				}
+			}
+			return null;
+		case 4:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof Defender) {
+					return u;
+				}
+			}
+			return null;
+		case 5:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof Goalkeeper) {
+					return u;
+				}
+			}
+			return null;
+		case 6:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof Playmaker) {
+					return u;
+				}
+			}
+			return null;
+		case 7:
+			for(Unit u: unitNotUsed) {
+				if(u instanceof God) {
+					return u;
+				}
+			}
+			return null;
+		}
+		
+		return null;
 	}
 	
 	public void useUnit(Unit unit) {
