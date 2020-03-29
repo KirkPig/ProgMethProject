@@ -1,11 +1,16 @@
 package team;
 
 import unit.base.*;
+import unit.captain.Henderson;
+import unit.captain.Kane;
+import unit.captain.Mcguire;
+import unit.captain.Silva;
 
 import java.util.ArrayList;
 
 import unit.Attacker;
 import unit.BoxToBox;
+import unit.Captain;
 import unit.Defender;
 import unit.Goalkeeper;
 import unit.God;
@@ -13,6 +18,7 @@ import unit.Playmaker;
 
 public class TeamSet {
 	
+	static Captain liverpoolCaptain = new Henderson();
 	static Attacker liverpoolAttacker1 = new Attacker("Sadio Mane");
 	static Attacker liverpoolAttacker2 = new Attacker("Alex Oxlade-Chamberlane");
 	static Attacker liverpoolAttacker3 = new Attacker("Mohammed Salah");
@@ -27,6 +33,7 @@ public class TeamSet {
 	static God liverpoolGod = new God("Divock Origi");
 	
 	
+	static Captain manUnitedCaptain = new Mcguire();
 	static Attacker manUnitedAttacker1 = new Attacker("Daniel James");
 	static Attacker manUnitedAttacker2 = new Attacker("Anthony Martial");
 	static Attacker manUnitedAttacker3 = new Attacker("Marcus Rashford");
@@ -41,6 +48,7 @@ public class TeamSet {
 	static God manUnitedGod = new God("Jesse Lingard");
 	
 	
+	static Captain manCityCaptain = new Silva();
 	static Attacker manCityAttacker1 = new Attacker("Sergio Aguero");
 	static Attacker manCityAttacker2 = new Attacker("Riyad Mahrez");
 	static Attacker manCityAttacker3 = new Attacker("Leroy Sane");
@@ -55,6 +63,7 @@ public class TeamSet {
 	static God manCityGod = new God("Raheam Sterling");
 	
 	
+	static Captain spurCaptain = new Kane();
 	static Attacker spurAttacker1 = new Attacker("Lucas Moura");
 	static Attacker spurAttacker2 = new Attacker("Steven Bergwijn");
 	static Attacker spurAttacker3 = new Attacker("Son Heung Min");
@@ -82,6 +91,7 @@ public class TeamSet {
 		add(liverpoolGoalkeeper2);
 		add(liverpoolGod);
 		add(liverpoolPlaymaker);
+		add(liverpoolCaptain);
 	}};
 	
 	@SuppressWarnings("serial")
@@ -98,6 +108,7 @@ public class TeamSet {
 		add(manCityGoalkeeper2);
 		add(manCityGod);
 		add(manCityPlaymaker);
+		add(manCityCaptain);
 	}};
 	
 	@SuppressWarnings("serial")
@@ -114,6 +125,7 @@ public class TeamSet {
 		add(manUnitedGoalkeeper2);
 		add(manUnitedGod);
 		add(manUnitedPlaymaker);
+		add(manUnitedCaptain);
 	}};
 	
 	@SuppressWarnings("serial")
@@ -130,5 +142,6 @@ public class TeamSet {
 		add(spurGoalkeeper2);
 		add(spurGod);
 		add(spurPlaymaker);
+		add(spurCaptain);
 	}};
 }

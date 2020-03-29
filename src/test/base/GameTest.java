@@ -14,7 +14,7 @@ public class GameTest {
 	@BeforeEach
 	protected void setUpBeforeEachTest() {
 		
-		GameController.InitializeGame(); //Reset the Board
+		GameController.InitializeGame("liverpool", "manUnited", 1, 1); //Reset the Board
 		
 	}
 
