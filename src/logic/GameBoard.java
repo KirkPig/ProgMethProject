@@ -2,7 +2,6 @@ package logic;
 
 import java.util.ArrayList;
 
-import unit.Captain;
 import unit.Defender;
 import unit.Empty;
 import unit.base.Coordinate;
