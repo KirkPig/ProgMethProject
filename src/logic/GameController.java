@@ -98,6 +98,9 @@ public class GameController {
 	}
 	
 	public static Owner getWinner() {
+		if(!player1.isPlaceCaptain() || !player2.isPlaceCaptain()) {
+			return null;
+		}
 		if(player1.getTeam().getCaptain().isSurrounded()) {
 			return player1;
 		}
@@ -115,6 +118,7 @@ public class GameController {
 		return gameEnd;
 	}
 
+	
 	public static void main(String[] args) {
 		System.out.println("**********FIFA TIE HEX**********");
 		System.out.println("(1)New Game");
@@ -197,11 +201,12 @@ public class GameController {
 			System.out.print("Input Unit : ");
 			int positionUnit2 = scanner.nextInt();
 
+			//Initialized New Game
 			InitializeGame(team1, team2, positionUnit1, positionUnit2);
 
 			int position;
 
-			while (true) {
+			while (getWinner() == null) {
 
 				printBoard();
 				System.out.println("**********FIFA TIE HEX**********");
@@ -278,8 +283,10 @@ public class GameController {
 				} else {
 					System.out.println("-----NonCommandException-----");
 				}
-
 			}
+			System.out.println("*******************************");
+			System.out.println(getWinner().getName() + " Win!!!");
+			System.out.println("*******************************");
 
 		} else if (command == 2) {
 			return;
