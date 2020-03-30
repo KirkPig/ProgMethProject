@@ -114,6 +114,21 @@ public class Team {
 		this.unitUsed.add(unit);
 	}
 	
+	public Captain getCaptain() {
+		// TODO Auto-generated method stub
+		for(Unit u: unitNotUsed) {
+			if(u instanceof Captain) {
+				return (Captain) u;
+			}
+		}
+		for(Unit u: unitUsed) {
+			if(u instanceof Captain) {
+				return (Captain) u;
+			}
+		}
+		return null;
+	}
+	
 	public void setUnitUsed(ArrayList<Unit> unitUsed) {
 		this.unitUsed = unitUsed;
 	}

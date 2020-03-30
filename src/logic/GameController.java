@@ -9,9 +9,10 @@ import unit.base.Unit;
 public class GameController {
 
 	public static GameBoard gameBoard;
-	public static Owner player1;
-	public static Owner player2;
+	private static Owner player1;
+	private static Owner player2;
 	public static int turn;
+	public static boolean gameEnd;
 	protected static Scanner scanner = new Scanner(System.in);
 
 	public static void InitializeGame(String team1, String team2, int positionUnit1, int positionUnit2) {
@@ -21,6 +22,7 @@ public class GameController {
 		Unit unit1 = player1.getTeam().getUnit(positionUnit1);
 		Unit unit2 = player2.getTeam().getUnit(positionUnit2);
 		setupFirstPick(unit1, unit2);
+		gameEnd = false;
 	}
 
 	public static void printBoard() {
@@ -87,6 +89,24 @@ public class GameController {
 
 	public static void nextTurn() {
 		turn = (turn == 0) ? 1 : 0;
+	}
+	
+	public static Owner getWinner() {
+		if(player1.getTeam().getCaptain().isSurrounded()) {
+			return player1;
+		}
+		if(player2.getTeam().getCaptain().isSurrounded()) {
+			return player2;
+		}
+		return null;
+	}
+	
+	public static boolean isGameEnd() {
+		if(player1.getTeam().getCaptain().isSurrounded() ||
+				player2.getTeam().getCaptain().isSurrounded()) {
+			gameEnd = true;
+		}
+		return gameEnd;
 	}
 
 	public static void main(String[] args) {
