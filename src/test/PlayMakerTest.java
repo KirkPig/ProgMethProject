@@ -35,8 +35,14 @@ public class PlayMakerTest extends GameTest {
 		answer.add(GameController.gameBoard.getUnit(3, 4));
 		answer.add(GameController.gameBoard.getUnit(4, 2));
 		answer.add(GameController.gameBoard.getUnit(4, 5));
-		answer.add(GameController.gameBoard.getUnit(5, 2));
+		answer.add(GameController.gameBoard.getUnit(5,2 ));
 		answer.add(GameController.gameBoard.getUnit(5, 3));
+		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
+			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
+			//System.out.println(",");
+			//System.out.println(answer.get(i).getCoordinate());
+			//System.out.println("I");
+		}
 		for(Unit unitTest: answer) {
 			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
 		}

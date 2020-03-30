@@ -55,7 +55,7 @@ public class Playmaker extends Unit implements Movable{
 		for(Unit i: move1) {
 			
 			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
-				if(!(j instanceof Empty) && j.getCoordinate().equals(this.getCoordinate())) {
+				if(!(j instanceof Empty) && !(j.getCoordinate().equals(this.getCoordinate()))) {
 					move2.add(j);
 				}
 			}
