@@ -19,6 +19,10 @@ public class UnitMoveException extends Exception {
 		case 3:
 			this.setErrorMessage(Color.RED + "UnitMoveException: Selected wrong place to move");
 			break;
+		case 4:
+			this.setErrorMessage(Color.RED + "UnitMoveException: Captain doesn't place");
+			break;
+			
 		}
 	}
 

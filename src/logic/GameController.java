@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
+import unit.Captain;
 import unit.base.Unit;
 
 public class GameController {
@@ -50,6 +51,10 @@ public class GameController {
 		if (!gameBoard.placeUnit(unit, x, y, getCurrentPlayer())) {
 			throw new UnitPlaceException(2);
 		}
+		if(unit instanceof Captain) {
+			getCurrentPlayer().setPlaceCaptain(true);
+		}
+		getCurrentPlayer().getTeam().useUnit(unit);
 
 	}
 
@@ -63,9 +68,10 @@ public class GameController {
 		if (!unit1.getMoveUnit().contains(unit2)) {
 			throw new UnitMoveException(3);
 		}
-		if (gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
-			nextTurn();
-		} else {
+		if(getCurrentPlayer().isPlaceCaptain()) {
+			throw new UnitMoveException(4);
+		}
+		if (!gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
 			throw new UnitMoveException(2);
 		}
 
@@ -263,6 +269,7 @@ public class GameController {
 
 					try {
 						moveUnit(x1, y1, x2, y2);
+						nextTurn();
 					} catch (UnitMoveException e) {
 						// TODO Auto-generated catch block
 						System.out.println(e.getErrorMessage());
