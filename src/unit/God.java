@@ -7,7 +7,9 @@ import unit.base.Movable;
 import unit.base.Unit;
 
 public class God extends Unit implements Movable{
-	
+
+private int random;
+
 	public God(String name, int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x, y);
@@ -30,27 +32,27 @@ public class God extends Unit implements Movable{
 	public int getSprites() {
 		return Sprites.GOD;
 	}
-
+	
+	public void setRandom() {
+		this.random = this.getRandom();
+	}
+	
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
 		Unit[] unit = new Unit[1];
-		int max = 7; 
-        int min = 2; 
-        int range = max - min + 1; 
-        int rand = (int)(Math.random() * range) + min;
-        if(rand == 2) {
+        if(random == 2) {
         	unit[0] = new Attacker(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
-        if(rand == 3) {
+        if(random == 3) {
         	unit[0] = new BoxToBox(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
-        if(rand == 4) {
+        if(random == 4) {
         	unit[0] = new Defender(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
-        if(rand == 5) {
+        if(random == 5) {
         	unit[0] = new Goalkeeper(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
-        if(rand == 6) {
+        if(random == 6) {
         	unit[0] = new Playmaker(getName(), getCoordinate().getX(), getCoordinate().getY());
         }
         
