@@ -39,7 +39,8 @@ public class GameBoardTest extends GameTest {
 	@Test 
 	void testPlaceUnit(){
 		
-		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 1, 1, owner1));
+		assertEquals(true, GameController.gameBoard.placeUnit(unit1, 4, 3, owner1));
+		assertEquals(false, GameController.gameBoard.placeUnit(unit1, 1, 1, owner1));
 		assertEquals(false, GameController.gameBoard.placeUnit(unit2, -1, -1, owner1));
 		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 1, 1, owner1));
 		assertEquals(false, GameController.gameBoard.placeUnit(unit3, 9, 9, owner1));

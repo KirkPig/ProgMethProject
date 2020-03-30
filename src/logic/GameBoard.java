@@ -123,49 +123,64 @@ public class GameBoard {
 	}
 	
 	public boolean canMoveUnit(int x1, int y1, int x2, int y2, Owner owner) {
+		
+		//outside border
+		/*
 		if(getUnit(x1, y1) == null || getUnit(x2, y2) == null) {
 			return false;
 		}
-		if(!(isEmpty(x2, y2)) || isEmpty(x1, y1)) {
+		if(isEmpty(x1, y1)) {
 			return false;
 		}
+		*/
 		
-		//If you don't place captain you can't move unit
-		/*for(Unit u: owner.getTeam().getUnitNotUsed()) {
-			if(u instanceof Captain) {
-				return false;
-			}
-		}*/
 		Unit unit = getUnit(x1, y1);
+		
+		/*
+		if(!(unit instanceof Defender) && !(isEmpty(x2, y2))) {
+			return false;
+		}
 		
 		if(!unit.getOwner().equals(owner)) {
 			return false;
 		}
-		addUnit(new Empty(), x1, y1);
-		if(!checkGameBoard()) {
-			addUnit(unit, x1, y1);
-			return false;
+		*/
+		for(Unit u: getAdjacentUnit(x2, y2)) {
+			if(!(u instanceof Empty) && u != null && u != unit) {
+				addUnit(new Empty(), x1, y1);
+				if(!checkGameBoard()) {
+					addUnit(unit, x1, y1);
+					return false;
+				}else {
+					addUnit(unit, x1, y1);
+					return true;
+				}
+				/*
+				addUnit(unit, x2, y2);
+				if(checkGameBoard()) {
+					addUnit(unit, x1, y1);
+					addUnit(new Empty(), x2, y2);
+					return true;
+				}else {
+					addUnit(unit, x1, y1);
+					addUnit(new Empty(), x2, y2);
+					return false;
+				}*/
+			}
 		}
-		addUnit(unit, x2, y2);
-		if(checkGameBoard()) {
-			addUnit(unit, x1, y1);
-			addUnit(new Empty(), x2, y2);
-			return true;
-		}else {
-			addUnit(unit, x1, y1);
-			addUnit(new Empty(), x2, y2);
-			return false;
-		}
+		return false;
+		
 	}
 	
 	public boolean moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		// TODO Auto-generated method stub
 		Unit unit = getUnit(x1, y1);
-		Unit k = null;
+		Unit k = new Empty();
 		if(unit instanceof Defender) {
 			Defender def = (Defender) unit;
 			if(def.getCaptureUnit() != null) {
 				k = def.getCaptureUnit();
+				def.setCaptureUnit(null);
 			}
 			if(!isEmpty(x2, y2)) {
 				
@@ -176,16 +191,20 @@ public class GameBoard {
 		}
 		
 		if(canMoveUnit(x1, y1, x2, y2, owner)) {
-			if(k == null) {
-				addUnit(new Empty(), x1, y1);
-				
-			}else {
-				addUnit(k, x1, y1);
-				
+			if(unit instanceof Defender) {
+				Defender def = (Defender) unit;
+				if(def.getCaptureUnit() != null)
+					def.getCaptureUnit().setCapture(true);
+				k.setCapture(false);
 			}
+			addUnit(k, x1, y1);
 			addUnit(unit, x2, y2);
 			return true;
 		}else {
+			if(unit instanceof Defender) {
+				Defender def = (Defender) unit;
+				def.setCaptureUnit(k);
+			}
 			return false;
 		}
 		

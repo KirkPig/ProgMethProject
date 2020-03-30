@@ -7,8 +7,8 @@ import logic.Owner;
 
 public class GameTest {
 	
-	protected Owner owner1 = new Owner("1");
-	protected Owner owner2 = new Owner("2");
+	protected Owner owner1 = GameController.player1;
+	protected Owner owner2 = GameController.player2;
 	protected static final int INF = 1000000000;
 	
 	@BeforeEach

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import logic.GameController;
 import test.base.GameTest;
-import unit.BoxToBox;
+import unit.Defender;
 import unit.Goalkeeper;
 import unit.Playmaker;
 import unit.base.Unit;
@@ -17,7 +17,7 @@ import unit.base.Unit;
 public class McguireTest extends GameTest {
 	Unit unit1 = new Goalkeeper();
 	Unit unit2 = new Playmaker();
-	Unit unit3 = new BoxToBox();
+	Unit unit3 = new Defender();
 	
 	@BeforeEach
 	protected void setUpBeforeEachTest() {
@@ -58,6 +58,6 @@ public class McguireTest extends GameTest {
 		GameController.gameBoard.addUnit(unit1, 3, 4);
 		GameController.gameBoard.addUnit(unit2, 3, 5);
 		GameController.gameBoard.addUnit(unit3, 4, 5);
-		assertEquals(false, GameController.gameBoard.canMoveUnit(4, 5, 5, 4, owner2));
+		assertEquals(false, unit3.getMoveUnit().contains(GameController.gameBoard.getUnit(5, 4)));
 	}
 }

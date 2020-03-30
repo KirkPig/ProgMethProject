@@ -10,8 +10,8 @@ import unit.base.Unit;
 public class GameController {
 
 	public static GameBoard gameBoard;
-	private static Owner player1;
-	private static Owner player2;
+	public static Owner player1;
+	public static Owner player2;
 	public static int turn;
 	public static boolean gameEnd;
 	protected static Scanner scanner = new Scanner(System.in);

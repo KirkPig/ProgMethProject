@@ -50,6 +50,21 @@ public class Defender extends Unit implements Movable{
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
 		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), true);
+		System.out.println("---------------------------------------");
+		/*for(int i = 0 ; i< distance.size();i++) {
+			String rowstring = "";
+			if(i%2==1) {
+				rowstring += " ";
+			}
+			for(int j = 0; j < distance.size();j++) {
+				if(distance.get(i).get(j) == 1000000000) {
+					rowstring += "- ";
+				}else {
+					rowstring += distance.get(i).get(j).toString() + " ";
+				}
+			}
+			System.out.println(rowstring);
+		}*/
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 1 && !(gameBoard.getUnit(i, j) instanceof Mcguire)) {

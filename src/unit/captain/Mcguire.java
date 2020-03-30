@@ -27,6 +27,22 @@ public class Mcguire extends Captain {
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(),
 				this.getCoordinate().getY(), false);
 
+		System.out.println("-------------------------------------------------");
+		for(int i = 0 ; i< distance.size();i++) {
+			String rowstring = "";
+			if(i%2==1) {
+				rowstring += " ";
+			}
+			for(int j = 0; j < distance.size();j++) {
+				if(distance.get(i).get(j) == 1000000000) {
+					rowstring += "- ";
+				}else {
+					rowstring += distance.get(i).get(j).toString() + " ";
+				}
+			}
+			System.out.println(rowstring);
+		}
+		
 		for (int i = 0; i < distance.size(); i++) {
 			for (int j = 0; j < distance.size(); j++) {
 				if (distance.get(i).get(j) == 1) {
