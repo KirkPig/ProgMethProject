@@ -8,6 +8,16 @@ import unit.Captain;
 import unit.base.Unit;
 
 public class Henderson extends Captain {
+	
+	public Henderson(int x, int y) {
+		// TODO Auto-generated constructor stub
+		super("Jordan Henderson", x, y);
+	}
+
+	public Henderson() {
+		// TODO Auto-generated constructor stub
+		super("Jordan Henderson", 0, 0);
+	}
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {

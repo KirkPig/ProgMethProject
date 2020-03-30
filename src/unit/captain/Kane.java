@@ -11,6 +11,16 @@ import unit.base.Unit;
 public class Kane extends Captain implements Skilled {
 	
 	private boolean isSkillUsable = true;
+	
+	public Kane(int x, int y) {
+		// TODO Auto-generated constructor stub
+		super("Harry Kane", x, y);
+	}
+
+	public Kane() {
+		// TODO Auto-generated constructor stub
+		super("Harry Kane", 0, 0);
+	}
 
 	@Override
 	public ArrayList<Unit> useSkill() {

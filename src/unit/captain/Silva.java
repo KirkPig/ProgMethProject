@@ -12,6 +12,16 @@ import unit.base.Unit;
 public class Silva extends Captain implements Skilled {
 
 	private Defender def;
+	
+	public Silva(int x, int y) {
+		// TODO Auto-generated constructor stub
+		super("David Silva", x, y);
+	}
+
+	public Silva() {
+		// TODO Auto-generated constructor stub
+		super("David Silva", 0, 0);
+	}
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
