@@ -25,9 +25,15 @@ public class GodTest extends GameTest {
 	
 	@Test
 	void testGetMoveUnit() {
-		GameController.gameBoard.placeUnit(unit1, 2, 3, owner1);
-		GameController.gameBoard.placeUnit(unit2, 3, 3, owner1);
-		GameController.gameBoard.placeUnit(unit2, 4, 3, owner1);
+		unit1.setOwner(owner1);
+		unit2.setOwner(owner2);
+		unit3.setOwner(owner1);
+		GameController.gameBoard.addUnit(unit1, 2, 3);
+		GameController.gameBoard.addUnit(unit2, 3, 3);
+		GameController.gameBoard.addUnit(unit3, 4, 3);
+		//GameController.gameBoard.placeUnit(unit1, 2, 3, owner1);
+		//GameController.gameBoard.placeUnit(unit2, 3, 3, owner1);
+		//GameController.gameBoard.placeUnit(unit2, 4, 3, owner1);
 		//System.out.println(unit1.getRandom());
 		//System.out.println(unit1.getMoveUnit().get(0).getCoordinate());
 		
@@ -40,7 +46,7 @@ public class GodTest extends GameTest {
 		 * Bug Make Program Freeze and crash
 		 * 
 		 * 
-		 * 
+		 */ 
 		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
 			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
 			//System.out.println(",");
@@ -49,7 +55,7 @@ public class GodTest extends GameTest {
 		}
 		answer.add(GameController.gameBoard.getUnit(6, 5));
 		assertEquals(true, unit1.getMoveUnit().contains(answer.get(0)));
-		*/	
+	
 		
 		unit1.setRandom(3);
 		System.out.println("333333333333333333333333333333333333");
