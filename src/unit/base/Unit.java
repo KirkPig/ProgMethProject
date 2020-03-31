@@ -40,14 +40,6 @@ public abstract class Unit {
 		this.coordinate = coordinate;
 	}
 	
-	public int getRandom() {
-		int max = 7; 
-        int min = 2; 
-        int range = max - min + 1; 
-        int random = (int)(Math.random() * range) + min;
-        return random;
-	}
-	
 	public Owner getOwner() {
 		return owner;
 	}
