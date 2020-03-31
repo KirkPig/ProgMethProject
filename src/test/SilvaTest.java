@@ -70,6 +70,6 @@ public class SilvaTest extends GameTest {
 			//System.out.println("I");
 		}
 		for(Unit unitTest :answer)
-		assertEquals(true, unit1.useSkill().contains(unitTest));
+			assertEquals(true, unit1.useSkill().contains(unitTest));
 	}
 }

@@ -49,8 +49,11 @@ public class Silva extends Captain implements Skilled {
 		GameBoard gameBoard = new GameBoard();
 		for(int i = 0;i< 10; i++) {
 			for (int j= 0; j<10;j++) {
-				if(gameBoard.getUnit(i, j) instanceof Defender)
+				if(gameBoard.getUnit(i, j) instanceof Defender) {
 					def = (Defender) gameBoard.getUnit(i, j);
+					if(def.getCaptureUnit() == null) {
+						continue;
+					}
 					if(def.getCaptureUnit() instanceof Silva) {
 						ArrayList<Unit> adjacent = gameBoard.getAdjacentUnit(i, j);
 						for(int k = 0;k< adjacent.size();k++) {
@@ -59,6 +62,7 @@ public class Silva extends Captain implements Skilled {
 							}
 						}
 					}
+				}
 			}
 		}
 		return canExit;
