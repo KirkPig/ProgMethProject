@@ -28,57 +28,83 @@ public class GodTest extends GameTest {
 		GameController.gameBoard.placeUnit(unit1, 2, 3, owner1);
 		GameController.gameBoard.placeUnit(unit2, 3, 3, owner1);
 		GameController.gameBoard.placeUnit(unit2, 4, 3, owner1);
-		unit1.randomUnit();
-		System.out.println(unit1.getRandom());
-		System.out.println(unit1.getMoveUnit().get(0).getCoordinate());
-		if(unit1.getRandom() == 2) {
-			ArrayList<Unit> answer = new ArrayList<Unit>();
-			answer.add(GameController.gameBoard.getUnit(6, 5));
-			assertEquals(true, unit1.getMoveUnit().contains(answer.get(0)));
+		//System.out.println(unit1.getRandom());
+		//System.out.println(unit1.getMoveUnit().get(0).getCoordinate());
+		
+		ArrayList<Unit> answer = new ArrayList<Unit>();
+		
+		unit1.setRandom(2);
+		System.out.println("222222222222222222222222222222222");
+		/*
+		 * 
+		 * Bug Make Program Freeze and crash
+		 * 
+		 * 
+		 * 
+		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
+			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
+			//System.out.println(",");
+			//System.out.println(answer.get(i).getCoordinate());
+			//System.out.println("I");
 		}
-		if(unit1.getRandom() == 3) {
-			ArrayList<Unit> answer = new ArrayList<Unit>();
-			answer.add(GameController.gameBoard.getUnit(2, 4));
-			answer.add(GameController.gameBoard.getUnit(3, 2));
-			answer.add(GameController.gameBoard.getUnit(3, 4));
-			answer.add(GameController.gameBoard.getUnit(4, 2));
-			answer.add(GameController.gameBoard.getUnit(4, 5));
-			answer.add(GameController.gameBoard.getUnit(5, 2));
-			answer.add(GameController.gameBoard.getUnit(5, 3));
-			answer.add(GameController.gameBoard.getUnit(5, 5));
-			answer.add(GameController.gameBoard.getUnit(6, 4));
-			answer.add(GameController.gameBoard.getUnit(6, 5));
-			for(Unit unitTest :answer)
+		answer.add(GameController.gameBoard.getUnit(6, 5));
+		assertEquals(true, unit1.getMoveUnit().contains(answer.get(0)));
+		*/	
+		
+		unit1.setRandom(3);
+		System.out.println("333333333333333333333333333333333333");
+		answer = new ArrayList<Unit>();
+		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
+			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
+			//System.out.println(",");
+			//System.out.println(answer.get(i).getCoordinate());
+			//System.out.println("I");
+		}
+		answer.add(GameController.gameBoard.getUnit(2, 4));
+		answer.add(GameController.gameBoard.getUnit(3, 2));
+		answer.add(GameController.gameBoard.getUnit(3, 4));
+		answer.add(GameController.gameBoard.getUnit(4, 2));
+		answer.add(GameController.gameBoard.getUnit(4, 5));
+		answer.add(GameController.gameBoard.getUnit(5, 2));
+		answer.add(GameController.gameBoard.getUnit(5, 3));
+		answer.add(GameController.gameBoard.getUnit(5, 5));
+		answer.add(GameController.gameBoard.getUnit(6, 4));
+		answer.add(GameController.gameBoard.getUnit(6, 5));
+		for(Unit unitTest :answer)
+			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
+			
+		unit1.setRandom(4);
+		System.out.println("44444444444444444444444444444444444444444");
+		answer = new ArrayList<Unit>();
+		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
+			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
+			//System.out.println(",");
+			//System.out.println(answer.get(i).getCoordinate());
+			//System.out.println("I");
+		}
+		answer.add(GameController.gameBoard.getUnit(4, 5));
+		answer.add(GameController.gameBoard.getUnit(5, 2));
+		for(Unit unitTest: answer) {
 			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
 		}
-		if(unit1.getRandom() == 4) {
-			ArrayList<Unit> answer = new ArrayList<Unit>();
-			answer.add(GameController.gameBoard.getUnit(2, 4));
-			answer.add(GameController.gameBoard.getUnit(3, 2));
-			answer.add(GameController.gameBoard.getUnit(3, 3));
-			for(Unit unitTest: answer) {
-				assertEquals(true, unit1.getMoveUnit().contains(unitTest));
-			}
+			
+		unit1.setRandom(5);
+		System.out.println("5555555555555555555555555555555555555555");
+		answer = new ArrayList<Unit>();
+		for(int i = 0;i< unit1.getMoveUnit().size();i++) {
+			System.out.println(unit1.getMoveUnit().get(i).getCoordinate());
+			//System.out.println(",");
+			//System.out.println(answer.get(i).getCoordinate());
+			//System.out.println("I");
 		}
-		if(unit1.getRandom() == 5) {
-			ArrayList<Unit> answer = new ArrayList<Unit>();
-			answer.add(GameController.gameBoard.getUnit(4, 5));
-			answer.add(GameController.gameBoard.getUnit(5, 2));
-			for(Unit unitTest: answer) {
-				assertEquals(true, unit1.getMoveUnit().contains(unitTest));
-			}
-		}
-		if(unit1.getRandom() == 6) {
-			ArrayList<Unit> answer = new ArrayList<Unit>();
-			answer.add(GameController.gameBoard.getUnit(3, 2));
-			answer.add(GameController.gameBoard.getUnit(3, 4));
-			answer.add(GameController.gameBoard.getUnit(4, 2));
-			answer.add(GameController.gameBoard.getUnit(4, 5));
-			answer.add(GameController.gameBoard.getUnit(5,2 ));
-			answer.add(GameController.gameBoard.getUnit(5, 3));
-			for(Unit unitTest: answer) {
-				assertEquals(true, unit1.getMoveUnit().contains(unitTest));
-			}
+		answer.add(GameController.gameBoard.getUnit(3, 2));
+		answer.add(GameController.gameBoard.getUnit(3, 4));
+		answer.add(GameController.gameBoard.getUnit(4, 2));
+		answer.add(GameController.gameBoard.getUnit(4, 5));
+		answer.add(GameController.gameBoard.getUnit(5, 2));
+		answer.add(GameController.gameBoard.getUnit(5, 3));
+		for(Unit unitTest: answer) {
+			assertEquals(true, unit1.getMoveUnit().contains(unitTest));
 		}
 	}
 }

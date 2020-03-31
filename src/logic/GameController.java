@@ -1,11 +1,12 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
 import unit.Captain;
-import unit.Defender;
+import unit.Empty;
 import unit.base.Unit;
 
 public class GameController {
@@ -18,6 +19,7 @@ public class GameController {
 	protected static Scanner scanner = new Scanner(System.in);
 
 	public static void InitializeGame(String team1, String team2, int positionUnit1, int positionUnit2) {
+		
 		gameBoard = new GameBoard();
 		turn = 0;
 		setupTeamPick(team1, team2);
@@ -25,10 +27,10 @@ public class GameController {
 		Unit unit2 = player2.getTeam().getUnit(positionUnit2);
 		setupFirstPick(unit1, unit2);
 		gameEnd = false;
+		
 	}
 
 	public static void printBoard() {
-		// TODO Auto-generated method stub
 		gameBoard.printBoard();
 	}
 
@@ -47,10 +49,29 @@ public class GameController {
 
 		Unit unit = getCurrentPlayer().getTeam().getUnit(position);
 		if (unit == null) {
-			throw new UnitPlaceException(1);
+			throw new UnitPlaceException("unit doesn't exist");
 		}
-		if (!gameBoard.placeUnit(unit, x, y, getCurrentPlayer())) {
-			throw new UnitPlaceException(2);
+		if(gameBoard.getUnit(x, y) == null) {
+			throw new UnitPlaceException("This coordinate doesn't exist");
+		}
+		if(!gameBoard.isEmpty(x, y)) {
+			throw new UnitPlaceException("Tile doesn't empty");
+		}
+		ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(x, y);
+		for(var i: adjacentUnit) {
+			if(i == null) {
+				continue;
+			}
+			if(!(i instanceof Empty)) {
+				if(i.getOwner() != unit.getOwner()) {
+					throw new UnitPlaceException("Can't place unit around opponent's unit");
+				}
+			}
+		}
+		gameBoard.placeUnit(unit, x, y, getCurrentPlayer());
+		if(!gameBoard.checkGameBoard()) {
+			gameBoard.addUnit(new Empty(), x, y);
+			throw new UnitPlaceException("Unit doesn't connect other");
 		}
 		if(unit instanceof Captain) {
 			getCurrentPlayer().setPlaceCaptain(true);
@@ -61,26 +82,22 @@ public class GameController {
 
 	public static void moveUnit(int x1, int y1, int x2, int y2) throws UnitMoveException {
 
-		if (!gameBoard.getUnit(x1, y1).isMovable()) {
+		if (!gameBoard.isUnitMovable(x1, y1)) {
 			throw new UnitMoveException(1);
 		}
 		Unit unit1 = gameBoard.getUnit(x1, y1);
 		Unit unit2 = gameBoard.getUnit(x2, y2);
 		if (!unit1.getMoveUnit().contains(unit2)) {
-			throw new UnitMoveException(3);
-		}
-		if(getCurrentPlayer().isPlaceCaptain()) {
-			throw new UnitMoveException(4);
-		}
-		if (!gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())
-				&& !(gameBoard.getUnit(x1, y1) instanceof Defender)) {
 			throw new UnitMoveException(2);
 		}
+		if(getCurrentPlayer().isPlaceCaptain()) {
+			throw new UnitMoveException(3);
+		}
+		gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer());
 
 	}
 
 	public static Owner getCurrentPlayer() {
-		// TODO Auto-generated method stub
 		return (turn == 0) ? player1 : player2;
 	}
 
@@ -96,6 +113,7 @@ public class GameController {
 	}
 	
 	public static Owner getWinner() {
+		
 		if(player1.getTeam().getCaptain().isSurrounded()) {
 			return player2;
 		}
@@ -103,18 +121,22 @@ public class GameController {
 			return player1;
 		}
 		return null;
+		
 	}
 	
 	public static boolean isGameEnd() {
+		
 		if(player1.getTeam().getCaptain().isSurrounded() ||
 				player2.getTeam().getCaptain().isSurrounded()) {
 			gameEnd = true;
 		}
 		return gameEnd;
+		
 	}
 
 	
 	public static void main(String[] args) {
+		
 		System.out.println("**********FIFA TIE HEX**********");
 		System.out.println("(1)New Game");
 		System.out.println("(2)Quit");

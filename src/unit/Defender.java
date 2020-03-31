@@ -68,8 +68,15 @@ public class Defender extends Unit implements Movable{
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 1 && !(gameBoard.getUnit(i, j) instanceof Mcguire)) {
-					if(gameBoard.canMoveUnit(this.getCoordinate().getX(), this.getCoordinate().getY(), i, j, this.getOwner())) {
-						canMove.add(GameController.gameBoard.getUnit(i, j));
+					for(Unit u: gameBoard.getAdjacentUnit(i, j)) {
+						if(u == null) {
+							continue;
+						}
+						if(!(u instanceof Empty) && u != this) {
+							canMove.add(gameBoard.getUnit(i, j));
+							//System.out.println(gameBoard.getUnit(i, j).getCoordinate().toString());
+							break;
+						}
 					}
 				}
 			}

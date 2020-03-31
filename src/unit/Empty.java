@@ -21,11 +21,6 @@ public class Empty extends Unit {
 	public int getSprites() {
 		return Sprites.EMPTY;
 	}
-	
-	@Override
-	public boolean isMovable() {
-		return false;
-	}
 
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
