@@ -5,6 +5,7 @@ import java.util.Scanner;
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
 import unit.Captain;
+import unit.Defender;
 import unit.base.Unit;
 
 public class GameController {
@@ -71,7 +72,8 @@ public class GameController {
 		if(getCurrentPlayer().isPlaceCaptain()) {
 			throw new UnitMoveException(4);
 		}
-		if (!gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())) {
+		if (!gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer())
+				&& !(gameBoard.getUnit(x1, y1) instanceof Defender)) {
 			throw new UnitMoveException(2);
 		}
 
