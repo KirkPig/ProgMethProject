@@ -14,7 +14,7 @@ import unit.Playmaker;
 import unit.base.Unit;
 
 public class GodTest extends GameTest {
-	Unit unit1 = new God();
+	God unit1 = new God();
 	Unit unit2 = new Playmaker();
 	Unit unit3 = new Playmaker();
 	
@@ -28,6 +28,7 @@ public class GodTest extends GameTest {
 		GameController.gameBoard.placeUnit(unit1, 2, 3, owner1);
 		GameController.gameBoard.placeUnit(unit2, 3, 3, owner1);
 		GameController.gameBoard.placeUnit(unit2, 4, 3, owner1);
+		unit1.randomUnit();
 		System.out.println(unit1.getRandom());
 		System.out.println(unit1.getMoveUnit().get(0).getCoordinate());
 		if(unit1.getRandom() == 2) {

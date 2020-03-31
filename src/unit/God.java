@@ -62,5 +62,9 @@ private int random;
         
         return unit[0].getMoveUnit();	
 	}
+	
+	public int getRandom() {
+		return random;
+	}
 
 }

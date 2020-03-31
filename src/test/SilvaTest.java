@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import logic.GameController;
+import logic.exception.UnitMoveException;
 import test.base.GameTest;
 import unit.Defender;
 import unit.Playmaker;
@@ -50,7 +51,12 @@ public class SilvaTest extends GameTest {
 		GameController.gameBoard.addUnit(unit2, 3, 3);
 		GameController.gameBoard.addUnit(unit3, 4, 3);
 		GameController.gameBoard.addUnit(unit4, 1, 3);
-		GameController.gameBoard.moveUnit(1, 3, 2, 3, owner1);
+		try {
+			GameController.moveUnit(1, 3, 2, 3);
+		} catch (UnitMoveException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ArrayList<Unit> answer = new ArrayList<Unit>();
 		answer.add(GameController.gameBoard.getUnit(1, 2));
 		answer.add(GameController.gameBoard.getUnit(1, 3));
