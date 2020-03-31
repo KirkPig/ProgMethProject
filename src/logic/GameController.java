@@ -279,6 +279,10 @@ public class GameController {
 				} else {
 					System.out.println("-----NonCommandException-----");
 				}
+				
+				if(getWinner() != null) {
+					break;
+				}
 			}
 			System.out.println("*******************************");
 			System.out.println(getWinner().getName() + " Win!!!");
