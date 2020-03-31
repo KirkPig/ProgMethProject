@@ -33,8 +33,12 @@ private int random;
 		return Sprites.GOD;
 	}
 	
-	public void setRandom() {
-		this.random = this.getRandom();
+	public void randomUnit() {
+		int max = 7; 
+        int min = 2; 
+        int range = max - min + 1; 
+        int random = (int)(Math.random() * range) + min;
+		this.random = random;
 	}
 	
 	@Override
