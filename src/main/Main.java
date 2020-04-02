@@ -12,19 +12,22 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
+import logic.GameController;
 
 public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene());
+		primaryStage.setScene(getGameScene());
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.show();
 	}
 
 	public static void main(String[] args) {
+		//test
+		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
 		launch(args);
 
 	}
@@ -48,6 +51,13 @@ public class Main extends Application {
 
 		Scene coverScene = new Scene(coverSceneRoot, 1280, 720);
 		return coverScene;
+	}
+	
+	public static Scene getGameScene() {
+		AnchorPane gameSceneRoot = new AnchorPane();
+		
+		Scene gameScene = new Scene(gameSceneRoot, 1920, 1017);
+		return gameScene;
 	}
 
 }
