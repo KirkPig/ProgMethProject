@@ -6,7 +6,7 @@ public class UnitPane extends AnchorPane {
 	
 	public UnitPane() {
 		// TODO Auto-generated constructor stub
-		setPrefSize(1500, 1000);
+		setPrefSize(1000, 1500);
 	}
 
 }
