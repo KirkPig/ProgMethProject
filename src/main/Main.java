@@ -2,6 +2,8 @@ package main;
 
 import gui.ImageUrl;
 import gui.UnitPane;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,6 +22,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import logic.GameController;
 
 public class Main extends Application {
@@ -72,8 +75,17 @@ public class Main extends Application {
 		playButton.setSpacing(30);
 		playButton.setTranslateX(492);
 		playButton.setTranslateY(300);
-		coverSceneRoot.getChildren().add(playButton);
 		
+		FadeTransition fadePlayButton = new FadeTransition();
+		fadePlayButton.setAutoReverse(true);
+		fadePlayButton.setCycleCount(Animation.INDEFINITE);
+		fadePlayButton.setFromValue(10);
+		fadePlayButton.setToValue(0.5);
+		fadePlayButton.setDuration(Duration.millis(300));
+		fadePlayButton.setNode(playButton);
+		fadePlayButton.play();
+		
+		coverSceneRoot.getChildren().add(playButton);
 
 		return coverSceneRoot;
 	}
