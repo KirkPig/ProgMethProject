@@ -4,6 +4,8 @@ import gui.ImageUrl;
 import gui.UnitPane;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +17,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GameController;
@@ -24,7 +27,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene());
+		primaryStage.setScene(new Scene(getCoverSceneRoot(), 1280, 720));
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.show();
@@ -37,7 +40,7 @@ public class Main extends Application {
 
 	}
 
-	public static Scene getCoverScene() {
+	public static Parent getCoverSceneRoot() {
 		AnchorPane coverSceneRoot = new AnchorPane();
 
 		coverSceneRoot.setBackground(
@@ -53,9 +56,26 @@ public class Main extends Application {
 		coverSideLogo.setX(888);
 		coverSideLogo.setY(10);
 		coverSceneRoot.getChildren().add(coverSideLogo);
+		
+		ImageView coverForeground = new ImageView(new Image(ImageUrl.coverForeground));
+		coverForeground.setX(247);
+		coverForeground.setY(360);
+		coverSceneRoot.getChildren().add(coverForeground);
+		
+		VBox playButton = new VBox();
+		ImageView playButtonImage = new ImageView(new Image(ImageUrl.coverPlayButton));
+		ImageView playButtonLabel = new ImageView(new Image(ImageUrl.coverPlayButtonLabel));
+		playButton.getChildren().add(playButtonImage);
+		playButton.getChildren().add(playButtonLabel);
+		
+		playButton.setAlignment(Pos.CENTER);
+		playButton.setSpacing(30);
+		playButton.setTranslateX(492);
+		playButton.setTranslateY(300);
+		coverSceneRoot.getChildren().add(playButton);
+		
 
-		Scene coverScene = new Scene(coverSceneRoot, 1280, 720);
-		return coverScene;
+		return coverSceneRoot;
 	}
 	
 	public static Scene getGameScene() {
