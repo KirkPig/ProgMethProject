@@ -30,7 +30,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(new Scene(getCoverSceneRoot(), 1280, 720));
+		primaryStage.setScene(new Scene(getGameSceneRoot(), 1920, 1017));
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.show();
@@ -90,7 +90,7 @@ public class Main extends Application {
 		return coverSceneRoot;
 	}
 	
-	public static Scene getGameScene() {
+	public static Parent getGameSceneRoot() {
 		AnchorPane gameSceneRoot = new AnchorPane();
 		
 		//Background
@@ -98,12 +98,11 @@ public class Main extends Application {
 		
 		//UnitPane
 		UnitPane unitPane = new UnitPane();
-		unitPane.setTranslateX(500);
-		unitPane.setTranslateY(50);
+		unitPane.setTranslateX(0);
+		unitPane.setTranslateY(0);
 		gameSceneRoot.getChildren().add(unitPane);
 		
-		Scene gameScene = new Scene(gameSceneRoot, 1920, 1017);
-		return gameScene;
+		return gameSceneRoot;
 	}
 
 }

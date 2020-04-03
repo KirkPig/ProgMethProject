@@ -9,34 +9,34 @@ public class TeamImageUrl {
 	 */
 	
 	//Inactive Unit
-	public static final String manUnitedInactiveCaptain = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveAttacker1 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveAttacker2 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveAttacker3 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveBoxToBox1 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveBoxToBox2 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveBoxToBox3 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveDefender1 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveDefender2 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactivePlaymaker = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveGoalkeeper1 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveGoalkeeper2 = "file:res/unit/player/normal/mun/";
-	public static final String manUnitedInactiveGod = "file:res/unit/player/normal/mun/";
+	public static final String manUnitedInactiveCaptain = "file:res/unit/player/normal/mun/captain_mun.png";
+	public static final String manUnitedInactiveAttacker1 = "file:res/unit/player/normal/mun/attacker_mun1.png";
+	public static final String manUnitedInactiveAttacker2 = "file:res/unit/player/normal/mun/attacker_mun2.png";
+	public static final String manUnitedInactiveAttacker3 = "file:res/unit/player/normal/mun/attacker_mun3.png";
+	public static final String manUnitedInactiveBoxToBox1 = "file:res/unit/player/normal/mun/boxtobox_mun1.png";
+	public static final String manUnitedInactiveBoxToBox2 = "file:res/unit/player/normal/mun/boxtobox_mun2.png";
+	public static final String manUnitedInactiveBoxToBox3 = "file:res/unit/player/normal/mun/boxtobox_mun3.png";
+	public static final String manUnitedInactiveDefender1 = "file:res/unit/player/normal/mun/defender_mun1.png";
+	public static final String manUnitedInactiveDefender2 = "file:res/unit/player/normal/mun/defender_mun2.png";
+	public static final String manUnitedInactivePlaymaker = "file:res/unit/player/normal/mun/playmaker_mun.png";
+	public static final String manUnitedInactiveGoalkeeper1 = "file:res/unit/player/normal/mun/goalkeeper_mun1.png";
+	public static final String manUnitedInactiveGoalkeeper2 = "file:res/unit/player/normal/mun/goalkeeper_mun2.png";
+	public static final String manUnitedInactiveGod = "file:res/unit/player/normal/mun/god_mun.png";
 	
 	//Active Unit
-	public static final String manUnitedActiveCaptain = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveAttacker1 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveAttacker2 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveAttacker3 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveBoxToBox1 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveBoxToBox2 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveBoxToBox3 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveDefender1 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveDefender2 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActivePlaymaker = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveGoalkeeper1 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveGoalkeeper2 = "file:res/unit/player/glow/mun/";
-	public static final String manUnitedActiveGod = "file:res/unit/player/glow/mun/";
+	public static final String manUnitedActiveCaptain = "file:res/unit/player/glow/mun/captain_mun.png";
+	public static final String manUnitedActiveAttacker1 = "file:res/unit/player/glow/mun/attacker_mun1.png";
+	public static final String manUnitedActiveAttacker2 = "file:res/unit/player/glow/mun/attacker_mun2.png";
+	public static final String manUnitedActiveAttacker3 = "file:res/unit/player/glow/mun/attacker_mun3.png";
+	public static final String manUnitedActiveBoxToBox1 = "file:res/unit/player/glow/mun/boxtobox_mun1.png";
+	public static final String manUnitedActiveBoxToBox2 = "file:res/unit/player/glow/mun/boxtobox_mun2.png";
+	public static final String manUnitedActiveBoxToBox3 = "file:res/unit/player/glow/mun/boxtobox_mun3.png";
+	public static final String manUnitedActiveDefender1 = "file:res/unit/player/glow/mun/defender_mun1.png";
+	public static final String manUnitedActiveDefender2 = "file:res/unit/player/glow/mun/defender_mun2.png";
+	public static final String manUnitedActivePlaymaker = "file:res/unit/player/glow/mun/playmaker_mun.png";
+	public static final String manUnitedActiveGoalkeeper1 = "file:res/unit/player/glow/mun/goalkeeper_mun1.png";
+	public static final String manUnitedActiveGoalkeeper2 = "file:res/unit/player/glow/mun/goalkeeper_mun2.png";
+	public static final String manUnitedActiveGod = "file:res/unit/player/glow/mun/god_mun.png";
 	
 	
 	/*
@@ -47,34 +47,34 @@ public class TeamImageUrl {
 	 */
 	
 	//Inactive Unit
-	public static final String liverpoolInactiveCaptain = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveAttacker1 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveAttacker2 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveAttacker3 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveBoxToBox1 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveBoxToBox2 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveBoxToBox3 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveDefender1 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveDefender2 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactivePlaymaker = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveGoalkeeper1 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveGoalkeeper2 = "file:res/unit/player/normal/liv/";
-	public static final String liverpoolInactiveGod = "file:res/unit/player/normal/liv/";
+	public static final String liverpoolInactiveCaptain = "file:res/unit/player/normal/liv/captain_liv.png";
+	public static final String liverpoolInactiveAttacker1 = "file:res/unit/player/normal/liv/attacker_liv1.png";
+	public static final String liverpoolInactiveAttacker2 = "file:res/unit/player/normal/liv/attacker_liv2.png";
+	public static final String liverpoolInactiveAttacker3 = "file:res/unit/player/normal/liv/attacker_liv3.png";
+	public static final String liverpoolInactiveBoxToBox1 = "file:res/unit/player/normal/liv/boxtobox_liv1.png";
+	public static final String liverpoolInactiveBoxToBox2 = "file:res/unit/player/normal/liv/boxtobox_liv2.png";
+	public static final String liverpoolInactiveBoxToBox3 = "file:res/unit/player/normal/liv/boxtobox_liv3.png";
+	public static final String liverpoolInactiveDefender1 = "file:res/unit/player/normal/liv/defender_liv1.png";
+	public static final String liverpoolInactiveDefender2 = "file:res/unit/player/normal/liv/defender_liv2.png";
+	public static final String liverpoolInactivePlaymaker = "file:res/unit/player/normal/liv/playmaker_liv.png";
+	public static final String liverpoolInactiveGoalkeeper1 = "file:res/unit/player/normal/liv/goalkeeper_liv1.png";
+	public static final String liverpoolInactiveGoalkeeper2 = "file:res/unit/player/normal/liv/goalkeeper_liv2.png";
+	public static final String liverpoolInactiveGod = "file:res/unit/player/normal/liv/god_liv.png";
 	
 	//Active Unit
-	public static final String liverpoolActiveCaptain = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveAttacker1 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveAttacker2 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveAttacker3 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveBoxToBox1 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveBoxToBox2 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveBoxToBox3 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveDefender1 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveDefender2 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActivePlaymaker = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveGoalkeeper1 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveGoalkeeper2 = "file:res/unit/player/glow/liv/";
-	public static final String liverpoolActiveGod = "file:res/unit/player/glow/liv/";
+	public static final String liverpoolActiveCaptain = "file:res/unit/player/glow/liv/captain_liv.png";
+	public static final String liverpoolActiveAttacker1 = "file:res/unit/player/glow/liv/attacker_liv1.png";
+	public static final String liverpoolActiveAttacker2 = "file:res/unit/player/glow/liv/attacker_liv2.png";
+	public static final String liverpoolActiveAttacker3 = "file:res/unit/player/glow/liv/attacker_liv3.png";
+	public static final String liverpoolActiveBoxToBox1 = "file:res/unit/player/glow/liv/boxtobox_liv1.png";
+	public static final String liverpoolActiveBoxToBox2 = "file:res/unit/player/glow/liv/boxtobox_liv2.png";
+	public static final String liverpoolActiveBoxToBox3 = "file:res/unit/player/glow/liv/boxtobox_liv3.png";
+	public static final String liverpoolActiveDefender1 = "file:res/unit/player/glow/liv/defender_liv1.png";
+	public static final String liverpoolActiveDefender2 = "file:res/unit/player/glow/liv/defender_liv2.png";
+	public static final String liverpoolActivePlaymaker = "file:res/unit/player/glow/liv/playmaker_liv.png";
+	public static final String liverpoolActiveGoalkeeper1 = "file:res/unit/player/glow/liv/goalkeeper_liv1.png";
+	public static final String liverpoolActiveGoalkeeper2 = "file:res/unit/player/glow/liv/goalkeeper_liv2.png";
+	public static final String liverpoolActiveGod = "file:res/unit/player/glow/liv/god_liv.png";
 	
 	/*
 	 * 

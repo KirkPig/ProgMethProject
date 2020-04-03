@@ -16,10 +16,11 @@ public class Goalkeeper extends Unit implements Movable{
 		setName(name);
 	}
 	
-	public Goalkeeper(String name) {
-		// TODO Auto-generated constructor stub
+	public Goalkeeper(String name, String inactiveImageUrl, String activeImageUrl) {
 		super(0, 0);
 		setName(name);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
 	}
 	
 	public Goalkeeper() {

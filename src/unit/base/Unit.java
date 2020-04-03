@@ -20,12 +20,20 @@ public abstract class Unit {
 		setOwner(null);
 		setCapture(false);
 		setSelected(false);
-		setActiveImageUrl("");
-		setInactiveImageUrl("");
+		setInactiveImageUrl("file:res/unit/empty/empty_tile.png");
+		setActiveImageUrl("file:res/unit/empty/canMove_tile.png");
 	}
 	
 	public abstract int getSprites();
 	public abstract ArrayList<Unit> getMoveUnit();
+	
+	public String getImageUrl() {
+		if(isSelected()) {
+			return getActiveImageUrl();
+		}else {
+			return getInactiveImageUrl();
+		}
+	}
 	
 	public String getName() {
 		return name;

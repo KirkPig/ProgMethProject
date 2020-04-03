@@ -17,10 +17,11 @@ public class God extends Unit implements Movable {
 		setName(name);
 	}
 
-	public God(String name) {
-		// TODO Auto-generated constructor stub
+	public God(String name, String inactiveImageUrl, String activeImageUrl) {
 		super(0, 0);
 		setName(name);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
 	}
 
 	public God() {

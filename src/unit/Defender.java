@@ -19,10 +19,11 @@ public class Defender extends Unit implements Movable{
 		setName(name);
 	}
 	
-	public Defender(String name) {
-		// TODO Auto-generated constructor stub
+	public Defender(String name, String inactiveImageUrl, String activeImageUrl) {
 		super(0, 0);
 		setName(name);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
 	}
 	
 	public Defender() {

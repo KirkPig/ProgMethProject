@@ -16,9 +16,11 @@ public class Attacker extends Unit implements Movable{
 		setName(name);
 	}
 	
-	public Attacker(String name) {
+	public Attacker(String name, String inactiveImageUrl, String activeImageUrl) {
 		super(0, 0);
 		setName(name);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
 	}
 	
 	public Attacker() {
