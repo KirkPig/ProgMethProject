@@ -15,6 +15,13 @@ public class Henderson extends Captain {
 		super("Jordan Henderson", x, y);
 	}
 
+	public Henderson(String inactiveImageUrl, String activeImageUrl) {
+		// TODO Auto-generated constructor stub
+		super("Jordan Henderson", 0, 0);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
+	}
+	
 	public Henderson() {
 		// TODO Auto-generated constructor stub
 		super("Jordan Henderson", 0, 0);

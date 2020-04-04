@@ -18,6 +18,13 @@ public class Kane extends Captain implements Skilled {
 		super("Harry Kane", x, y);
 	}
 
+	public Kane(String inactiveImageUrl, String activeImageUrl) {
+		// TODO Auto-generated constructor stub
+		super("Harry Kane", 0, 0);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
+	}
+	
 	public Kane() {
 		// TODO Auto-generated constructor stub
 		super("Harry Kane", 0, 0);

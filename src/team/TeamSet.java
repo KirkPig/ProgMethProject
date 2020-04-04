@@ -18,7 +18,8 @@ import unit.Playmaker;
 
 public class TeamSet {
 
-	static Captain liverpoolCaptain = new Henderson();
+	static Captain liverpoolCaptain = new Henderson(TeamImageUrl.liverpoolInactiveCaptain,
+			TeamImageUrl.liverpoolActiveCaptain);
 	static Attacker liverpoolAttacker1 = new Attacker("Sadio Mane", TeamImageUrl.liverpoolInactiveAttacker1,
 			TeamImageUrl.liverpoolActiveAttacker1);
 	static Attacker liverpoolAttacker2 = new Attacker("Alex Oxlade-Chamberlane",
@@ -44,7 +45,8 @@ public class TeamSet {
 	static God liverpoolGod = new God("Divock Origi", TeamImageUrl.liverpoolInactiveGod,
 			TeamImageUrl.liverpoolActiveGod);
 
-	static Captain manUnitedCaptain = new Mcguire();
+	static Captain manUnitedCaptain = new Mcguire(TeamImageUrl.manUnitedInactiveCaptain,
+			TeamImageUrl.manUnitedActiveCaptain);
 	static Attacker manUnitedAttacker1 = new Attacker("Daniel James", TeamImageUrl.manUnitedInactiveAttacker1,
 			TeamImageUrl.manUnitedActiveAttacker1);
 	static Attacker manUnitedAttacker2 = new Attacker("Anthony Martial", TeamImageUrl.manUnitedInactiveAttacker2,
@@ -70,7 +72,8 @@ public class TeamSet {
 	static God manUnitedGod = new God("Jesse Lingard", TeamImageUrl.manUnitedInactiveGod,
 			TeamImageUrl.manUnitedActiveGod);
 
-	static Captain manCityCaptain = new Silva();
+	static Captain manCityCaptain = new Silva(TeamImageUrl.manCityInactiveCaptain,
+			TeamImageUrl.manCityActiveCaptain);
 	static Attacker manCityAttacker1 = new Attacker("Sergio Aguero", TeamImageUrl.manCityInactiveAttacker1,
 			TeamImageUrl.manCityActiveAttacker1);
 	static Attacker manCityAttacker2 = new Attacker("Riyad Mahrez", TeamImageUrl.manCityInactiveAttacker2,
@@ -95,7 +98,8 @@ public class TeamSet {
 			TeamImageUrl.manCityActiveGoalkeeper2);
 	static God manCityGod = new God("Raheam Sterling", TeamImageUrl.manCityInactiveGod, TeamImageUrl.manCityActiveGod);
 
-	static Captain spurCaptain = new Kane();
+	static Captain spurCaptain = new Kane(TeamImageUrl.spurInactiveCaptain,
+			TeamImageUrl.spurActiveCaptain);
 	static Attacker spurAttacker1 = new Attacker("Lucas Moura", TeamImageUrl.spurInactiveAttacker1,
 			TeamImageUrl.spurActiveAttacker1);
 	static Attacker spurAttacker2 = new Attacker("Steven Bergwijn", TeamImageUrl.spurInactiveAttacker2,

@@ -15,6 +15,13 @@ public class Mcguire extends Captain {
 		super("Harry Mcguire", x, y);
 	}
 
+	public Mcguire(String inactiveImageUrl, String activeImageUrl) {
+		// TODO Auto-generated constructor stub
+		super("Harry Mcguire", 0, 0);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
+	}
+	
 	public Mcguire() {
 		// TODO Auto-generated constructor stub
 		super("Harry Mcguire", 0, 0);

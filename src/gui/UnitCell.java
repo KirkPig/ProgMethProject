@@ -16,11 +16,17 @@ public class UnitCell extends Pane {
 	public UnitCell(Unit unit) {
 		// TODO Auto-generated constructor stub
 		this.unit = unit;
-		this.setPrefSize(100, 100);
-		this.setBackground(new Background(new BackgroundImage(new Image(unit.getImageUrl()), BackgroundRepeat.NO_REPEAT,
-				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		this.setTranslateX(unit.getCoordinate().getY()*74);
-		this.setTranslateY(unit.getCoordinate().getX()*84);
+		Image unitImage = new Image(unit.getImageUrl(), 89, 102, false, false);
+		this.setPrefSize(unitImage.getWidth(), unitImage.getHeight());
+		this.setBackground(new Background(
+				new BackgroundImage(unitImage, BackgroundRepeat.NO_REPEAT,
+						BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		this.setTranslateX(unit.getCoordinate().getY() * unitImage.getWidth());
+		this.setTranslateY(unit.getCoordinate().getX() * (unitImage.getHeight() * 3 / 4 + 0.5));
+	}
+	
+	public Unit getUnit() {
+		return unit;
 	}
 
 }

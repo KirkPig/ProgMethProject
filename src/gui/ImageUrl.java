@@ -15,5 +15,6 @@ public class ImageUrl {
 	//Select Team Menu
 	
 	//Game Scene
+	public static final String gameBackground = "file:res/field/background.jpg";
 
 }

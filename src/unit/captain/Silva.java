@@ -19,6 +19,13 @@ public class Silva extends Captain implements Skilled {
 		super("David Silva", x, y);
 	}
 
+	public Silva(String inactiveImageUrl, String activeImageUrl) {
+		// TODO Auto-generated constructor stub
+		super("David Silva", 0, 0);
+		setInactiveImageUrl(inactiveImageUrl);
+		setActiveImageUrl(activeImageUrl);
+	}
+	
 	public Silva() {
 		// TODO Auto-generated constructor stub
 		super("David Silva", 0, 0);
