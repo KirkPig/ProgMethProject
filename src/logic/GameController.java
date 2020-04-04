@@ -94,6 +94,12 @@ public class GameController {
 			throw new UnitMoveException(3);
 		}
 		gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer());
+		
+		for(int i = 0;i<gameBoard.getWidth();i++) {
+			for(int j = 0;j<gameBoard.getHeight();j++) {
+				gameBoard.getUnit(i, j).setSelected(false);
+			}
+		}
 
 	}
 

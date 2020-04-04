@@ -100,7 +100,7 @@ public class GameBoard {
 	public void moveUnit(int x1, int y1, int x2, int y2, Owner owner) {
 		// TODO Auto-generated method stub
 		Unit unit = getUnit(x1, y1);
-		Unit k = new Empty();
+		Unit k = getUnit(x2, y2);
 		if(unit instanceof Defender) {
 			Defender def = (Defender) unit;
 			if(def.getCaptureUnit() != null) {
@@ -111,6 +111,7 @@ public class GameBoard {
 				
 				def.setCaptureUnit(getUnit(x2, y2));
 				addUnit(new Empty(x2, y2), x2, y2);
+				k = getUnit(x2, y2);
 				
 			}
 		}

@@ -34,7 +34,7 @@ public class Mcguire extends Captain {
 		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(),
 				this.getCoordinate().getY(), false);
-
+/*
 		System.out.println("-------------------------------------------------");
 		for(int i = 0 ; i< distance.size();i++) {
 			String rowstring = "";
@@ -49,7 +49,7 @@ public class Mcguire extends Captain {
 				}
 			}
 			System.out.println(rowstring);
-		}
+		}*/
 		
 		for (int i = 0; i < distance.size(); i++) {
 			for (int j = 0; j < distance.size(); j++) {

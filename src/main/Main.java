@@ -28,14 +28,14 @@ public class Main extends Application {
 		// TODO Auto-generated method stub
 		primaryStage.setScene(new Scene(getGameSceneRoot(), 1920, 1017));
 		primaryStage.setTitle("FIFA Hex");
-		primaryStage.setMaximized(true);
+		primaryStage.setResizable(false);
 		
 		primaryStage.show();
 	}
 
 	public static void main(String[] args) {
 		// test
-		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
+		GameController.InitializeGame("manUnited", "liverpool", 3, 3);
 		launch(args);
 
 	}
@@ -97,8 +97,8 @@ public class Main extends Application {
 
 		// UnitPane
 		UnitPane unitPane = new UnitPane();
-		unitPane.setTranslateX(800);
-		unitPane.setTranslateY(110);
+		unitPane.setTranslateX(25);
+		unitPane.setTranslateY(-280);
 		gameSceneRoot.getChildren().add(unitPane);
 
 		return gameSceneRoot;
