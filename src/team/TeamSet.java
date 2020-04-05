@@ -33,7 +33,7 @@ public class TeamSet {
 	static BoxToBox liverpoolBoxToBox3 = new BoxToBox("Fabinho", TeamImageUrl.liverpoolInactiveBoxToBox3,
 			TeamImageUrl.liverpoolActiveBoxToBox3);
 	static Defender liverpoolDefender1 = new Defender("Dejan Lovren", TeamImageUrl.liverpoolInactiveDefender1,
-			TeamImageUrl.liverpoolActiveDefender2);
+			TeamImageUrl.liverpoolActiveDefender1);
 	static Defender liverpoolDefender2 = new Defender("Virgil Van Dijk", TeamImageUrl.liverpoolInactiveDefender2,
 			TeamImageUrl.liverpoolActiveDefender2);
 	static Playmaker liverpoolPlaymaker = new Playmaker("Roberto Firmino", TeamImageUrl.liverpoolInactivePlaymaker,
