@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -31,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getGameScene());
+		primaryStage.setScene(getCoverScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -42,29 +43,28 @@ public class Main extends Application {
 		// test
 		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
 		launch(args);
-
 	}
 
-	public static Scene getCoverSceneRoot() {
+	public static Scene getCoverScene() {
 		AnchorPane coverSceneRoot = new AnchorPane();
 
 		coverSceneRoot.setBackground(new Background(new BackgroundImage(
-				new Image(ImageUrl.coverBackground, 1280, 720, false, false), BackgroundRepeat.REPEAT,
+				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
 		ImageView coverLogo = new ImageView(new Image(ImageUrl.coverLogo));
-		coverLogo.setX(272);
-		coverLogo.setY(94);
+		coverLogo.setX(543);
+		coverLogo.setY(153);
 		coverSceneRoot.getChildren().add(coverLogo);
 
 		ImageView coverSideLogo = new ImageView(new Image(ImageUrl.coverSideLogo));
-		coverSideLogo.setX(888);
-		coverSideLogo.setY(10);
+		coverSideLogo.setX(1162);
+		coverSideLogo.setY(84);
 		coverSceneRoot.getChildren().add(coverSideLogo);
 
 		ImageView coverForeground = new ImageView(new Image(ImageUrl.coverForeground));
-		coverForeground.setX(247);
-		coverForeground.setY(360);
+		coverForeground.setX(516);
+		coverForeground.setY(655);
 		coverSceneRoot.getChildren().add(coverForeground);
 
 		VBox playButton = new VBox();
@@ -75,8 +75,8 @@ public class Main extends Application {
 
 		playButton.setAlignment(Pos.CENTER);
 		playButton.setSpacing(30);
-		playButton.setTranslateX(492);
-		playButton.setTranslateY(300);
+		playButton.setTranslateX(786);
+		playButton.setTranslateY(430);
 
 		FadeTransition fadePlayButton = new FadeTransition();
 		fadePlayButton.setAutoReverse(true);
@@ -86,11 +86,32 @@ public class Main extends Application {
 		fadePlayButton.setDuration(Duration.millis(300));
 		fadePlayButton.setNode(playButton);
 		fadePlayButton.play();
+		
+		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadePlayButton.stop();
+				playButton.setOpacity(1.0);
+			}
+			
+		});
+		
+		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadePlayButton.play();
+			}
+			
+		});
 
 		coverSceneRoot.getChildren().add(playButton);
 
 		
-		Scene coverScene = new Scene(coverSceneRoot, 1280, 720);
+		Scene coverScene = new Scene(coverSceneRoot, 1920, 1017);
 		return coverScene;
 	}
 
