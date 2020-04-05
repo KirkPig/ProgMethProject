@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getGameScene());
+		primaryStage.setScene(getCoverScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -113,6 +113,52 @@ public class Main extends Application {
 		
 		Scene coverScene = new Scene(coverSceneRoot, 1920, 1017);
 		return coverScene;
+	}
+
+	public static Scene getMainmenuScene() {
+		AnchorPane mainmenuSceneRoot = new AnchorPane();
+		mainmenuSceneRoot.setBackground(new Background(new BackgroundImage(
+				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		
+		ImageView mainmenuLego = new ImageView(new Image(ImageUrl.mainmenuLogo));
+		mainmenuLego.setX(503);
+		mainmenuLego.setY(83);
+		mainmenuSceneRoot.getChildren().add(mainmenuLego);
+		
+		ImageView mainmenuForegroundLeft = new ImageView(new Image(ImageUrl.mainmenuForegroundLeft));
+		mainmenuForegroundLeft.setX(101);
+		mainmenuForegroundLeft.setY(218);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundLeft);
+		
+		ImageView mainmenuForegroundRight = new ImageView(new Image(ImageUrl.mainmenuForegroundRight));
+		mainmenuForegroundRight.setX(1366);
+		mainmenuForegroundRight.setY(215);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundRight);
+		
+		ImageView mainmenuForegroundDown = new ImageView(new Image(ImageUrl.mainmenuForegroundDown));
+		mainmenuForegroundDown.setX(0);
+		mainmenuForegroundDown.setY(720);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
+		
+		VBox playButton = new VBox();
+		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
+		playButton.getChildren().add(playButtonImage);
+		playButton.setAlignment(Pos.CENTER);
+		playButton.setTranslateX(703);
+		playButton.setTranslateY(372);
+		mainmenuSceneRoot.getChildren().add(playButton);
+		
+		VBox quitButton = new VBox();
+		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
+		quitButton.getChildren().add(quitButtonImage);
+		quitButton.setAlignment(Pos.CENTER);
+		quitButton.setTranslateX(1091);
+		quitButton.setTranslateY(372);
+		mainmenuSceneRoot.getChildren().add(quitButton);
+		
+		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
+		return mainmenuScene;
 	}
 
 	public static Scene getGameScene() {
