@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene());
+		primaryStage.setScene(getGameScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
