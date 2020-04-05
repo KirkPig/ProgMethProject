@@ -42,6 +42,12 @@ public class GameController {
 		unit2.setOwner(player2);
 		gameBoard.addUnit(unit2, 5, 4);
 		player2.getTeam().useUnit(unit2);
+		if(unit1 instanceof Captain) {
+			player1.setPlaceCaptain(true);
+		}
+		if (unit2 instanceof Captain){
+			player2.setPlaceCaptain(true);
+		}
 
 	}
 
@@ -90,8 +96,8 @@ public class GameController {
 		if (!unit1.getMoveUnit().contains(unit2)) {
 			throw new UnitMoveException(2);
 		}
-		if(getCurrentPlayer().isPlaceCaptain()) {
-			throw new UnitMoveException(3);
+		if(!getCurrentPlayer().isPlaceCaptain()) {
+			throw new UnitMoveException(4);
 		}
 		gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer());
 		
@@ -116,6 +122,7 @@ public class GameController {
 
 	public static void nextTurn() {
 		turn = (turn == 0) ? 1 : 0;
+		//System.out.println("next Turn");
 	}
 	
 	public static Owner getWinner() {
