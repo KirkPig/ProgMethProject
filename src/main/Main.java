@@ -10,7 +10,6 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,7 +45,7 @@ public class Main extends Application {
 
 	}
 
-	public static Parent getCoverSceneRoot() {
+	public static Scene getCoverSceneRoot() {
 		AnchorPane coverSceneRoot = new AnchorPane();
 
 		coverSceneRoot.setBackground(new Background(new BackgroundImage(
@@ -90,7 +89,9 @@ public class Main extends Application {
 
 		coverSceneRoot.getChildren().add(playButton);
 
-		return coverSceneRoot;
+		
+		Scene coverScene = new Scene(coverSceneRoot, 1280, 720);
+		return coverScene;
 	}
 
 	public static Scene getGameScene() {
