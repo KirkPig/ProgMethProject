@@ -11,7 +11,12 @@ public class ImageUrl {
 	public static final String coverPlayButtonLabel = "file:res/ui/cover/label.png";
 	
 	//Main Menu
-	
+	public static final String mainmenuLogo = "file:res/ui/mainmenu/title.png";
+	public static final String mainmenuForegroundLeft = "file:res/ui/mainmenu/forground1.png";
+	public static final String mainmenuForegroundRight = "file:res/ui/mainmenu/forground2.png";
+	public static final String mainmenuForegroundDown = "file:res/ui/mainmenu/forground3.png";
+	public static final String mainmenuPlayButton = "file:res/ui/mainmenu/button_play.png";
+	public static final String mainmenuQuitButton = "file:res/ui/mainmenu/button_quit.png";
 	//Select Team Menu
 	
 	//Game Scene
