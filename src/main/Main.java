@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getGameScene());
+		primaryStage.setScene(getMainmenuScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -41,7 +41,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		// test
-		GameController.InitializeGame("manCity", "spur", 1, 1);
+		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
 		launch(args);
 	}
 
@@ -113,6 +113,110 @@ public class Main extends Application {
 		
 		Scene coverScene = new Scene(coverSceneRoot, 1920, 1017);
 		return coverScene;
+	}
+
+	public static Scene getMainmenuScene() {
+		AnchorPane mainmenuSceneRoot = new AnchorPane();
+		mainmenuSceneRoot.setBackground(new Background(new BackgroundImage(
+				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		
+		ImageView mainmenuLego = new ImageView(new Image(ImageUrl.mainmenuLogo));
+		mainmenuLego.setX(503);
+		mainmenuLego.setY(83);
+		mainmenuSceneRoot.getChildren().add(mainmenuLego);
+		
+		ImageView mainmenuForegroundLeft = new ImageView(new Image(ImageUrl.mainmenuForegroundLeft));
+		mainmenuForegroundLeft.setX(201);
+		mainmenuForegroundLeft.setY(218);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundLeft);
+		
+		ImageView mainmenuForegroundRight = new ImageView(new Image(ImageUrl.mainmenuForegroundRight));
+		mainmenuForegroundRight.setX(1206);
+		mainmenuForegroundRight.setY(215);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundRight);
+		
+		ImageView mainmenuForegroundDown = new ImageView(new Image(ImageUrl.mainmenuForegroundDown));
+		mainmenuForegroundDown.setX(0);
+		mainmenuForegroundDown.setY(720);
+		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
+		
+		VBox playButton = new VBox();
+		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
+		playButton.getChildren().add(playButtonImage);
+		playButton.setTranslateX(680);
+		playButton.setTranslateY(372);
+		mainmenuSceneRoot.getChildren().add(playButton);
+
+		FadeTransition fadePlayButton = new FadeTransition();
+		fadePlayButton.setAutoReverse(true);
+		fadePlayButton.setCycleCount(Animation.INDEFINITE);
+		fadePlayButton.setFromValue(10);
+		fadePlayButton.setToValue(0.5);
+		fadePlayButton.setDuration(Duration.millis(300));
+		fadePlayButton.setNode(playButton);
+		fadePlayButton.play();
+		
+		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadePlayButton.stop();
+				playButton.setOpacity(1.0);
+			}
+			
+		});
+
+		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadePlayButton.play();
+			}
+			
+		});
+		
+		VBox quitButton = new VBox();
+		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
+		quitButton.getChildren().add(quitButtonImage);
+		quitButton.setTranslateX(1051);
+		quitButton.setTranslateY(372);
+		mainmenuSceneRoot.getChildren().add(quitButton);
+		
+		FadeTransition fadeQuitButton = new FadeTransition();
+		fadeQuitButton.setAutoReverse(true);
+		fadeQuitButton.setCycleCount(Animation.INDEFINITE);
+		fadeQuitButton.setFromValue(10);
+		fadeQuitButton.setToValue(0.5);
+		fadeQuitButton.setDuration(Duration.millis(300));
+		fadeQuitButton.setNode(quitButton);
+		fadeQuitButton.play();
+		
+		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeQuitButton.stop();
+				quitButton.setOpacity(1.0);
+			}
+			
+		});
+
+		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeQuitButton.play();
+			}
+			
+		});
+		
+		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
+		return mainmenuScene;
 	}
 
 	public static Scene getGameScene() {
