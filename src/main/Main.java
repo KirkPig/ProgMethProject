@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene());
+		primaryStage.setScene(getGameScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -41,7 +41,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		// test
-		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
+		GameController.InitializeGame("manCity", "spur", 1, 1);
 		launch(args);
 	}
 
