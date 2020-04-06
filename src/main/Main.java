@@ -142,26 +142,79 @@ public class Main extends Application {
 		mainmenuForegroundDown.setY(720);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
 		
-		
-		ImageView playButton = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
-		playButton.setX(703);
-		playButton.setY(372);
+		VBox playButton = new VBox();
+		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
+		playButton.getChildren().add(playButtonImage);
+		playButton.setTranslateX(680);
+		playButton.setTranslateY(372);
 		mainmenuSceneRoot.getChildren().add(playButton);
-		/*
+
+		FadeTransition fadePlayButton = new FadeTransition();
+		fadePlayButton.setAutoReverse(true);
+		fadePlayButton.setCycleCount(Animation.INDEFINITE);
+		fadePlayButton.setFromValue(10);
+		fadePlayButton.setToValue(0.5);
+		fadePlayButton.setDuration(Duration.millis(300));
+		fadePlayButton.setNode(playButton);
+		fadePlayButton.play();
+		
 		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				playButton.
+				fadePlayButton.stop();
+				playButton.setOpacity(1.0);
 			}
 			
 		});
-		*/
-		ImageView quitButton = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
-		quitButton.setX(1051);
-		quitButton.setY(372);
+
+		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadePlayButton.play();
+			}
+			
+		});
+		
+		VBox quitButton = new VBox();
+		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
+		quitButton.getChildren().add(quitButtonImage);
+		quitButton.setTranslateX(1051);
+		quitButton.setTranslateY(372);
 		mainmenuSceneRoot.getChildren().add(quitButton);
+		
+		FadeTransition fadeQuitButton = new FadeTransition();
+		fadeQuitButton.setAutoReverse(true);
+		fadeQuitButton.setCycleCount(Animation.INDEFINITE);
+		fadeQuitButton.setFromValue(10);
+		fadeQuitButton.setToValue(0.5);
+		fadeQuitButton.setDuration(Duration.millis(300));
+		fadeQuitButton.setNode(quitButton);
+		fadeQuitButton.play();
+		
+		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeQuitButton.stop();
+				quitButton.setOpacity(1.0);
+			}
+			
+		});
+
+		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeQuitButton.play();
+			}
+			
+		});
 		
 		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
 		return mainmenuScene;
