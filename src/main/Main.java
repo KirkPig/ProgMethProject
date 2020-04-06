@@ -141,20 +141,15 @@ public class Main extends Application {
 		mainmenuForegroundDown.setY(720);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
 		
-		VBox playButton = new VBox();
-		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
-		playButton.getChildren().add(playButtonImage);
-		playButton.setAlignment(Pos.CENTER);
-		playButton.setTranslateX(703);
-		playButton.setTranslateY(372);
+		
+		ImageView playButton = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
+		playButton.setX(703);
+		playButton.setY(372);
 		mainmenuSceneRoot.getChildren().add(playButton);
 		
-		VBox quitButton = new VBox();
-		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
-		quitButton.getChildren().add(quitButtonImage);
-		quitButton.setAlignment(Pos.CENTER);
-		quitButton.setTranslateX(1091);
-		quitButton.setTranslateY(372);
+		ImageView quitButton = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
+		quitButton.setX(1091);
+		quitButton.setY(372);
 		mainmenuSceneRoot.getChildren().add(quitButton);
 		
 		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
