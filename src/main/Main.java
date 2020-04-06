@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -32,7 +33,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene());
+		primaryStage.setScene(getMainmenuScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -127,12 +128,12 @@ public class Main extends Application {
 		mainmenuSceneRoot.getChildren().add(mainmenuLego);
 		
 		ImageView mainmenuForegroundLeft = new ImageView(new Image(ImageUrl.mainmenuForegroundLeft));
-		mainmenuForegroundLeft.setX(101);
+		mainmenuForegroundLeft.setX(201);
 		mainmenuForegroundLeft.setY(218);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundLeft);
 		
 		ImageView mainmenuForegroundRight = new ImageView(new Image(ImageUrl.mainmenuForegroundRight));
-		mainmenuForegroundRight.setX(1366);
+		mainmenuForegroundRight.setX(1206);
 		mainmenuForegroundRight.setY(215);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundRight);
 		
@@ -146,9 +147,19 @@ public class Main extends Application {
 		playButton.setX(703);
 		playButton.setY(372);
 		mainmenuSceneRoot.getChildren().add(playButton);
-		
+		/*
+		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				playButton.
+			}
+			
+		});
+		*/
 		ImageView quitButton = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
-		quitButton.setX(1091);
+		quitButton.setX(1051);
 		quitButton.setY(372);
 		mainmenuSceneRoot.getChildren().add(quitButton);
 		
