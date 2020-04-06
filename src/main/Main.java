@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getMainmenuScene());
+		primaryStage.setScene(getCoverScene(primaryStage));
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -45,7 +45,7 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	public static Scene getCoverScene() {
+	public static Scene getCoverScene(Stage primaryStage) {
 		AnchorPane coverSceneRoot = new AnchorPane();
 
 		coverSceneRoot.setBackground(new Background(new BackgroundImage(
@@ -107,6 +107,16 @@ public class Main extends Application {
 			}
 			
 		});
+		
+		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				primaryStage.setScene(getMainmenuScene(primaryStage));
+			}
+			
+		});
 
 		coverSceneRoot.getChildren().add(playButton);
 
@@ -115,7 +125,7 @@ public class Main extends Application {
 		return coverScene;
 	}
 
-	public static Scene getMainmenuScene() {
+	public static Scene getMainmenuScene(Stage primaryStage) {
 		AnchorPane mainmenuSceneRoot = new AnchorPane();
 		mainmenuSceneRoot.setBackground(new Background(new BackgroundImage(
 				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
@@ -178,6 +188,16 @@ public class Main extends Application {
 			
 		});
 		
+		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				primaryStage.setScene(getGameScene(primaryStage));
+			}
+			
+		});
+		
 		VBox quitButton = new VBox();
 		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
 		quitButton.getChildren().add(quitButtonImage);
@@ -215,11 +235,21 @@ public class Main extends Application {
 			
 		});
 		
+		quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				primaryStage.close();
+			}
+			
+		});
+		
 		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
 		return mainmenuScene;
 	}
 
-	public static Scene getGameScene() {
+	public static Scene getGameScene(Stage primaryStage) {
 		AnchorPane gameSceneRoot = new AnchorPane();
 
 		/*
