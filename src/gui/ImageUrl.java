@@ -18,7 +18,19 @@ public class ImageUrl {
 	public static final String mainmenuPlayButton = "file:res/ui/mainmenu/button_play.png";
 	public static final String mainmenuQuitButton = "file:res/ui/mainmenu/button_quit.png";
 	//Select Team
-	public static final String selectTeamBackground = "file:res/ui/select_team/bg.jpg";
+	
+	public static final String selectTeamLogo = "file:res/ui/select_team/selectteam_title.png";
+	public static final String selectTeamBackground = "file:res/ui/select_team/bg.png";
+	public static final String selectTeamPlayButton = "file:res/ui/select_team/play_button.png";
+	public static final String selectTeamBackButton = "file:res/ui/select_team/back_button.png";
+	public static final String selectTeamLabelPlayer1 = "file:res/ui/select_team/player_1_label.png";
+	public static final String selectTeamLabelPlayer2 = "file:res/ui/select_team/player_2_label.png";
+	public static final String selectTeamPicLiverpool = "file:res/ui/select_team/liv_teampic.png";
+	public static final String selectTeamPicManUnited = "file:res/ui/select_team/mun_teampic.png";
+	public static final String selectTeamPicManCity = "file:res/ui/select_team/mci_teampic.png";
+	public static final String selectTeamPicSpur = "file:res/ui/select_team/spur_teampic.png";
+	public static final String selectTeamLeftButton = "file:res/ui/select_team/left_button.png";
+	public static final String selectTeamRightButton = "file:res/ui/select_team/right_button.png";
 	
 	//Game Scene
 	public static final String gameBackground = "file:res/field/background.jpg";
