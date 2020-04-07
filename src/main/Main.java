@@ -41,7 +41,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		// test
-		GameController.InitializeGame("manUnited", "liverpool", 1, 1);
+		GameController.InitializeGame("manUnited", "liverpool", 3, 3);
 		launch(args);
 	}
 
@@ -86,7 +86,7 @@ public class Main extends Application {
 		fadePlayButton.setDuration(Duration.millis(300));
 		fadePlayButton.setNode(playButton);
 		fadePlayButton.play();
-		
+
 		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -95,9 +95,9 @@ public class Main extends Application {
 				fadePlayButton.stop();
 				playButton.setOpacity(1.0);
 			}
-			
+
 		});
-		
+
 		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -105,9 +105,9 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				fadePlayButton.play();
 			}
-			
+
 		});
-		
+
 		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -115,12 +115,11 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				primaryStage.setScene(getMainmenuScene(primaryStage));
 			}
-			
+
 		});
 
 		coverSceneRoot.getChildren().add(playButton);
 
-		
 		Scene coverScene = new Scene(coverSceneRoot, 1920, 1017);
 		return coverScene;
 	}
@@ -130,27 +129,27 @@ public class Main extends Application {
 		mainmenuSceneRoot.setBackground(new Background(new BackgroundImage(
 				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-		
+
 		ImageView mainmenuLego = new ImageView(new Image(ImageUrl.mainmenuLogo));
 		mainmenuLego.setX(503);
 		mainmenuLego.setY(83);
 		mainmenuSceneRoot.getChildren().add(mainmenuLego);
-		
+
 		ImageView mainmenuForegroundLeft = new ImageView(new Image(ImageUrl.mainmenuForegroundLeft));
 		mainmenuForegroundLeft.setX(201);
 		mainmenuForegroundLeft.setY(218);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundLeft);
-		
+
 		ImageView mainmenuForegroundRight = new ImageView(new Image(ImageUrl.mainmenuForegroundRight));
 		mainmenuForegroundRight.setX(1206);
 		mainmenuForegroundRight.setY(215);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundRight);
-		
+
 		ImageView mainmenuForegroundDown = new ImageView(new Image(ImageUrl.mainmenuForegroundDown));
 		mainmenuForegroundDown.setX(0);
 		mainmenuForegroundDown.setY(720);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
-		
+
 		VBox playButton = new VBox();
 		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
 		playButton.getChildren().add(playButtonImage);
@@ -166,7 +165,7 @@ public class Main extends Application {
 		fadePlayButton.setDuration(Duration.millis(300));
 		fadePlayButton.setNode(playButton);
 		fadePlayButton.play();
-		
+
 		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -175,7 +174,7 @@ public class Main extends Application {
 				fadePlayButton.stop();
 				playButton.setOpacity(1.0);
 			}
-			
+
 		});
 
 		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -185,9 +184,9 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				fadePlayButton.play();
 			}
-			
+
 		});
-		
+
 		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -195,16 +194,16 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				primaryStage.setScene(getGameScene(primaryStage));
 			}
-			
+
 		});
-		
+
 		VBox quitButton = new VBox();
 		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
 		quitButton.getChildren().add(quitButtonImage);
 		quitButton.setTranslateX(1051);
 		quitButton.setTranslateY(372);
 		mainmenuSceneRoot.getChildren().add(quitButton);
-		
+
 		FadeTransition fadeQuitButton = new FadeTransition();
 		fadeQuitButton.setAutoReverse(true);
 		fadeQuitButton.setCycleCount(Animation.INDEFINITE);
@@ -213,7 +212,7 @@ public class Main extends Application {
 		fadeQuitButton.setDuration(Duration.millis(300));
 		fadeQuitButton.setNode(quitButton);
 		fadeQuitButton.play();
-		
+
 		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -222,7 +221,7 @@ public class Main extends Application {
 				fadeQuitButton.stop();
 				quitButton.setOpacity(1.0);
 			}
-			
+
 		});
 
 		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -232,9 +231,9 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				fadeQuitButton.play();
 			}
-			
+
 		});
-		
+
 		quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -242,9 +241,9 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				primaryStage.close();
 			}
-			
+
 		});
-		
+
 		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
 		return mainmenuScene;
 	}
@@ -315,7 +314,6 @@ public class Main extends Application {
 		};
 		unitPaneTransitionX.start();
 
-		
 		/*
 		 * KeyPress Action
 		 */
@@ -337,7 +335,6 @@ public class Main extends Application {
 
 		});
 
-		
 		/*
 		 * KeyReleased Action
 		 */
@@ -355,6 +352,17 @@ public class Main extends Application {
 		});
 
 		return gameScene;
+	}
+
+	public static Scene getSelectTeamScene(Stage primaryStage) {
+
+		AnchorPane selectTeamSceneRoot = new AnchorPane();
+
+		selectTeamSceneRoot.setBackground(new Background(new BackgroundImage(new Image(ImageUrl.mainmenuLogo), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+
+		Scene selectTeamScene = new Scene(selectTeamSceneRoot, 1920, 1017);
+		return selectTeamScene;
 	}
 
 }

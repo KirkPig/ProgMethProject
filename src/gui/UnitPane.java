@@ -26,14 +26,17 @@ public class UnitPane extends Group {
 					@Override
 					public void handle(MouseEvent e) {
 						// TODO Auto-generated method stub
-						if (!(unitCell.getUnit() instanceof Empty)) {
+						if (!(unitCell.getUnit() instanceof Empty)
+								&& unitCell.getUnit().getOwner().equals(GameController.getCurrentPlayer())) {
 							if (selectedUnit == null) {
-								selectedUnit = unitCell;
-								unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
-								for (Unit u : unitCell.getUnit().getMoveUnit()) {
-									u.setSelected(!u.isSelected());
+								if (unitCell.getUnit().getOwner().isPlaceCaptain()) {
+									selectedUnit = unitCell;
+									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
+									for (Unit u : unitCell.getUnit().getMoveUnit()) {
+										u.setSelected(!u.isSelected());
+									}
+									updateBoard();
 								}
-								updateBoard();
 							} else {
 								if (unitCell.equals(selectedUnit)) {
 									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
@@ -110,12 +113,14 @@ public class UnitPane extends Group {
 						if (!(unitCell.getUnit() instanceof Empty)
 								&& unitCell.getUnit().getOwner().equals(GameController.getCurrentPlayer())) {
 							if (selectedUnit == null) {
-								selectedUnit = unitCell;
-								unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
-								for (Unit u : unitCell.getUnit().getMoveUnit()) {
-									u.setSelected(!u.isSelected());
+								if (unitCell.getUnit().getOwner().isPlaceCaptain()) {
+									selectedUnit = unitCell;
+									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
+									for (Unit u : unitCell.getUnit().getMoveUnit()) {
+										u.setSelected(!u.isSelected());
+									}
+									updateBoard();
 								}
-								updateBoard();
 							} else {
 								if (unitCell.equals(selectedUnit)) {
 									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
@@ -169,7 +174,7 @@ public class UnitPane extends Group {
 								}
 								selectedUnit = null;
 								updateBoard();
-								
+
 							}
 						}
 					}
@@ -190,7 +195,7 @@ public class UnitPane extends Group {
 			}
 		}
 	}
-	
+
 	public void resetBoard() {
 		for (Node i : this.getChildren()) {
 			if (i instanceof UnitCell) {

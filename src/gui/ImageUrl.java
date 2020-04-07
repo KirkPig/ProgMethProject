@@ -17,7 +17,8 @@ public class ImageUrl {
 	public static final String mainmenuForegroundDown = "file:res/ui/mainmenu/forground3.png";
 	public static final String mainmenuPlayButton = "file:res/ui/mainmenu/button_play.png";
 	public static final String mainmenuQuitButton = "file:res/ui/mainmenu/button_quit.png";
-	//Select Team Menu
+	//Select Team
+	public static final String selectTeamLogo = "";
 	
 	//Game Scene
 	public static final String gameBackground = "file:res/field/background.jpg";
