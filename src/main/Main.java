@@ -32,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getCoverScene(primaryStage));
+		primaryStage.setScene(getSelectTeamScene(primaryStage));
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -358,8 +358,10 @@ public class Main extends Application {
 
 		AnchorPane selectTeamSceneRoot = new AnchorPane();
 
-		selectTeamSceneRoot.setBackground(new Background(new BackgroundImage(new Image(ImageUrl.mainmenuLogo), BackgroundRepeat.NO_REPEAT,
+		selectTeamSceneRoot.setBackground(new Background(new BackgroundImage(
+				new Image(ImageUrl.selectTeamBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+		
 
 		Scene selectTeamScene = new Scene(selectTeamSceneRoot, 1920, 1017);
 		return selectTeamScene;
