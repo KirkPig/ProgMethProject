@@ -1,5 +1,7 @@
 package main;
 
+import gui.CaptainPicPane;
+import gui.CaptainSkillPane;
 import gui.ImageUrl;
 import gui.TeamPicPane;
 import gui.UnitPane;
@@ -419,6 +421,34 @@ public class Main extends Application {
 		selectTeamSceneRoot.getChildren().add(teamPicPane2);
 		
 		/*
+		 * Captain Pic Pane
+		 */
+		
+		CaptainPicPane captainPicPane1 = new CaptainPicPane(0);
+		captainPicPane1.setTranslateX(142);
+		captainPicPane1.setTranslateY(672);
+		selectTeamSceneRoot.getChildren().add(captainPicPane1);
+		
+		CaptainPicPane captainPicPane2 = new CaptainPicPane(1);
+		captainPicPane2.setTranslateX(1599);
+		captainPicPane2.setTranslateY(672);
+		selectTeamSceneRoot.getChildren().add(captainPicPane2);
+		
+		/*
+		 * Captain Skill Pane
+		 */
+		
+		CaptainSkillPane captainSkillPane1 = new CaptainSkillPane();
+		captainSkillPane1.setTranslateX(389);
+		captainSkillPane1.setTranslateY(713);
+		selectTeamSceneRoot.getChildren().add(captainSkillPane1);
+		
+		CaptainSkillPane captainSkillPane2 = new CaptainSkillPane();
+		captainSkillPane2.setTranslateX(1116);
+		captainSkillPane2.setTranslateY(713);
+		selectTeamSceneRoot.getChildren().add(captainSkillPane2);
+		
+		/*
 		 * Left/Right Team Pick Pane Button
 		 */
 		
@@ -445,19 +475,33 @@ public class Main extends Application {
 			}
 		});
 		
-		leftButton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		leftButton1.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				leftButton1.setEffect(adjustClicked);
 				teamPicPane1.teamNumDown();
+				captainPicPane1.teamNumDown();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane1.teamNumDown();
+					captainPicPane1.teamNumDown();
 				}
 				teamPicPane1.setImageUrl();
+				captainPicPane1.setImageUrl();
 			}
 		});
+		
+		leftButton1.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton1.setEffect(adjustEntered);
+			}
+		});
+		
+		
 		
 		ImageView leftButton2 = new ImageView(new Image(ImageUrl.selectTeamLeftButton));
 		leftButton2.setTranslateX(1014);
@@ -482,17 +526,29 @@ public class Main extends Application {
 			}
 		});
 		
-		leftButton2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		leftButton2.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				leftButton2.setEffect(adjustClicked);
 				teamPicPane2.teamNumDown();
+				captainPicPane2.teamNumDown();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane2.teamNumDown();
+					captainPicPane2.teamNumDown();
 				}
 				teamPicPane2.setImageUrl();
+				captainPicPane2.setImageUrl();
+			}
+		});
+		
+		leftButton2.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton2.setEffect(adjustEntered);
 			}
 		});
 		
@@ -519,17 +575,29 @@ public class Main extends Application {
 			}
 		});
 		
-		rightButton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		rightButton1.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				rightButton1.setEffect(adjustClicked);
 				teamPicPane1.teamNumUp();
+				captainPicPane1.teamNumUp();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane1.teamNumUp();
+					captainPicPane1.teamNumUp();
 				}
 				teamPicPane1.setImageUrl();
+				captainPicPane1.setImageUrl();
+			}
+		});
+		
+		rightButton1.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton1.setEffect(adjustEntered);
 			}
 		});
 		
@@ -556,19 +624,32 @@ public class Main extends Application {
 			}
 		});
 		
-		rightButton2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		rightButton2.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				rightButton2.setEffect(adjustClicked);
 				teamPicPane2.teamNumUp();
+				captainPicPane2.teamNumUp();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane2.teamNumUp();
+					captainPicPane2.teamNumUp();
 				}
 				teamPicPane2.setImageUrl();
+				captainPicPane2.setImageUrl();
 			}
 		});
+		
+		rightButton2.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton2.setEffect(adjustEntered);
+			}
+		});
+		
 		
 		/*
 		 * Select Time

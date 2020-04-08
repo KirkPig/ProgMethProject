@@ -11,10 +11,10 @@ public class TeamPicPane extends ImageView {
 	public TeamPicPane(int teamNum) {
 		// TODO Auto-generated constructor stub
 		this.teamPicUrl = new String[4];
-		teamPicUrl[0] = ImageUrl.selectTeamPicLiverpool;
-		teamPicUrl[1] = ImageUrl.selectTeamPicManUnited;
-		teamPicUrl[2] = ImageUrl.selectTeamPicManCity;
-		teamPicUrl[3] = ImageUrl.selectTeamPicSpur;
+		teamPicUrl[0] = ImageUrl.teamPicLiverpool;
+		teamPicUrl[1] = ImageUrl.teamPicManUnited;
+		teamPicUrl[2] = ImageUrl.teamPicManCity;
+		teamPicUrl[3] = ImageUrl.teamPicSpur;
 		this.teamNum = teamNum;
 		setImageUrl();
 	}

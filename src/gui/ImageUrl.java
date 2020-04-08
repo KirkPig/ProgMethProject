@@ -25,12 +25,21 @@ public class ImageUrl {
 	public static final String selectTeamBackButton = "file:res/ui/select_team/back_button.png";
 	public static final String selectTeamLabelPlayer1 = "file:res/ui/select_team/player_1_label.png";
 	public static final String selectTeamLabelPlayer2 = "file:res/ui/select_team/player_2_label.png";
-	public static final String selectTeamPicLiverpool = "file:res/ui/select_team/liv_teampic.png";
-	public static final String selectTeamPicManUnited = "file:res/ui/select_team/mun_teampic.png";
-	public static final String selectTeamPicManCity = "file:res/ui/select_team/mci_teampic.png";
-	public static final String selectTeamPicSpur = "file:res/ui/select_team/spur_teampic.png";
 	public static final String selectTeamLeftButton = "file:res/ui/select_team/left_button.png";
 	public static final String selectTeamRightButton = "file:res/ui/select_team/right_button.png";
+	public static final String selectTeamCaptainSkill = "file:res/ui/select_team/bg_captain_skill.png";
+	
+	//Team Pic
+	public static final String teamPicLiverpool = "file:res/ui/select_team/liv_teampic.png";
+	public static final String teamPicManUnited = "file:res/ui/select_team/mun_teampic.png";
+	public static final String teamPicManCity = "file:res/ui/select_team/mci_teampic.png";
+	public static final String teamPicSpur = "file:res/ui/select_team/spur_teampic.png";
+	
+	//Captain Pic
+	public static final String captainPicLiverpool = "file:res/ui/select_team/liv_man.png";
+	public static final String captainPicManUnited = "file:res/ui/select_team/mun_man.png";
+	public static final String captainPicManCity = "file:res/ui/select_team/mci_man.png";
+	public static final String captainPicSpur = "file:res/ui/select_team/spur_man.png";
 	
 	//Game Scene
 	public static final String gameBackground = "file:res/field/background.jpg";
