@@ -36,7 +36,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-		primaryStage.setScene(getSelectTeamScene(primaryStage));
+		primaryStage.setScene(getCoverScene(primaryStage));
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 
@@ -45,7 +45,6 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		// test
-		GameController.InitializeGame("manUnited", "liverpool", 3, 3);
 		launch(args);
 	}
 
@@ -196,7 +195,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				primaryStage.setScene(getGameScene(primaryStage));
+				primaryStage.setScene(getSelectTeamScene(primaryStage));
 			}
 
 		});
@@ -650,6 +649,99 @@ public class Main extends Application {
 			}
 		});
 		
+		/*
+		 * Play Button
+		 */
+		
+		playButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				playButton.setEffect(adjustEntered);
+			}
+		});
+		
+		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				playButton.setEffect(adjustNormal);
+			}
+		});
+		
+		playButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				playButton.setEffect(adjustClicked);
+				String team1 = null, team2 = null;
+				switch(teamPicPane1.getTeamNum()) {
+				case 0:
+					team1 = "liverpool"; 
+					break;
+				case 1:
+					team1 = "manUnited";
+					break;
+				case 2:
+					team1 = "manCity";
+					break;
+				case 3:
+					team1 = "spur";
+					break;
+				}
+				switch(teamPicPane2.getTeamNum()) {
+				case 0:
+					team2 = "liverpool"; 
+					break;
+				case 1:
+					team2 = "manUnited";
+					break;
+				case 2:
+					team2 = "manCity";
+					break;
+				case 3:
+					team2 = "spur";
+					break;
+				}
+				GameController.InitializeGame(team1, team2, 1, 1);
+				primaryStage.setScene(getGameScene(primaryStage));
+			}
+		});
+		
+		/*
+		 * Back Button
+		 */
+		
+		backButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				backButton.setEffect(adjustEntered);
+			}
+		});
+		
+		backButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				backButton.setEffect(adjustNormal);
+			}
+		});
+		
+		backButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				backButton.setEffect(adjustClicked);
+				primaryStage.setScene(getMainmenuScene(primaryStage));
+			}
+		});
 		
 		/*
 		 * Select Time
