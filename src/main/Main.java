@@ -39,12 +39,10 @@ public class Main extends Application {
 		primaryStage.setScene(getCoverScene(primaryStage));
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
-
 		primaryStage.show();
 	}
 
 	public static void main(String[] args) {
-		// test
 		launch(args);
 	}
 
@@ -437,12 +435,12 @@ public class Main extends Application {
 		 * Captain Skill Pane
 		 */
 		
-		CaptainSkillPane captainSkillPane1 = new CaptainSkillPane();
+		CaptainSkillPane captainSkillPane1 = new CaptainSkillPane(0);
 		captainSkillPane1.setTranslateX(389);
 		captainSkillPane1.setTranslateY(713);
 		selectTeamSceneRoot.getChildren().add(captainSkillPane1);
 		
-		CaptainSkillPane captainSkillPane2 = new CaptainSkillPane();
+		CaptainSkillPane captainSkillPane2 = new CaptainSkillPane(1);
 		captainSkillPane2.setTranslateX(1116);
 		captainSkillPane2.setTranslateY(713);
 		selectTeamSceneRoot.getChildren().add(captainSkillPane2);
@@ -482,12 +480,15 @@ public class Main extends Application {
 				leftButton1.setEffect(adjustClicked);
 				teamPicPane1.teamNumDown();
 				captainPicPane1.teamNumDown();
+				captainSkillPane1.teamNumDown();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane1.teamNumDown();
 					captainPicPane1.teamNumDown();
+					captainSkillPane1.teamNumDown();
 				}
 				teamPicPane1.setImageUrl();
 				captainPicPane1.setImageUrl();
+				captainSkillPane1.updateSkill();
 			}
 		});
 		
@@ -533,12 +534,15 @@ public class Main extends Application {
 				leftButton2.setEffect(adjustClicked);
 				teamPicPane2.teamNumDown();
 				captainPicPane2.teamNumDown();
+				captainSkillPane2.teamNumDown();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane2.teamNumDown();
 					captainPicPane2.teamNumDown();
+					captainSkillPane2.teamNumDown();
 				}
 				teamPicPane2.setImageUrl();
 				captainPicPane2.setImageUrl();
+				captainSkillPane2.updateSkill();
 			}
 		});
 		
@@ -582,12 +586,15 @@ public class Main extends Application {
 				rightButton1.setEffect(adjustClicked);
 				teamPicPane1.teamNumUp();
 				captainPicPane1.teamNumUp();
+				captainSkillPane1.teamNumUp();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane1.teamNumUp();
 					captainPicPane1.teamNumUp();
+					captainSkillPane1.teamNumUp();
 				}
 				teamPicPane1.setImageUrl();
 				captainPicPane1.setImageUrl();
+				captainSkillPane1.updateSkill();
 			}
 		});
 		
@@ -631,12 +638,15 @@ public class Main extends Application {
 				rightButton2.setEffect(adjustClicked);
 				teamPicPane2.teamNumUp();
 				captainPicPane2.teamNumUp();
+				captainSkillPane2.teamNumUp();
 				if(teamPicPane1.getTeamNum() == teamPicPane2.getTeamNum()) {
 					teamPicPane2.teamNumUp();
 					captainPicPane2.teamNumUp();
+					captainSkillPane2.teamNumUp();
 				}
 				teamPicPane2.setImageUrl();
 				captainPicPane2.setImageUrl();
+				captainSkillPane2.updateSkill();
 			}
 		});
 		
