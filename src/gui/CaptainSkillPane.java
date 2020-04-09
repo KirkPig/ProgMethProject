@@ -45,16 +45,16 @@ public class CaptainSkillPane extends VBox {
 	public void updateSkill() {
 		switch(teamNum) {
 		case 0:
-			captainSkill.setText("0");
+			captainSkill.setText("(Passive)\nCan move 1-2 block around you");
 			break;
 		case 1:
-			captainSkill.setText("1");
+			captainSkill.setText("(Passive)\nDefender can't be place on top this unit");
 			break;
 		case 2:
-			captainSkill.setText("2");
+			captainSkill.setText("(Action)If on top of this unit have defender, this unit can move out from top of defender");
 			break;
 		case 3:
-			captainSkill.setText("3");
+			captainSkill.setText("(Action)Once per game, you can move like Box to Box Unit");
 			break;
 		}
 	}
