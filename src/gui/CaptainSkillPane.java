@@ -48,13 +48,13 @@ public class CaptainSkillPane extends VBox {
 			captainSkill.setText("(Passive)\nCan move 1-2 block around you");
 			break;
 		case 1:
-			captainSkill.setText("(Passive)\nDefender can't be place on top this unit");
+			captainSkill.setText("(Passive)\nDefender can't be place \n on top this unit");
 			break;
 		case 2:
-			captainSkill.setText("(Action)If on top of this unit have defender, this unit can move out from top of defender");
+			captainSkill.setText("(Action)\nIf on top of this unit have defender, \n this unit can move out \nfrom top of defender");
 			break;
 		case 3:
-			captainSkill.setText("(Action)Once per game, you can move like Box to Box Unit");
+			captainSkill.setText("(Action)\nOnce per game, you can move \nlike Box to Box Unit");
 			break;
 		}
 	}
