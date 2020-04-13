@@ -1,16 +1,21 @@
 package main;
 
+
+import gui.AvatarPane;
 import gui.CaptainPicPane;
 import gui.CaptainSkillPane;
 import gui.ImageUrl;
 import gui.TeamPicPane;
+import gui.UnitBarPane;
 import gui.UnitPane;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,6 +35,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.GameController;
+import logic.Owner;
 
 public class Main extends Application {
 
@@ -266,7 +272,55 @@ public class Main extends Application {
 		unitPane.setTranslateX(25);
 		unitPane.setTranslateY(-280);
 		gameSceneRoot.getChildren().add(unitPane);
-
+		
+		/*
+		 * unitbar
+		 */
+		UnitBarPane unitBarPane = new UnitBarPane(unitPane);
+		unitBarPane.setTranslateX(0);
+		unitBarPane.setTranslateY(711);
+		gameSceneRoot.getChildren().add(unitBarPane);
+		
+		/*
+		 * avatar
+		 */
+		AvatarPane avatarPlayer1 = new AvatarPane(0);
+		avatarPlayer1.setTranslateX(0);
+		avatarPlayer1.setTranslateY(510);
+		
+		AvatarPane avatarPlayer2 = new AvatarPane(1);
+		avatarPlayer2.setTranslateX(0);
+		avatarPlayer2.setTranslateY(510);
+		
+		if(GameController.getCurrentPlayer().equals(GameController.player1)) {
+			gameSceneRoot.getChildren().add(avatarPlayer1);
+		}else {
+			gameSceneRoot.getChildren().add(avatarPlayer2);
+		}
+		
+		final ObjectProperty<Owner> previousOwner = new SimpleObjectProperty<Owner>(GameController.getCurrentPlayer());
+		AnimationTimer switchTurnCheck = new AnimationTimer() {
+			
+			@Override
+			public void handle(long now) {
+				// TODO Auto-generated method stub
+				if(!GameController.getCurrentPlayer().equals(previousOwner.get())) {
+					previousOwner.set(GameController.getCurrentPlayer());
+					if(GameController.getCurrentPlayer().equals(GameController.player1)) {
+						gameSceneRoot.getChildren().add(avatarPlayer1);
+						gameSceneRoot.getChildren().remove(avatarPlayer2);
+					}else {
+						gameSceneRoot.getChildren().add(avatarPlayer2);
+						gameSceneRoot.getChildren().remove(avatarPlayer1);
+						
+					}
+					unitBarPane.updateBarCell();
+				}
+				
+				
+			}
+		};
+		switchTurnCheck.start();
 		/*
 		 * HUD
 		 */

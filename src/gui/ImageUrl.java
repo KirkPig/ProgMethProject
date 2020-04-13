@@ -43,5 +43,14 @@ public class ImageUrl {
 	
 	//Game Scene
 	public static final String gameBackground = "file:res/field/background.jpg";
+	
+	//avatar
+	public static final String avatarLiverpool = "file:res/ui/play_screen/avatar_liv.png";
+	public static final String avatarManCity = "file:res/ui/play_screen/avatar_mci.png";
+	public static final String avatarManUnited = "file:res/ui/play_screen/avatar_mun.png";
+	public static final String avatarSpur = "file:res/ui/play_screen/avatar_spur.png";
+	
+	//unitbar
+	public static final String unitBar = "file:res/ui/play_screen/unit_bar.png";
 
 }
