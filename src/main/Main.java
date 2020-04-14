@@ -13,8 +13,10 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -244,6 +246,9 @@ public class Main extends Application {
 			}
 
 		});
+		
+		//Test Tutorial
+		//mainmenuSceneRoot.getChildren().add(getTutorial());
 
 		Scene mainmenuScene = new Scene(mainmenuSceneRoot, 1920, 1017);
 		return mainmenuScene;
@@ -761,4 +766,22 @@ public class Main extends Application {
 		return selectTeamScene;
 	}
 
+	public static Parent getTutorial() {
+		
+		AnchorPane tutorialPane = new AnchorPane();
+		tutorialPane.setPrefSize(1920, 1017);
+		tutorialPane.setTranslateX(0);
+		tutorialPane.setTranslateY(0);
+		
+		ImageView background = new ImageView(new Image(ImageUrl.coverBackground, 1920, 1017, false, false));
+		ColorAdjust adjust = new ColorAdjust();
+		adjust.setBrightness(-0.7);
+		adjust.setInput(new GaussianBlur());
+		background.setEffect(adjust);
+		background.setTranslateX(0);
+		background.setTranslateY(0);
+		tutorialPane.getChildren().add(background);
+		
+		return tutorialPane;
+	}
 }
