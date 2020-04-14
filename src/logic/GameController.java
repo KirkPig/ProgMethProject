@@ -81,7 +81,7 @@ public class GameController {
 		return nextPlace;
 	}
 	public static void placeNewUnit(int position, int x, int y) throws UnitPlaceException {
-
+		
 		Unit unit = getCurrentPlayer().getTeam().getUnit(position);
 		if (unit == null) {
 			throw new UnitPlaceException("unit doesn't exist");
@@ -92,16 +92,8 @@ public class GameController {
 		if(!gameBoard.isEmpty(x, y)) {
 			throw new UnitPlaceException("Tile doesn't empty");
 		}
-		ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(x, y);
-		for(var i: adjacentUnit) {
-			if(i == null) {
-				continue;
-			}
-			if(!(i instanceof Empty)) {
-				if(i.getOwner() != getCurrentPlayer()) {
-					throw new UnitPlaceException("Can't place unit around opponent's unit");
-				}
-			}
+		if(!getNextPlace().contains(gameBoard.getUnit(x, y))) {
+			throw new UnitPlaceException("can't place here");
 		}
 		gameBoard.placeUnit(unit, x, y, getCurrentPlayer());
 		if(unit instanceof Captain) {
@@ -341,7 +333,7 @@ public class GameController {
 				
 			}
 			System.out.println("*******************************");
-			System.out.println(getWinner().getName() + " Win!!!");
+			System.out.println(getWinner().getTeam().getName() + " Win!!!");
 			System.out.println("*******************************");
 
 		} else if (command == 2) {

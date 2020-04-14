@@ -44,7 +44,7 @@ public class Playmaker extends Unit implements Movable{
 		if(!this.isMovable()) {
 			return canMove;
 		}
-		
+		System.out.println("kuyy");
 		//move number 1
 		ArrayList<Unit> move1 = new ArrayList<Unit>();
 		for(Unit i : gameBoard.getAdjacentUnit(x, y)) {
