@@ -2,7 +2,9 @@ package unit.base;
 
 import java.util.ArrayList;
 
+import logic.GameController;
 import logic.Owner;
+import unit.Empty;
 
 public abstract class Unit {
 	
@@ -89,6 +91,18 @@ public abstract class Unit {
 
 	public void setInactiveImageUrl(String inactiveImageUrl) {
 		this.inactiveImageUrl = inactiveImageUrl;
+	}
+	
+	public boolean isMovable() {
+		GameController.gameBoard.addUnit(new Empty(), getCoordinate().getX(), getCoordinate().getY());
+		if(GameController.gameBoard.checkGameBoard()) {
+			GameController.gameBoard.placeUnit(this, getCoordinate().getX(), getCoordinate().getY(), getOwner());
+			return true;
+		}else {
+			GameController.gameBoard.placeUnit(this, getCoordinate().getX(), getCoordinate().getY(), getOwner());
+			return false;
+		}
+		
 	}
 	
 }

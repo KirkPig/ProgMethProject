@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import unit.Defender;
 import unit.Empty;
 import unit.base.Coordinate;
+import unit.base.Movable;
 import unit.base.Unit;
 
 
@@ -372,7 +373,7 @@ public class GameBoard {
 			
 			//System.out.println(t.getCoordinate());
 			
-			if(t instanceof Empty) continue;
+			if(!(t instanceof Movable)) continue;
 			
 			int x = t.getCoordinate().getX();
 			int y = t.getCoordinate().getY();
@@ -409,7 +410,7 @@ public class GameBoard {
 		
 		for(var i: copyBoard) {
 			for(var j: i) {
-				if(!(j instanceof Empty)) {
+				if(j instanceof Movable) {
 					return false;
 				}
 			}

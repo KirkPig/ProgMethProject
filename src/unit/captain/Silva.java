@@ -38,6 +38,9 @@ public class Silva extends Captain implements Skilled {
 		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(),
 				this.getCoordinate().getY(), false);
+		if(!this.isMovable()) {
+			return canMove;
+		}
 		for (int i = 0; i < distance.size(); i++) {
 			for (int j = 0; j < distance.size(); j++) {
 				if (distance.get(i).get(j) == 1) {

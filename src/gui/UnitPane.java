@@ -30,29 +30,26 @@ public class UnitPane extends Group {
 						// TODO Auto-generated method stub
 						if (!(unitCell.getUnit() instanceof Empty)
 								&& unitCell.getUnit().getOwner().equals(GameController.getCurrentPlayer())) {
-							if (GameGUIController.isUnitSelected()) {
-								if (unitCell.getUnit().getOwner().isPlaceCaptain()) {
-									 GameGUIController.setSelectedUnit(unitCell);
-									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
-									for (Unit u : unitCell.getUnit().getMoveUnit()) {
-										u.setSelected(!u.isSelected());
+							if(!GameGUIController.isUnitBarSelected()) {
+								if(GameGUIController.isUnitSelected()) {
+									if(GameGUIController.getSelectedUnit().equals(e.getSource())) {
+										resetBoard();
+										GameGUIController.resetSelectedUnit();
+									}else {
+										resetBoard();
+										GameGUIController.setSelectedUnit(unitCell);
+										GameGUIController.getSelectedUnit().getUnit().setSelected(true);
+										for(Unit u: GameGUIController.getSelectedUnit().getUnit().getMoveUnit()) {
+											u.setSelected(true);
+										}
+										updateBoard();
 									}
-									updateBoard();
-								}
-							} else {
-								if (unitCell.equals(GameGUIController.getSelectedUnit())) {
-									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
-									for (Unit u : unitCell.getUnit().getMoveUnit()) {
-										u.setSelected(!u.isSelected());
-									}
-									updateBoard();
-									GameGUIController.resetSelectedUnit();
-								} else {
+								}else {
 									resetBoard();
 									GameGUIController.setSelectedUnit(unitCell);
-									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
-									for (Unit u : unitCell.getUnit().getMoveUnit()) {
-										u.setSelected(!u.isSelected());
+									GameGUIController.getSelectedUnit().getUnit().setSelected(true);
+									for(Unit u: GameGUIController.getSelectedUnit().getUnit().getMoveUnit()) {
+										u.setSelected(true);
 									}
 									updateBoard();
 								}

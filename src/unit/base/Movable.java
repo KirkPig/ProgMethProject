@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public interface Movable {
 	
-	public abstract ArrayList<Unit> getMoveUnit();
+	public ArrayList<Unit> getMoveUnit();
 
 }

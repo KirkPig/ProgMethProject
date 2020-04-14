@@ -104,10 +104,6 @@ public class GameController {
 			}
 		}
 		gameBoard.placeUnit(unit, x, y, getCurrentPlayer());
-		if(!gameBoard.checkGameBoard()) {
-			gameBoard.addUnit(new Empty(), x, y);
-			throw new UnitPlaceException("Unit doesn't connect other");
-		}
 		if(unit instanceof Captain) {
 			getCurrentPlayer().setPlaceCaptain(true);
 		}

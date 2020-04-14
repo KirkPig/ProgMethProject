@@ -53,6 +53,9 @@ public class Goalkeeper extends Unit implements Movable{
 			}
 			System.out.println(rowstring);
 		}*/
+		if(!this.isMovable()) {
+			return canMove;
+		}
 		for(int i = 0 ; i< distance.size(); i++) {
 			for(int j = 0; j < distance.size();j++) {
 				if(distance.get(i).get(j) == 3) {

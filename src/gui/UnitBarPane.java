@@ -2,7 +2,6 @@ package gui;
 
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -11,8 +10,6 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import logic.GameController;
-import logic.Owner;
-import team.TeamImageUrl;
 import unit.Attacker;
 import unit.BoxToBox;
 import unit.Captain;
@@ -73,16 +70,29 @@ public class UnitBarPane extends Pane {
 				@Override
 				public void handle(MouseEvent e) {
 					// TODO Auto-generated method stub
-					if (GameGUIController.isUnitBarSelected()) {
-						if (GameGUIController.getUnitBarCell().equals(e.getSource())) {
-							GameGUIController.getUnitBarCell().getUnit().setSelected(false);
-							GameGUIController.getUnitBarCell().updateCell();
-							GameGUIController.resetUnitBarCell();
-							unitPane.resetBoard();
+					if(!GameGUIController.isUnitSelected()) {
+						if (GameGUIController.isUnitBarSelected()) {
+							if (GameGUIController.getUnitBarCell().equals(e.getSource())) {
+								GameGUIController.getUnitBarCell().getUnit().setSelected(false);
+								GameGUIController.getUnitBarCell().updateCell();
+								GameGUIController.resetUnitBarCell();
+								unitPane.resetBoard();
+							} else {
+								GameGUIController.getUnitBarCell().getUnit().setSelected(false);
+								GameGUIController.getUnitBarCell().updateCell();
+								GameGUIController.setUnitBarCell((UnitBarCell) e.getSource()); 
+								unitPane.resetBoard();
+								GameGUIController.getUnitBarCell().getUnit().setSelected(true);
+								GameGUIController.getUnitBarCell().updateCell();
+								for (var u : unitPane.getUnitCells()) {
+									if (GameController.getNextPlace().contains(u.getUnit())) {
+										u.getUnit().setSelected(true);
+									}
+								}
+								unitPane.updateBoard();
+							}
 						} else {
-							GameGUIController.getUnitBarCell().getUnit().setSelected(false);
-							GameGUIController.getUnitBarCell().updateCell();
-							GameGUIController.setUnitBarCell((UnitBarCell) e.getSource()); 
+							GameGUIController.setUnitBarCell((UnitBarCell) e.getSource());
 							unitPane.resetBoard();
 							GameGUIController.getUnitBarCell().getUnit().setSelected(true);
 							GameGUIController.getUnitBarCell().updateCell();
@@ -93,17 +103,6 @@ public class UnitBarPane extends Pane {
 							}
 							unitPane.updateBoard();
 						}
-					} else {
-						GameGUIController.setUnitBarCell((UnitBarCell) e.getSource());
-						unitPane.resetBoard();
-						GameGUIController.getUnitBarCell().getUnit().setSelected(true);
-						GameGUIController.getUnitBarCell().updateCell();
-						for (var u : unitPane.getUnitCells()) {
-							if (GameController.getNextPlace().contains(u.getUnit())) {
-								u.getUnit().setSelected(true);
-							}
-						}
-						unitPane.updateBoard();
 					}
 
 				}

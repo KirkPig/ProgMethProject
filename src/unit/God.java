@@ -19,6 +19,7 @@ public class God extends Unit implements Movable {
 
 	public God(String name, String inactiveImageUrl, String activeImageUrl) {
 		super(0, 0);
+		randomUnit();
 		setName(name);
 		setInactiveImageUrl(inactiveImageUrl);
 		setActiveImageUrl(activeImageUrl);
@@ -50,16 +51,13 @@ public class God extends Unit implements Movable {
 	@Override
 	public ArrayList<Unit> getMoveUnit() {
 		Unit[] unit = new Unit[1];
-		if (getRandom() == 2) {
+		if (getRandom() <= 2) {
 			unit[0] = new Attacker(getName(), getCoordinate().getX(), getCoordinate().getY());
-		}
-		if (getRandom() == 3) {
+		}else if (getRandom() <= 3) {
 			unit[0] = new BoxToBox(getName(), getCoordinate().getX(), getCoordinate().getY());
-		}
-		if (getRandom() == 4) {
+		}else if (getRandom() <= 4) {
 			unit[0] = new Goalkeeper(getName(), getCoordinate().getX(), getCoordinate().getY());
-		}
-		if (getRandom() == 5) {
+		}else {
 			unit[0] = new Playmaker(getName(), getCoordinate().getX(), getCoordinate().getY());
 		}
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
