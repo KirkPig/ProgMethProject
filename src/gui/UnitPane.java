@@ -15,7 +15,6 @@ import unit.base.Unit;
 
 public class UnitPane extends Group {
 
-	private UnitCell selectedUnit = null;
 	public int avatarNum;
 	private ArrayList<UnitCell> unitCells;
 
@@ -31,9 +30,9 @@ public class UnitPane extends Group {
 						// TODO Auto-generated method stub
 						if (!(unitCell.getUnit() instanceof Empty)
 								&& unitCell.getUnit().getOwner().equals(GameController.getCurrentPlayer())) {
-							if (selectedUnit == null) {
+							if (GameGUIController.isUnitSelected()) {
 								if (unitCell.getUnit().getOwner().isPlaceCaptain()) {
-									selectedUnit = unitCell;
+									 GameGUIController.setSelectedUnit(unitCell);
 									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
 									for (Unit u : unitCell.getUnit().getMoveUnit()) {
 										u.setSelected(!u.isSelected());
@@ -41,20 +40,16 @@ public class UnitPane extends Group {
 									updateBoard();
 								}
 							} else {
-								if (unitCell.equals(selectedUnit)) {
+								if (unitCell.equals(GameGUIController.getSelectedUnit())) {
 									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
 									for (Unit u : unitCell.getUnit().getMoveUnit()) {
 										u.setSelected(!u.isSelected());
 									}
 									updateBoard();
-									selectedUnit = null;
+									GameGUIController.resetSelectedUnit();
 								} else {
-									selectedUnit.getUnit().setSelected(!selectedUnit.getUnit().isSelected());
-									for (Unit u : selectedUnit.getUnit().getMoveUnit()) {
-										u.setSelected(!u.isSelected());
-									}
-									updateBoard();
-									selectedUnit = unitCell;
+									resetBoard();
+									GameGUIController.setSelectedUnit(unitCell);
 									unitCell.getUnit().setSelected(!unitCell.getUnit().isSelected());
 									for (Unit u : unitCell.getUnit().getMoveUnit()) {
 										u.setSelected(!u.isSelected());
@@ -64,39 +59,41 @@ public class UnitPane extends Group {
 							}
 						} else {
 							if (unitCell.getUnit().isSelected()) {
-								if (UnitBarPane.selectedUnitBarCell != null) {
+								if (GameGUIController.isUnitBarSelected()) {
 									try {
 										GameController.placeNewUnit(
-												UnitBarPane.selectedUnitBarCell.getUnit().getSprites(),
+												GameGUIController.getUnitBarCell().getUnit().getSprites(),
 												((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 												((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
-										UnitBarPane.selectedUnitBarCell.getUnit().setSelected(false);
-										((UnitCell) e.getSource()).setUnit(UnitBarPane.selectedUnitBarCell.getUnit());
+										GameGUIController.getUnitBarCell().getUnit().setSelected(false);
+										((UnitCell) e.getSource()).setUnit(GameGUIController.getUnitBarCell().getUnit());
 										GameController.nextTurn();
 										resetBoard();
 										updateBoard();
-										UnitBarPane.selectedUnitBarCell = null;
+										GameGUIController.resetUnitBarCell();
 									} catch (UnitPlaceException e1) {
 										System.out.println(e1.getErrorMessage());
 										resetBoard();
 										updateBoard();
 									}
+									GameGUIController.resetSelectedUnit();
+									GameGUIController.resetUnitBarCell();
 								} else {
-									if(selectedUnit != null) {
+									if(GameGUIController.isUnitSelected()) {
 										try {
-											selectedUnit.getUnit().setSelected(false);
+											GameGUIController.getSelectedUnit().getUnit().setSelected(false);
 											((UnitCell) e.getSource()).getUnit().setSelected(false);
 											((UnitCell) e.getSource()).setVisible(false);
 											updateBoard();
-											GameController.moveUnit(selectedUnit.getUnit().getCoordinate().getX(),
-													selectedUnit.getUnit().getCoordinate().getY(),
+											GameController.moveUnit(GameGUIController.getSelectedUnit().getUnit().getCoordinate().getX(),
+													GameGUIController.getSelectedUnit().getUnit().getCoordinate().getY(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
 											TranslateTransition animation = new TranslateTransition();
-											animation.setNode(selectedUnit);
+											animation.setNode(GameGUIController.getSelectedUnit());
 											animation.setDuration(Duration.millis(500));
-											animation.setFromX(selectedUnit.getTranslateX());
-											animation.setFromY(selectedUnit.getTranslateY());
+											animation.setFromX(GameGUIController.getSelectedUnit().getTranslateX());
+											animation.setFromY(GameGUIController.getSelectedUnit().getTranslateY());
 											animation.setToX(((UnitCell) e.getSource()).getTranslateX());
 											animation.setToY(((UnitCell) e.getSource()).getTranslateY());
 											animation.play();
@@ -112,7 +109,8 @@ public class UnitPane extends Group {
 											((UnitCell) e.getSource()).setVisible(true);
 											resetBoard();
 										}
-										selectedUnit = null;
+										GameGUIController.resetSelectedUnit();
+										GameGUIController.resetUnitBarCell();
 										updateBoard();
 									}
 

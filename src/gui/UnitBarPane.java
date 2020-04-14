@@ -24,7 +24,6 @@ import unit.base.Unit;
 
 public class UnitBarPane extends Pane {
 	private String UnitBarUrl;
-	public static UnitBarCell selectedUnitBarCell = null;
 	private UnitPane unitPane;
 
 	public UnitBarPane(UnitPane unitPane) {
@@ -74,19 +73,19 @@ public class UnitBarPane extends Pane {
 				@Override
 				public void handle(MouseEvent e) {
 					// TODO Auto-generated method stub
-					if (selectedUnitBarCell != null) {
-						if (selectedUnitBarCell.equals(e.getSource())) {
-							selectedUnitBarCell.getUnit().setSelected(false);
-							selectedUnitBarCell.updateCell();
-							selectedUnitBarCell = null;
+					if (GameGUIController.isUnitBarSelected()) {
+						if (GameGUIController.getUnitBarCell().equals(e.getSource())) {
+							GameGUIController.getUnitBarCell().getUnit().setSelected(false);
+							GameGUIController.getUnitBarCell().updateCell();
+							GameGUIController.resetUnitBarCell();
 							unitPane.resetBoard();
 						} else {
-							selectedUnitBarCell.getUnit().setSelected(false);
-							selectedUnitBarCell.updateCell();
-							selectedUnitBarCell = (UnitBarCell) e.getSource();
+							GameGUIController.getUnitBarCell().getUnit().setSelected(false);
+							GameGUIController.getUnitBarCell().updateCell();
+							GameGUIController.setUnitBarCell((UnitBarCell) e.getSource()); 
 							unitPane.resetBoard();
-							selectedUnitBarCell.getUnit().setSelected(true);
-							selectedUnitBarCell.updateCell();
+							GameGUIController.getUnitBarCell().getUnit().setSelected(true);
+							GameGUIController.getUnitBarCell().updateCell();
 							for (var u : unitPane.getUnitCells()) {
 								if (GameController.getNextPlace().contains(u.getUnit())) {
 									u.getUnit().setSelected(true);
@@ -95,10 +94,10 @@ public class UnitBarPane extends Pane {
 							unitPane.updateBoard();
 						}
 					} else {
-						selectedUnitBarCell = (UnitBarCell) e.getSource();
+						GameGUIController.setUnitBarCell((UnitBarCell) e.getSource());
 						unitPane.resetBoard();
-						selectedUnitBarCell.getUnit().setSelected(true);
-						selectedUnitBarCell.updateCell();
+						GameGUIController.getUnitBarCell().getUnit().setSelected(true);
+						GameGUIController.getUnitBarCell().updateCell();
 						for (var u : unitPane.getUnitCells()) {
 							if (GameController.getNextPlace().contains(u.getUnit())) {
 								u.getUnit().setSelected(true);
