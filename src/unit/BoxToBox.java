@@ -39,7 +39,7 @@ public class BoxToBox extends Unit implements Movable{
 		ArrayList<Unit> canMove = new ArrayList<Unit>();
 		GameBoard gameBoard = GameController.gameBoard;
 		ArrayList<ArrayList<Integer>> distance = gameBoard.getDistance(this.getCoordinate().getX(), this.getCoordinate().getY(), false);
-		/*
+		
 		for(int i = 0 ; i< distance.size();i++) {
 			String rowstring = "";
 			if(i%2==1) {
@@ -54,18 +54,18 @@ public class BoxToBox extends Unit implements Movable{
 			}
 			System.out.println(rowstring);
 		}
-		*/
+		
 		if(!this.isMovable()) {
 			return canMove;
 		}
 		for(int i = 0 ; i< distance.size();i++) {
 			for(int j = 0; j < distance.size();j++) {
-				if (distance.get(i).get(j) != 1000000000 && distance.get(i).get(j) != 0) {
+				if (distance.get(i).get(j) != 1000000000 && distance.get(i).get(j) > 0) {
 					for(Unit u: gameBoard.getAdjacentUnit(i, j)) {
 						if(u == null) {
 							continue;
 						}
-						if(!(u instanceof Empty) && u != this) {
+						if(u instanceof Movable && u != this) {
 							canMove.add(gameBoard.getUnit(i, j));
 							//System.out.println(gameBoard.getUnit(i, j).getCoordinate().toString());
 							break;

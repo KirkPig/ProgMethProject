@@ -49,34 +49,52 @@ public class Playmaker extends Unit implements Movable{
 		ArrayList<Unit> move1 = new ArrayList<Unit>();
 		for(Unit i : gameBoard.getAdjacentUnit(x, y)) {
 			
-			if(!(i instanceof Empty)) {
+			if((i != null) && i instanceof Movable) {
 				move1.add(i);
 			}
 			
 		}
-		
+		/*
+		for(Unit u: move1) {
+			System.out.println(u.getCoordinate().toString());
+		}
+		System.out.println("suss");
+		*/
 		//move number 2
 		ArrayList<Unit> move2 = new ArrayList<Unit>();
 		for(Unit i: move1) {
 			
 			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
-				if(!(j instanceof Empty) && !(j.getCoordinate().equals(this.getCoordinate()))) {
+				if((j != null) && j instanceof Movable && !(j.getCoordinate().equals(this.getCoordinate()))) {
 					move2.add(j);
 				}
 			}
 			
 		}
-		
+		/*
+		for(Unit u: move2) {
+			System.out.println(u.getCoordinate().toString());
+		}
+		System.out.println("here");
+		*/
 		//move number 3(finished)
 		for(Unit i: move2) {
 			
 			for(Unit j: gameBoard.getAdjacentUnit(i.getCoordinate().getX(), i.getCoordinate().getY())) {
+				if(j == null) {
+					continue;
+				}
 				if(j instanceof Empty) {
 					canMove.add(j);
 				}
 			}
 			
 		}
+		/*
+		for(Unit u: canMove) {
+			System.out.println(u.getCoordinate().toString());
+		}
+		*/
 		
 		return canMove;	
 	}
