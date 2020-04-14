@@ -50,7 +50,36 @@ public class GameController {
 		}
 
 	}
+	public static ArrayList<Unit> getNextPlace(){
+		ArrayList<Unit> nextPlace = new ArrayList<Unit>();
+		for(int i = 0; i< gameBoard.getWidth();i++ ) {
+			for(int j = 0;j< gameBoard.getHeight();j++) {
+				if(gameBoard.isEmpty(i, j)) {
+					boolean chk = false;
+					ArrayList<Unit> adjacentUnit = gameBoard.getAdjacentUnit(i, j);
+					for(var k: adjacentUnit) {
+						if(k == null) {
+							continue;
+						}
+						if(!(k instanceof Empty)) {
+							if(k.getOwner() != getCurrentPlayer()) {
+								chk = false;
+								break;
+							}else {
+								chk = true;
+								
+							}
+						}
+					}
+					if(chk) {
+						nextPlace.add(gameBoard.getUnit(i, j));
+					}
 
+				}
+			}
+		}
+		return nextPlace;
+	}
 	public static void placeNewUnit(int position, int x, int y) throws UnitPlaceException {
 
 		Unit unit = getCurrentPlayer().getTeam().getUnit(position);
@@ -69,7 +98,7 @@ public class GameController {
 				continue;
 			}
 			if(!(i instanceof Empty)) {
-				if(i.getOwner() != unit.getOwner()) {
+				if(i.getOwner() != getCurrentPlayer()) {
 					throw new UnitPlaceException("Can't place unit around opponent's unit");
 				}
 			}
