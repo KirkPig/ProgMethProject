@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import logic.GameController;
 import logic.Owner;
+import unit.Defender;
 import unit.Empty;
 
 public abstract class Unit {
@@ -94,6 +95,11 @@ public abstract class Unit {
 	}
 	
 	public boolean isMovable() {
+		if(this instanceof Defender) {
+			if(((Defender) this).getCaptureUnit() != null) {
+				return true;
+			}
+		}
 		GameController.gameBoard.addUnit(new Empty(), getCoordinate().getX(), getCoordinate().getY());
 		if(GameController.gameBoard.checkGameBoard()) {
 			GameController.gameBoard.placeUnit(this, getCoordinate().getX(), getCoordinate().getY(), getOwner());

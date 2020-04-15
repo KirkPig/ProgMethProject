@@ -105,7 +105,7 @@ public class GameController {
 
 	public static void moveUnit(int x1, int y1, int x2, int y2) throws UnitMoveException {
 
-		if (!gameBoard.isUnitMovable(x1, y1)) {
+		if (!gameBoard.getUnit(x1, y1).isMovable()) {
 			throw new UnitMoveException(1);
 		}
 		Unit unit1 = gameBoard.getUnit(x1, y1);

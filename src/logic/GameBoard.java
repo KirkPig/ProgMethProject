@@ -102,24 +102,22 @@ public class GameBoard {
 		Unit unit = getUnit(x1, y1);
 		Unit k = getUnit(x2, y2);
 		if (unit instanceof Defender) {
-			Defender def = (Defender) unit;
-			if (def.getCaptureUnit() != null) {
-				k = def.getCaptureUnit();
-				def.setCaptureUnit(null);
+			if (k instanceof Empty) {
+				if (((Defender) unit).getCaptureUnit() == null);
+				else {
+					k = ((Defender) unit).getCaptureUnit();
+					((Defender) unit).setCaptureUnit(null);
+				}
+			} else {
+				if (((Defender) unit).getCaptureUnit() == null) {
+					((Defender) unit).setCaptureUnit(k);
+					k = new Empty(x2, y2);
+				} else {
+					var temp = ((Defender) unit).getCaptureUnit();
+					((Defender) unit).setCaptureUnit(k);
+					k = temp;
+				}
 			}
-			if (!isEmpty(x2, y2)) {
-
-				def.setCaptureUnit(getUnit(x2, y2));
-				addUnit(new Empty(x2, y2), x2, y2);
-				k = getUnit(x2, y2);
-
-			}
-		}
-		if (unit instanceof Defender) {
-			Defender def = (Defender) unit;
-			if (def.getCaptureUnit() != null)
-				def.getCaptureUnit().setCapture(true);
-			k.setCapture(false);
 		}
 		addUnit(k, x1, y1);
 		addUnit(unit, x2, y2);
@@ -166,58 +164,58 @@ public class GameBoard {
 		for (int k = 0; k < width * height; k++) {
 
 			boolean chk = false;
-			
-			for(int i = 0;i < width;i++) {
-				for(int j = 0;j < height;j++) {
-					
-					for(int n = 0;n < 6;n++) {
-						
+
+			for (int i = 0; i < width; i++) {
+				for (int j = 0; j < height; j++) {
+
+					for (int n = 0; n < 6; n++) {
+
 						ArrayList<Unit> adjacentUnit = getAdjacentUnit(i, j);
-						
-						if(adjacentUnit.get(n) == null) {
+
+						if (adjacentUnit.get(n) == null) {
 							continue;
 						}
-						
+
 						int a = getAdjacentUnit(i, j).get(n).getCoordinate().getX();
 						int b = getAdjacentUnit(i, j).get(n).getCoordinate().getY();
 						int c = (n == 0) ? 5 : n - 1;
 						int d = (n == 5) ? 0 : n + 1;
-						
-						if(adjacentUnit.get(c) == null) {
-							if(adjacentUnit.get(d) == null) {
-								continue;
-							}else if(adjacentUnit.get(d) instanceof Movable) {
-								continue;
-							}
-						}else if(adjacentUnit.get(d) == null) {
-							if(adjacentUnit.get(c) == null) {
-								continue;
-							}else if(adjacentUnit.get(c) instanceof Movable) {
-								continue;
-							}
-						}else {
-							int cx = adjacentUnit.get(c).getCoordinate().getX();
-							int cy = adjacentUnit.get(c).getCoordinate().getY();
-							int dx = adjacentUnit.get(d).getCoordinate().getX();
-							int dy = adjacentUnit.get(d).getCoordinate().getY();
-							if(!isEmpty(cx, cy) && !isEmpty(dx, dy)) {
-								continue;
+
+						if(!isThrough) {
+							if (adjacentUnit.get(c) == null) {
+								if (adjacentUnit.get(d) == null) {
+									continue;
+								} else if (adjacentUnit.get(d) instanceof Movable) {
+									continue;
+								}
+							} else if (adjacentUnit.get(d) == null) {
+								if (adjacentUnit.get(c) == null) {
+									continue;
+								} else if (adjacentUnit.get(c) instanceof Movable) {
+									continue;
+								}
+							} else {
+								int cx = adjacentUnit.get(c).getCoordinate().getX();
+								int cy = adjacentUnit.get(c).getCoordinate().getY();
+								int dx = adjacentUnit.get(d).getCoordinate().getX();
+								int dy = adjacentUnit.get(d).getCoordinate().getY();
+								if (!isEmpty(cx, cy) && !isEmpty(dx, dy)) {
+									continue;
+								}
 							}
 						}
-						
-						if(isThrough || isEmpty(a, b)) {
-							
-							
-							
+
+						if (isThrough || isEmpty(a, b)) {
+
 							if (distance.get(a).get(b) > distance.get(i).get(j) + 1) {
 								distance.get(a).set(b, distance.get(i).get(j) + 1);
 								chk = true;
 							}
-							
+
 						}
-						
+
 					}
-					
+
 				}
 			}
 
