@@ -289,11 +289,42 @@ public class Main extends Application {
 		/*
 		 * avatar
 		 */
-		AvatarPane avatarPlayer1 = new AvatarPane(0);
+		int teamPlayer1 = 0;
+		int teamPlayer2 = 0;
+		switch(GameController.player1.getTeam().getName()) {
+		case "liverpool":
+			teamPlayer1 = 0; 
+			break;
+		case "manUnited":
+			teamPlayer1 = 1; 
+			break;
+		case "manCity":
+			teamPlayer1 = 2; 
+			break;
+		case "spur":
+			teamPlayer1 = 3; 
+			break;
+		}
+		switch(GameController.player2.getTeam().getName()) {
+		case "liverpool":
+			teamPlayer2 = 0; 
+			break;
+		case "manUnited":
+			teamPlayer2 = 1; 
+			break;
+		case "manCity":
+			teamPlayer2 = 2; 
+			break;
+		case "spur":
+			teamPlayer2 = 3; 
+			break;
+		}
+		
+		AvatarPane avatarPlayer1 = new AvatarPane(teamPlayer1);
 		avatarPlayer1.setTranslateX(0);
 		avatarPlayer1.setTranslateY(510);
 		
-		AvatarPane avatarPlayer2 = new AvatarPane(1);
+		AvatarPane avatarPlayer2 = new AvatarPane(teamPlayer2);
 		avatarPlayer2.setTranslateX(0);
 		avatarPlayer2.setTranslateY(510);
 		
