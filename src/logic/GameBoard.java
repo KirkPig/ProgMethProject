@@ -7,6 +7,7 @@ import unit.Empty;
 import unit.base.Coordinate;
 import unit.base.Movable;
 import unit.base.Unit;
+import unit.captain.Silva;
 
 public class GameBoard {
 
@@ -118,6 +119,27 @@ public class GameBoard {
 					var temp = ((Defender) unit).getCaptureUnit();
 					k.setCapture(true);
 					((Defender) unit).setCaptureUnit(k);
+					k = temp;
+					k.setCapture(false);
+				}
+			}
+		}else if(unit instanceof Silva) {
+			if (k instanceof Empty) {
+				if (((Silva) unit).getCaptureUnit() == null);
+				else {
+					k = ((Silva) unit).getCaptureUnit();
+					((Silva) unit).setCaptureUnit(null);
+					k.setCapture(false);
+				}
+			} else {
+				if (((Silva) unit).getCaptureUnit() == null) {
+					k.setCapture(true);
+					((Silva) unit).setCaptureUnit(k);
+					k = new Empty(x2, y2);
+				} else {
+					var temp = ((Silva) unit).getCaptureUnit();
+					k.setCapture(true);
+					((Silva) unit).setCaptureUnit(k);
 					k = temp;
 					k.setCapture(false);
 				}

@@ -6,6 +6,7 @@ import logic.GameController;
 import logic.Owner;
 import unit.Defender;
 import unit.Empty;
+import unit.captain.Silva;
 
 public abstract class Unit {
 	
@@ -97,6 +98,11 @@ public abstract class Unit {
 	public boolean isMovable() {
 		if(this instanceof Defender) {
 			if(((Defender) this).getCaptureUnit() != null) {
+				return true;
+			}
+		}
+		if(this instanceof Silva) {
+			if(((Silva) this).getCaptureUnit() != null) {
 				return true;
 			}
 		}

@@ -13,6 +13,7 @@ import unit.base.Unit;
 public class Silva extends Captain implements Skilled {
 
 	private Defender def;
+	private Unit captureUnit = null;
 
 	public Silva(int x, int y) {
 		// TODO Auto-generated constructor stub
@@ -29,6 +30,14 @@ public class Silva extends Captain implements Skilled {
 	public Silva() {
 		// TODO Auto-generated constructor stub
 		super("David Silva", 0, 0);
+	}
+	
+	public Unit getCaptureUnit() {
+		return captureUnit;
+	}
+	
+	public void setCaptureUnit(Unit captureUnit) {
+		this.captureUnit = captureUnit;
 	}
 
 	@Override
@@ -58,6 +67,10 @@ public class Silva extends Captain implements Skilled {
 			}
 		}
 		return canMove;
+	}
+	
+	public Defender getDef() {
+		return def;
 	}
 
 	@Override

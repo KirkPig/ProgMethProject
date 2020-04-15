@@ -186,6 +186,9 @@ public class UnitBarPane extends Pane {
 		}else if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Silva) {
 			warHorseButton.setVisible(false);
 			dribbleButton.setVisible(true);
+		}else {
+			warHorseButton.setVisible(false);
+			dribbleButton.setVisible(false);
 		}
 		
 		ColorAdjust adjust = new ColorAdjust();
@@ -227,9 +230,45 @@ public class UnitBarPane extends Pane {
 							for(Unit u : canExit) {
 								u.setSelected(true);
 							}
+							
+							for(var u: unitPane.getChildren()) {
+								if(u instanceof UnitCell) {
+									UnitCell unitCell = (UnitCell) u;
+									if(unitCell.getUnit() instanceof Defender) {
+										if(((Defender)unitCell.getUnit()).getCaptureUnit() != null) {
+											if(((Defender)unitCell.getUnit()).getCaptureUnit() instanceof Silva) {
+												Defender def = (Defender) unitCell.getUnit();
+												Silva silva = (Silva) def.getCaptureUnit();
+												silva.setCapture(false);
+												def.setCapture(true);
+												silva.setCaptureUnit(def);
+												def.setCaptureUnit(null);
+												GameController.gameBoard.addUnit(silva, def.getCoordinate().getX(), def.getCoordinate().getY());
+												GameGUIController.setSelectedUnit(unitCell);
+												GameGUIController.setSilvaSelected(unitCell);
+												break;
+											}
+										}
+									}
+								}
+							}
 							unitPane.updateBoard();
 						}
 						
+					}else {
+						if(GameGUIController.isSilvaSelected()) {
+							System.out.println("KUOY");
+							Silva silva = (Silva) GameGUIController.getSilvaSelected().getUnit();
+							Defender def = (Defender) silva.getCaptureUnit();
+							def.setCapture(false);
+							silva.setCapture(true);
+							def.setCaptureUnit(silva);
+							silva.setCaptureUnit(null);
+							GameController.gameBoard.addUnit(def, silva.getCoordinate().getX(), silva.getCoordinate().getY());
+							GameGUIController.resetSilvaSelected();
+							GameGUIController.resetSelectedUnit();
+							unitPane.resetBoard();
+						}
 					}
 				}
 				
@@ -269,7 +308,23 @@ public class UnitBarPane extends Pane {
 						for(Unit u : canRun) {
 							u.setSelected(true);
 						}
+						for(var u: unitPane.getChildren()) {
+							if(u instanceof UnitCell) {
+								UnitCell unitCell = (UnitCell) u;
+								if(unitCell.getUnit() instanceof Kane) {
+									GameGUIController.setSelectedUnit(unitCell);
+									GameGUIController.setKaneSelected(unitCell);
+									break;
+								}
+							}
+						}
 						unitPane.updateBoard();
+					}else {
+						if(GameGUIController.isKaneSelected()) {
+							GameGUIController.resetSelectedUnit();
+							GameGUIController.resetKaneSelected();
+							unitPane.resetBoard();
+						}
 					}
 				}
 				

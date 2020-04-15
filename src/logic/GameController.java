@@ -108,11 +108,19 @@ public class GameController {
 		if (!gameBoard.getUnit(x1, y1).isMovable()) {
 			throw new UnitMoveException(1);
 		}
+		/*
 		Unit unit1 = gameBoard.getUnit(x1, y1);
 		Unit unit2 = gameBoard.getUnit(x2, y2);
 		if (!unit1.getMoveUnit().contains(unit2)) {
-			throw new UnitMoveException(2);
-		}
+			if(unit1 instanceof Silva && GameGUIController.isSilvaSelected()) {
+				if(!((Silva) unit1).useSkill().contains(unit2)) {
+					throw new UnitMoveException(2);
+				}
+			}else {
+				throw new UnitMoveException(2);
+			}
+			
+		}*/
 		if(!getCurrentPlayer().isPlaceCaptain()) {
 			throw new UnitMoveException(4);
 		}
