@@ -3,8 +3,10 @@ package gui;
 import java.util.ArrayList;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import logic.GameController;
@@ -83,8 +85,8 @@ public class UnitPane extends Group {
 										try {
 											GameGUIController.getSelectedUnit().getUnit().setSelected(false);
 											((UnitCell) e.getSource()).getUnit().setSelected(false);
-											((UnitCell) e.getSource()).setVisible(false);
-											updateBoard();
+											getChildren().remove(e.getSource());
+											getChildren().add((Node) e.getSource());
 											GameController.moveUnit(
 													GameGUIController.getSelectedUnit().getUnit().getCoordinate()
 															.getX(),
@@ -92,18 +94,29 @@ public class UnitPane extends Group {
 															.getY(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
-											/*
+											updateBoard();
+											
 											TranslateTransition animation = new TranslateTransition();
-											animation.setNode(GameGUIController.getSelectedUnit());
+											animation.setNode(((UnitCell) e.getSource()));
 											animation.setDuration(Duration.millis(500));
 											animation.setFromX(GameGUIController.getSelectedUnit().getTranslateX());
 											animation.setFromY(GameGUIController.getSelectedUnit().getTranslateY());
 											animation.setToX(((UnitCell) e.getSource()).getTranslateX());
 											animation.setToY(((UnitCell) e.getSource()).getTranslateY());
+											animation.setOnFinished(new EventHandler<ActionEvent>() {
+
+												@Override
+												public void handle(ActionEvent arg0) {
+													// TODO Auto-generated method stub
+													updateBoard();
+													((UnitCell) e.getSource()).setVisible(true);
+													GameController.nextTurn();
+												}
+											});
 											animation.play();
-											*/
-											((UnitCell) e.getSource()).setVisible(true);
-											GameController.nextTurn();
+											
+											
+											
 
 										} catch (UnitMoveException e1) {
 											// TODO Auto-generated catch block
