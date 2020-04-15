@@ -12,6 +12,7 @@ import javafx.util.Duration;
 import logic.GameController;
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
+import unit.Defender;
 import unit.Empty;
 import unit.base.Unit;
 
@@ -30,24 +31,76 @@ public class UnitPane extends Group {
 					@Override
 					public void handle(MouseEvent e) {
 						// TODO Auto-generated method stub
+
 						if (!(((UnitCell) e.getSource()).getUnit() instanceof Empty) && ((UnitCell) e.getSource())
 								.getUnit().getOwner().equals(GameController.getCurrentPlayer())) {
 							if (!GameGUIController.isUnitBarSelected()) {
 								if (GameGUIController.isUnitSelected()) {
-									if (GameGUIController.getSelectedUnit().equals(e.getSource())) {
-										resetBoard();
-										GameGUIController.resetSelectedUnit();
-									} else {
-										resetBoard();
-										GameGUIController.setSelectedUnit((UnitCell) e.getSource());
-										GameGUIController.getSelectedUnit().getUnit().setSelected(true);
-										System.out.print("PATH THAT YOU CAN MOVE");
-										for (Unit u : GameGUIController.getSelectedUnit().getUnit().getMoveUnit()) {
-											u.setSelected(true);
-											System.out.println(u.getCoordinate().toString());
+									if (GameGUIController.getSelectedUnit().getUnit() instanceof Defender
+											&& ((UnitCell) e.getSource()).getUnit().isSelected()) {
+										/*
+										 * Defender Eat own unit
+										 */
+										try {
+											GameGUIController.getSelectedUnit().getUnit().setSelected(false);
+											((UnitCell) e.getSource()).getUnit().setSelected(false);
+											getChildren().remove(e.getSource());
+											getChildren().add((Node) e.getSource());
+											GameController.moveUnit(
+													GameGUIController.getSelectedUnit().getUnit().getCoordinate()
+															.getX(),
+													GameGUIController.getSelectedUnit().getUnit().getCoordinate()
+															.getY(),
+													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
+													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
+											updateBoard();
+
+											TranslateTransition animation = new TranslateTransition();
+											animation.setNode(((UnitCell) e.getSource()));
+											animation.setDuration(Duration.millis(500));
+											animation.setFromX(GameGUIController.getSelectedUnit().getTranslateX());
+											animation.setFromY(GameGUIController.getSelectedUnit().getTranslateY());
+											animation.setToX(((UnitCell) e.getSource()).getTranslateX());
+											animation.setToY(((UnitCell) e.getSource()).getTranslateY());
+											animation.setOnFinished(new EventHandler<ActionEvent>() {
+
+												@Override
+												public void handle(ActionEvent arg0) {
+													// TODO Auto-generated method stub
+													updateBoard();
+													((UnitCell) e.getSource()).setVisible(true);
+													GameController.nextTurn();
+												}
+											});
+											animation.play();
+
+										} catch (UnitMoveException e1) {
+											// TODO Auto-generated catch block
+											System.out.println(e1.getErrorMessage());
+											((UnitCell) e.getSource()).setVisible(true);
+											resetBoard();
 										}
+										GameGUIController.resetSelectedUnit();
+										GameGUIController.resetUnitBarCell();
 										updateBoard();
+
+									} else {
+										if (GameGUIController.getSelectedUnit().equals(e.getSource())) {
+											resetBoard();
+											GameGUIController.resetSelectedUnit();
+										} else {
+											resetBoard();
+											GameGUIController.setSelectedUnit((UnitCell) e.getSource());
+											GameGUIController.getSelectedUnit().getUnit().setSelected(true);
+											System.out.print("PATH THAT YOU CAN MOVE");
+											for (Unit u : GameGUIController.getSelectedUnit().getUnit().getMoveUnit()) {
+												u.setSelected(true);
+												System.out.println(u.getCoordinate().toString());
+											}
+											updateBoard();
+										}
 									}
+
 								} else {
 									resetBoard();
 									GameGUIController.setSelectedUnit((UnitCell) e.getSource());
@@ -95,7 +148,7 @@ public class UnitPane extends Group {
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
 											updateBoard();
-											
+
 											TranslateTransition animation = new TranslateTransition();
 											animation.setNode(((UnitCell) e.getSource()));
 											animation.setDuration(Duration.millis(500));
@@ -114,9 +167,6 @@ public class UnitPane extends Group {
 												}
 											});
 											animation.play();
-											
-											
-											
 
 										} catch (UnitMoveException e1) {
 											// TODO Auto-generated catch block
