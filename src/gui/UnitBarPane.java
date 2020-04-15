@@ -2,7 +2,10 @@ package gui;
 
 
 
+import java.util.ArrayList;
+
 import javafx.event.EventHandler;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +25,8 @@ import unit.Goalkeeper;
 import unit.God;
 import unit.Playmaker;
 import unit.base.Unit;
+import unit.captain.Kane;
+import unit.captain.Silva;
 
 public class UnitBarPane extends Pane {
 	private String UnitBarUrl;
@@ -146,6 +151,7 @@ public class UnitBarPane extends Pane {
 		hideButton.setPrefWidth(238);
 		getChildren().add(hideButton);
 		
+		
 		hideButton.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -153,13 +159,123 @@ public class UnitBarPane extends Pane {
 				// TODO Auto-generated method stub
 				if(isShow) {
 					setTranslateY(getTranslateY()+300);
+					((ImageView) hideButton.getChildren().get(0)).setImage(new Image(ImageUrl.openButton));
 					isShow = false;
 				}else {
 					setTranslateY(getTranslateY()-300);
+					((ImageView) hideButton.getChildren().get(0)).setImage(new Image(ImageUrl.hideButton));
 					isShow = true;
 				}
 			}
 		} );
+		
+		ImageView dribbleButton = new ImageView(new Image(ImageUrl.dribbleButton));
+		dribbleButton.setTranslateX(hideButton.getTranslateX()-dribbleButton.getFitWidth()-10);
+		dribbleButton.setTranslateY(544-711-55);
+		getChildren().add(dribbleButton);
+		
+		
+		ImageView warHorseButton = new ImageView(new Image(ImageUrl.warHorseButton));
+		warHorseButton.setTranslateX(hideButton.getTranslateX()-warHorseButton.getFitWidth()-10);
+		warHorseButton.setTranslateY(544-711-55);
+		getChildren().add(warHorseButton);
+		
+		if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Kane) {
+			warHorseButton.setVisible(true);
+			dribbleButton.setVisible(false);
+		}else if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Silva) {
+			warHorseButton.setVisible(false);
+			dribbleButton.setVisible(true);
+		}
+		
+		ColorAdjust adjust = new ColorAdjust();
+		adjust.setBrightness(-0.2);
+		ColorAdjust normal = new ColorAdjust();
+		normal.setBrightness(0);
+		
+
+		/*
+		 * dribble
+		 */
+		dribbleButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				dribbleButton.setEffect(adjust);
+			}
+		});
+		
+		dribbleButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				dribbleButton.setEffect(normal);
+			}
+		});
+		
+		dribbleButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(GameController.getCurrentPlayer().isPlaceCaptain()) {
+					if(GameController.getCurrentPlayer().getTeam().getCaptain().isCapture()) {
+						if(!GameGUIController.isUnitSelected()) {
+							ArrayList<Unit> canExit = ((Silva) GameController.getCurrentPlayer().getTeam().getCaptain()).useSkill();
+							for(Unit u : canExit) {
+								u.setSelected(true);
+							}
+							unitPane.updateBoard();
+						}
+						
+					}
+				}
+				
+			}
+		});
+		
+		
+		/*
+		 * warhorse
+		 */
+		warHorseButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				dribbleButton.setEffect(adjust);
+			}
+		});
+		
+		warHorseButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				dribbleButton.setEffect(normal);
+			}
+		});
+		
+		warHorseButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(GameController.getCurrentPlayer().isPlaceCaptain()) {
+					if(!GameGUIController.isUnitSelected()) {
+						ArrayList<Unit> canRun = ((Kane) GameController.getCurrentPlayer().getTeam().getCaptain()).useSkill();
+						for(Unit u : canRun) {
+							u.setSelected(true);
+						}
+						unitPane.updateBoard();
+					}
+				}
+				
+			}
+		});
+		
 		
 		
 	}

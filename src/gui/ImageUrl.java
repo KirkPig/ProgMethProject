@@ -53,6 +53,9 @@ public class ImageUrl {
 	//unitbar
 	public static final String unitBar = "file:res/ui/play_screen/unit_bar.png";
 	public static final String hideButton = "file:res/ui/play_screen/hideUnitBar.png";
+	public static final String openButton = "file:res/ui/play_screen/openButton.png";
+	public static final String warHorseButton = "file:res/ui/play_screen/warHorseButton.png";
+	public static final String dribbleButton = "file:res/ui/play_screen/dribbleButton.png";
 	
 	//Team label
 	public static final String liverpoolLabel = "file:res/ui/play_screen/liverpool_label.png";

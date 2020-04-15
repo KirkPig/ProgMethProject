@@ -107,15 +107,19 @@ public class GameBoard {
 				else {
 					k = ((Defender) unit).getCaptureUnit();
 					((Defender) unit).setCaptureUnit(null);
+					k.setCapture(false);
 				}
 			} else {
 				if (((Defender) unit).getCaptureUnit() == null) {
+					k.setCapture(true);
 					((Defender) unit).setCaptureUnit(k);
 					k = new Empty(x2, y2);
 				} else {
 					var temp = ((Defender) unit).getCaptureUnit();
+					k.setCapture(true);
 					((Defender) unit).setCaptureUnit(k);
 					k = temp;
+					k.setCapture(false);
 				}
 			}
 		}
