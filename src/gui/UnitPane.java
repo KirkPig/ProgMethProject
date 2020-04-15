@@ -22,7 +22,7 @@ public class UnitPane extends Group {
 		this.unitCells = new ArrayList<UnitCell>();
 		for (int i = 0; i < GameController.gameBoard.getWidth(); i++) {
 			for (int j = 0; j < GameController.gameBoard.getHeight(); j++) {
-				UnitCell unitCell = new UnitCell(GameController.gameBoard.getUnit(i, j));
+				UnitCell unitCell = new UnitCell(i, j);
 				unitCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					@Override
@@ -67,8 +67,6 @@ public class UnitPane extends Group {
 												((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 												((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
 										GameGUIController.getUnitBarCell().getUnit().setSelected(false);
-										((UnitCell) e.getSource())
-												.setUnit(GameGUIController.getUnitBarCell().getUnit());
 										GameController.nextTurn();
 										resetBoard();
 										updateBoard();
@@ -94,6 +92,7 @@ public class UnitPane extends Group {
 															.getY(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
+											/*
 											TranslateTransition animation = new TranslateTransition();
 											animation.setNode(GameGUIController.getSelectedUnit());
 											animation.setDuration(Duration.millis(500));
@@ -102,7 +101,7 @@ public class UnitPane extends Group {
 											animation.setToX(((UnitCell) e.getSource()).getTranslateX());
 											animation.setToY(((UnitCell) e.getSource()).getTranslateY());
 											animation.play();
-
+											*/
 											((UnitCell) e.getSource()).setVisible(true);
 											GameController.nextTurn();
 

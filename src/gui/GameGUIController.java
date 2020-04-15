@@ -1,7 +1,7 @@
 package gui;
 
 public class GameGUIController {
-	private static  UnitCell selectedUnit = null;
+	private static UnitCell selectedUnit = null;
 	private static UnitBarCell unitBarCell = null;
 	
 	public static void setSelectedUnit(UnitCell selectedUnit) {

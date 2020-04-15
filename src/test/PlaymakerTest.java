@@ -12,7 +12,7 @@ import test.base.GameTest;
 import unit.Playmaker;
 import unit.base.Unit;
 
-public class PlayMakerTest extends GameTest {
+public class PlaymakerTest extends GameTest {
 	Unit unit1 = new Playmaker();
 	Unit unit2 = new Playmaker();
 	Unit unit3 = new Playmaker();

@@ -7,28 +7,30 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import logic.GameController;
 import unit.Empty;
+import unit.base.Coordinate;
 import unit.base.Unit;
 
 public class UnitCell extends Pane {
 
-	Unit unit = null;
+	private Coordinate coordinate = null;
 	private double scale = 0.5;
 
-	public UnitCell(Unit unit) {
+	public UnitCell(int x, int y) {
 		// TODO Auto-generated constructor stub
-		this.unit = unit;
+		setCoordinate(x, y);
 		updateCell();
 		
 	}
 
 	public Unit getUnit() {
-		return unit;
+		return GameController.gameBoard.getUnit(coordinate.getX(), coordinate.getY());
 	}
 
 	public void updateCell() {
-		int i = unit.getCoordinate().getX();
-		int j = unit.getCoordinate().getY();
+		int i = coordinate.getX();
+		int j = coordinate.getY();
 		Image unitImage = new Image(getUnit().getImageUrl());
 		this.setMinSize(unitImage.getWidth(), unitImage.getHeight());
 		this.setBackground(new Background(new BackgroundImage(unitImage, BackgroundRepeat.NO_REPEAT,
@@ -56,7 +58,12 @@ public class UnitCell extends Pane {
 	public void setScale(double scale) {
 		this.scale = scale;
 	}
-	public void setUnit(Unit unit) {
-		this.unit = unit;
+
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
+	
+	public void setCoordinate(int x, int y) {
+		this.coordinate = new Coordinate(x, y);
 	}
 }

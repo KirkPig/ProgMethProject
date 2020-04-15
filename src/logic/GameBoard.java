@@ -166,136 +166,59 @@ public class GameBoard {
 		for (int k = 0; k < width * height; k++) {
 
 			boolean chk = false;
-
-			// Horizontal
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < height - 1; j++) {
-					if (isThrough || (isEmpty(i, j) && isEmpty(i, j + 1))) {
-
-						boolean condition = false;
-
-						if (i % 2 == 0) {
-
-							if (isEmpty(i - 1, j) || isEmpty(i + 1, j)) {
-								condition = true;
-							}
-
-						} else {
-
-							if (isEmpty(i - 1, j + 1) || isEmpty(i + 1, j + 1)) {
-								condition = true;
-							}
-
-						}
-
-						// Relax Function
-						if (condition && distance.get(i).get(j + 1) > distance.get(i).get(j) + 1) {
-							distance.get(i).set(j + 1, distance.get(i).get(j) + 1);
-							chk = true;
-						}
-
-						if (condition && distance.get(i).get(j) > distance.get(i).get(j + 1) + 1) {
-							distance.get(i).set(j, distance.get(i).get(j + 1) + 1);
-							chk = true;
-						}
-
-					}
-				}
-
-			}
-
-			// Vertical
-			for (int j = 0; j < height; j++) {
-				for (int i = 0; i < width - 1; i++) {
-
-					if (isThrough || (isEmpty(i, j) && isEmpty(i + 1, j))) {
-
-						if (i % 2 == 0
-								&& (getAdjacentUnit(i, j).get(1) == null
-										|| getAdjacentUnit(i, j).get(1) instanceof Movable)
-								&& (getAdjacentUnit(i, j).get(5) == null
-										|| getAdjacentUnit(i, j).get(5) instanceof Movable)) {
+			
+			for(int i = 0;i < width;i++) {
+				for(int j = 0;j < height;j++) {
+					
+					for(int n = 0;n < 6;n++) {
+						
+						ArrayList<Unit> adjacentUnit = getAdjacentUnit(i, j);
+						
+						if(adjacentUnit.get(n) == null) {
 							continue;
 						}
-
-						if (i % 2 == 1
-								&& (getAdjacentUnit(i, j).get(3) == null
-										|| getAdjacentUnit(i, j).get(3) instanceof Movable)
-								&& (getAdjacentUnit(i, j).get(4) == null
-										|| getAdjacentUnit(i, j).get(4) instanceof Movable)) {
-
-						}
-
-						if (distance.get(i + 1).get(j) > distance.get(i).get(j) + 1) {
-							distance.get(i + 1).set(j, distance.get(i).get(j) + 1);
-							chk = true;
-						}
-
-						if (distance.get(i).get(j) > distance.get(i + 1).get(j) + 1) {
-							distance.get(i).set(j, distance.get(i + 1).get(j) + 1);
-							chk = true;
-						}
-
-					}
-
-				}
-			}
-
-			// swap
-			for (int j = 1; j < height; j++) {
-
-				for (int i = 0; i < width - 1; i++) {
-
-					if (i % 2 == 0) {
-
-						if (isThrough || (isEmpty(i, j) && isEmpty(i + 1, j - 1))) {
-
-							if ((getAdjacentUnit(i, j).get(3) == null
-									|| getAdjacentUnit(i, j).get(3) instanceof Movable)
-									&& (getAdjacentUnit(i, j).get(4) == null
-											|| getAdjacentUnit(i, j).get(4) instanceof Movable)) {
-
-							}
-
-							if (distance.get(i).get(j) > distance.get(i + 1).get(j - 1) + 1) {
-								distance.get(i).set(j, distance.get(i + 1).get(j - 1) + 1);
-								chk = true;
-							}
-
-							if (distance.get(i + 1).get(j - 1) > distance.get(i).get(j) + 1) {
-								distance.get(i + 1).set(j - 1, distance.get(i).get(j) + 1);
-								chk = true;
-							}
-
-						}
-
-					} else {
-
-						if (isThrough || (isEmpty(i, j - 1) && isEmpty(i + 1, j))) {
-
-							if ((getAdjacentUnit(i, j).get(1) == null
-									|| getAdjacentUnit(i, j).get(1) instanceof Movable)
-									&& (getAdjacentUnit(i, j).get(5) == null
-											|| getAdjacentUnit(i, j).get(5) instanceof Movable)) {
+						
+						int a = getAdjacentUnit(i, j).get(n).getCoordinate().getX();
+						int b = getAdjacentUnit(i, j).get(n).getCoordinate().getY();
+						int c = (n == 0) ? 5 : n - 1;
+						int d = (n == 5) ? 0 : n + 1;
+						
+						if(adjacentUnit.get(c) == null) {
+							if(adjacentUnit.get(d) == null) {
+								continue;
+							}else if(adjacentUnit.get(d) instanceof Movable) {
 								continue;
 							}
-
-							if (distance.get(i + 1).get(j) > distance.get(i).get(j - 1) + 1) {
-								distance.get(i + 1).set(j, distance.get(i).get(j - 1) + 1);
-								chk = true;
+						}else if(adjacentUnit.get(d) == null) {
+							if(adjacentUnit.get(c) == null) {
+								continue;
+							}else if(adjacentUnit.get(c) instanceof Movable) {
+								continue;
 							}
-
-							if (distance.get(i).get(j - 1) > distance.get(i + 1).get(j) + 1) {
-								distance.get(i).set(j - 1, distance.get(i + 1).get(j) + 1);
-								chk = true;
+						}else {
+							int cx = adjacentUnit.get(c).getCoordinate().getX();
+							int cy = adjacentUnit.get(c).getCoordinate().getY();
+							int dx = adjacentUnit.get(d).getCoordinate().getX();
+							int dy = adjacentUnit.get(d).getCoordinate().getY();
+							if(!isEmpty(cx, cy) && !isEmpty(dx, dy)) {
+								continue;
 							}
-
 						}
-
+						
+						if(isThrough || isEmpty(a, b)) {
+							
+							
+							
+							if (distance.get(a).get(b) > distance.get(i).get(j) + 1) {
+								distance.get(a).set(b, distance.get(i).get(j) + 1);
+								chk = true;
+							}
+							
+						}
+						
 					}
-
+					
 				}
-
 			}
 
 			if (!chk) {
@@ -360,7 +283,15 @@ public class GameBoard {
 		else
 			adjacentUnit.add(null);
 
-		return adjacentUnit;
+		ArrayList<Unit> units = new ArrayList<Unit>();
+		units.add(adjacentUnit.get(0));
+		units.add(adjacentUnit.get(2));
+		units.add(adjacentUnit.get(5));
+		units.add(adjacentUnit.get(3));
+		units.add(adjacentUnit.get(1));
+		units.add(adjacentUnit.get(4));
+
+		return units;
 	}
 
 	public boolean checkGameBoard() {
@@ -394,24 +325,18 @@ public class GameBoard {
 			/*
 			 * Queue
 			 */
-			for (var u : queue) {
-				System.out.print(u + "//");
-			}
-			System.out.print("\n");
 
 			var t = queue.get(0);
 			queue.remove(0);
 
 			// System.out.println(t.getCoordinate());
 
-			
 			int x = t.getX();
 			int y = t.getY();
 			if (copyBoard.get(x).get(y) instanceof Empty) {
-				System.out.println(t + " Empty");
 				continue;
 			}
-			
+
 			copyBoard.get(x).set(y, new Empty(x, y));
 
 			if (x > 0)
