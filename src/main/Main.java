@@ -8,6 +8,7 @@ import gui.ImageUrl;
 import gui.TeamPicPane;
 import gui.UnitBarPane;
 import gui.UnitPane;
+import gui.WinPane;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
@@ -40,10 +41,12 @@ import logic.GameController;
 import logic.Owner;
 
 public class Main extends Application {
+	public static Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
+		Main.primaryStage = primaryStage;
 		primaryStage.setScene(getCoverScene(primaryStage));
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
@@ -425,6 +428,26 @@ public class Main extends Application {
 			}
 
 		});
+		
+		AnimationTimer checkWin = new AnimationTimer() {
+			
+			@Override
+			public void handle(long now) {
+				// TODO Auto-generated method stub
+				if(GameController.isGameEnd()) {
+					WinPane winPane = new WinPane();
+					winPane.setTranslateX(0);
+					winPane.setTranslateY(0);
+					gameSceneRoot.getChildren().add(winPane);
+					this.stop();
+					switchTurnCheck.stop();
+					gameSceneRoot.getChildren().remove(unitBarPane);
+					gameSceneRoot.getChildren().remove(avatarPlayer1);
+					gameSceneRoot.getChildren().remove(avatarPlayer2);
+				}
+			}
+		};
+		checkWin.start();
 
 		/*
 		 * KeyReleased Action

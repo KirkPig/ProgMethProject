@@ -63,5 +63,14 @@ public class ImageUrl {
 	public static final String manCityLabel = "file:res/ui/play_screen/mci_label.png";
 	public static final String spurLabel = "file:res/ui/play_screen/spur_label.png";
 	
+	//winScreen
+	public static final String liverpoolBackground = "file:res/ui/win_screen/liv_bg.png";
+	public static final String manUnitedBackground = "file:res/ui/win_screen/mun_bg.png";
+	public static final String manCityBackground = "file:res/ui/win_screen/mci_bg.png";
+	public static final String spurBackground = "file:res/ui/win_screen/spur_bg.png";
+	public static final String player1 = "file:res/ui/win_screen/player1_label.png";
+	public static final String player2 = "file:res/ui/win_screen/player2_label.png";
+	public static final String mainmenuButton = "file:res/ui/win_screen/mainmenu.png";
+	public static final String restartButton = "file:res/ui/win_screen/restart.png";
 
 }
