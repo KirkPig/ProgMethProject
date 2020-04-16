@@ -137,7 +137,7 @@ public class UnitPane extends Group {
 									if (GameGUIController.isUnitSelected()) {
 										try {
 											GameGUIController.getSelectedUnit().getUnit().setSelected(false);
-											((UnitCell) e.getSource()).getUnit().setSelected(false);
+											
 											getChildren().remove(e.getSource());
 											getChildren().add((Node) e.getSource());
 											GameController.moveUnit(
@@ -147,6 +147,7 @@ public class UnitPane extends Group {
 															.getY(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getX(),
 													((UnitCell) e.getSource()).getUnit().getCoordinate().getY());
+											((UnitCell) e.getSource()).getUnit().setSelected(false);
 											updateBoard();
 
 											TranslateTransition animation = new TranslateTransition();

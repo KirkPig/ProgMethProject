@@ -81,10 +81,15 @@ public class Defender extends Unit implements Movable{
 							if(u == null) {
 								continue;
 							}
+							if(this.getCaptureUnit() != null) {
+								canMove.add(gameBoard.getUnit(i, j));
+								break;
+							}
 							if(u != this && u instanceof Movable) {
 								canMove.add(gameBoard.getUnit(i, j));
 								break;
 							}
+							
 						}
 					}
 				}

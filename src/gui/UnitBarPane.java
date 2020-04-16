@@ -5,16 +5,11 @@ package gui;
 import java.util.ArrayList;
 
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import logic.GameController;
 import unit.Attacker;
@@ -28,7 +23,7 @@ import unit.base.Unit;
 import unit.captain.Kane;
 import unit.captain.Silva;
 
-public class UnitBarPane extends Pane {
+public class UnitBarPane extends Group {
 	private String UnitBarUrl;
 	private UnitPane unitPane;
 	private boolean isShow = true;
@@ -36,22 +31,18 @@ public class UnitBarPane extends Pane {
 	public UnitBarPane(UnitPane unitPane) {
 		this.unitPane = unitPane;
 		this.UnitBarUrl = ImageUrl.unitBar;
-		this.setPrefSize(1920, 290);
-		setImageUrl();
 		updateBarCell();
 		
-	}
-
-	public void setImageUrl() {
-		// TODO Auto-generated method stub
-		setBackground(new Background(new BackgroundImage(new Image(this.UnitBarUrl), BackgroundRepeat.NO_REPEAT,
-				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 	}
 	
 	
 
 	public void updateBarCell() {
 		getChildren().clear();
+		ImageView background = new ImageView(new Image(this.UnitBarUrl));
+		background.setTranslateX(0);
+		background.setTranslateY(0);
+		this.getChildren().add(background);
 		for ( int i = GameController.getCurrentPlayer().getTeam().getUnitNotUsed().size()-1 ; i >= 0 ; i--) {
 			Unit u = GameController.getCurrentPlayer().getTeam().getUnitNotUsed().get(i);
 			UnitBarCell unitBarCell = null;
@@ -292,7 +283,7 @@ public class UnitBarPane extends Pane {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				dribbleButton.setEffect(adjust);
+				warHorseButton.setEffect(adjust);
 			}
 		});
 		
@@ -301,7 +292,7 @@ public class UnitBarPane extends Pane {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				dribbleButton.setEffect(normal);
+				warHorseButton.setEffect(normal);
 			}
 		});
 		

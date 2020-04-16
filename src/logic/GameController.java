@@ -3,12 +3,12 @@ package logic;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import gui.GameGUIController;
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
 import unit.Captain;
 import unit.Empty;
 import unit.base.Unit;
+import unit.captain.Kane;
 import unit.captain.Silva;
 
 public class GameController {
@@ -115,7 +115,13 @@ public class GameController {
 		if (!unit1.getMoveUnit().contains(unit2)) {
 			if(unit1 instanceof Silva) {
 				if(!unit2.isSelected()) {
+					throw new UnitMoveException(5);
+				}
+			}else if(unit1 instanceof Kane){
+				if(!((Kane) unit1).useSkill().contains(unit2)) {
 					throw new UnitMoveException(2);
+				}else {
+					((Kane) unit1).setSkillUsable(false);
 				}
 			}else {
 				throw new UnitMoveException(2);
