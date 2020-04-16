@@ -181,11 +181,19 @@ public class UnitBarPane extends Pane {
 		getChildren().add(warHorseButton);
 		
 		if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Kane) {
-			warHorseButton.setVisible(true);
+			if(GameController.getCurrentPlayer().isPlaceCaptain()) {
+				warHorseButton.setVisible(true);
+			}else {
+				warHorseButton.setVisible(false);
+			}
 			dribbleButton.setVisible(false);
 		}else if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Silva) {
 			warHorseButton.setVisible(false);
-			dribbleButton.setVisible(true);
+			if(GameController.getCurrentPlayer().isPlaceCaptain()) {
+				dribbleButton.setVisible(true);
+			}else {
+				dribbleButton.setVisible(false);
+			}
 		}else {
 			warHorseButton.setVisible(false);
 			dribbleButton.setVisible(false);

@@ -3,11 +3,13 @@ package logic;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gui.GameGUIController;
 import logic.exception.UnitMoveException;
 import logic.exception.UnitPlaceException;
 import unit.Captain;
 import unit.Empty;
 import unit.base.Unit;
+import unit.captain.Silva;
 
 public class GameController {
 
@@ -108,19 +110,18 @@ public class GameController {
 		if (!gameBoard.getUnit(x1, y1).isMovable()) {
 			throw new UnitMoveException(1);
 		}
-		/*
 		Unit unit1 = gameBoard.getUnit(x1, y1);
 		Unit unit2 = gameBoard.getUnit(x2, y2);
 		if (!unit1.getMoveUnit().contains(unit2)) {
-			if(unit1 instanceof Silva && GameGUIController.isSilvaSelected()) {
-				if(!((Silva) unit1).useSkill().contains(unit2)) {
+			if(unit1 instanceof Silva) {
+				if(!unit2.isSelected()) {
 					throw new UnitMoveException(2);
 				}
 			}else {
 				throw new UnitMoveException(2);
 			}
 			
-		}*/
+		}
 		if(!getCurrentPlayer().isPlaceCaptain()) {
 			throw new UnitMoveException(4);
 		}
