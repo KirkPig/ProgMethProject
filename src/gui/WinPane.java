@@ -75,7 +75,7 @@ public class WinPane extends Group {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				Main.primaryStage.setScene(Main.getSelectTeamScene(Main.primaryStage));
+				Main.primaryStage.setScene(Main.getSelectTeamScene());
 			}
 		});
 		
@@ -103,7 +103,7 @@ public class WinPane extends Group {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				Main.primaryStage.setScene(Main.getMainmenuScene(Main.primaryStage));
+				Main.primaryStage.setScene(Main.getMainmenuScene());
 			}
 		});
 	}

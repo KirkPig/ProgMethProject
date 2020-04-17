@@ -47,7 +47,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		Main.primaryStage = primaryStage;
-		primaryStage.setScene(getCoverScene(primaryStage));
+		primaryStage.setScene(getCoverScene());
 		primaryStage.setTitle("FIFA Hex");
 		primaryStage.setResizable(false);
 		primaryStage.show();
@@ -57,7 +57,7 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	public static Scene getCoverScene(Stage primaryStage) {
+	public static Scene getCoverScene() {
 		AnchorPane coverSceneRoot = new AnchorPane();
 
 		coverSceneRoot.setBackground(new Background(new BackgroundImage(
@@ -125,7 +125,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				primaryStage.setScene(getMainmenuScene(primaryStage));
+				primaryStage.setScene(getMainmenuScene());
 			}
 
 		});
@@ -136,7 +136,7 @@ public class Main extends Application {
 		return coverScene;
 	}
 
-	public static Scene getMainmenuScene(Stage primaryStage) {
+	public static Scene getMainmenuScene() {
 		AnchorPane mainmenuSceneRoot = new AnchorPane();
 		mainmenuSceneRoot.setBackground(new Background(new BackgroundImage(
 				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
@@ -204,7 +204,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				primaryStage.setScene(getSelectTeamScene(primaryStage));
+				primaryStage.setScene(getSelectTeamScene());
 			}
 
 		});
@@ -263,7 +263,7 @@ public class Main extends Application {
 		return mainmenuScene;
 	}
 
-	public static Scene getGameScene(Stage primaryStage) {
+	public static Scene getGameScene() {
 		AnchorPane gameSceneRoot = new AnchorPane();
 
 		/*
@@ -468,7 +468,7 @@ public class Main extends Application {
 		return gameScene;
 	}
 
-	public static Scene getSelectTeamScene(Stage primaryStage) {
+	public static Scene getSelectTeamScene() {
 
 		AnchorPane selectTeamSceneRoot = new AnchorPane();
 
@@ -830,7 +830,7 @@ public class Main extends Application {
 					break;
 				}
 				GameController.InitializeGame(team1, team2, 1, 1);
-				primaryStage.setScene(getGameScene(primaryStage));
+				primaryStage.setScene(getGameScene());
 			}
 		});
 		
@@ -862,7 +862,7 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				backButton.setEffect(adjustClicked);
-				primaryStage.setScene(getMainmenuScene(primaryStage));
+				primaryStage.setScene(getMainmenuScene());
 			}
 		});
 		
