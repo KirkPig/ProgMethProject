@@ -15,7 +15,9 @@ public class WinPane extends Group {
 		ImageView background = new ImageView();
 		background.setTranslateX(320);
 		background.setTranslateY(180);
-		if(GameController.getWinner().getTeam().getName() == "liverpool") {
+		if(GameController.getWinner() == null) {
+			background.setImage(new Image(ImageUrl.drawBackground));
+		}else if(GameController.getWinner().getTeam().getName() == "liverpool") {
 			background.setImage(new Image(ImageUrl.liverpoolBackground));
 		}else if(GameController.getWinner().getTeam().getName() == "manUnited") {
 			background.setImage(new Image(ImageUrl.manUnitedBackground));
@@ -29,12 +31,15 @@ public class WinPane extends Group {
 		ImageView label = new ImageView();
 		label.setTranslateX(122+270);
 		label.setTranslateY(445+180);
-		if(GameController.getWinner().equals(GameController.player1)) {
-			label.setImage(new Image(ImageUrl.player1));
-		}else {
-			label.setImage(new Image(ImageUrl.player2));
+		if(GameController.getWinner() != null) {
+			if(GameController.getWinner().equals(GameController.player1)) {
+				label.setImage(new Image(ImageUrl.player1));
+			}else {
+				label.setImage(new Image(ImageUrl.player2));
+			}
+			getChildren().add(label);
 		}
-		getChildren().add(label);
+		
 		
 		ImageView restartButton = new ImageView(new Image(ImageUrl.restartButton));
 		restartButton.setTranslateX(305+320);

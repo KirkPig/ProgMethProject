@@ -4,6 +4,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.effect.ColorAdjust;
@@ -172,7 +173,7 @@ public class UnitBarPane extends Group {
 		getChildren().add(warHorseButton);
 		
 		if(GameController.getCurrentPlayer().getTeam().getCaptain() instanceof Kane) {
-			if(GameController.getCurrentPlayer().isPlaceCaptain()) {
+			if(GameController.getCurrentPlayer().isPlaceCaptain() && ((Kane) GameController.getCurrentPlayer().getTeam().getCaptain()).isSkillUsable()) {
 				warHorseButton.setVisible(true);
 			}else {
 				warHorseButton.setVisible(false);
@@ -327,9 +328,9 @@ public class UnitBarPane extends Group {
 					}
 				}
 				
+				
 			}
 		});
-		
 		
 		
 	}

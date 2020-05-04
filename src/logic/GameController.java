@@ -158,7 +158,9 @@ public class GameController {
 	}
 	
 	public static Owner getWinner() {
-		
+		if(player1.getTeam().getCaptain().isSurrounded() && player2.getTeam().getCaptain().isSurrounded()) {
+			return null;
+		}
 		if(player1.getTeam().getCaptain().isSurrounded()) {
 			return player2;
 		}

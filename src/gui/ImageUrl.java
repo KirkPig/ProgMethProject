@@ -72,5 +72,6 @@ public class ImageUrl {
 	public static final String player2 = "file:res/ui/win_screen/player2_label.png";
 	public static final String mainmenuButton = "file:res/ui/win_screen/mainmenu.png";
 	public static final String restartButton = "file:res/ui/win_screen/restart.png";
+	public static final String drawBackground = "file:res/ui/win_screen/Draw.png";
 
 }
