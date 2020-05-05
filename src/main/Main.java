@@ -272,7 +272,7 @@ public class Main extends Application {
 		gameSceneRoot.setBackground(new Background(new BackgroundImage(
 				new Image(ImageUrl.coverBackground, 1920, 1017, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
-
+		
 		/*
 		 * UnitPane
 		 */
@@ -462,6 +462,63 @@ public class Main extends Application {
 				} else if (e.getCode().equals(KeyCode.A) || e.getCode().equals(KeyCode.D)) {
 					speedX.set(0.0);
 				}
+			}
+		});
+		
+		/*
+		 * quitButton
+		 */
+		VBox quitButton = new VBox();
+		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.gameQuitButton));
+		quitButton.getChildren().add(quitButtonImage);
+		quitButton.setTranslateX(73);
+		quitButton.setTranslateY(43);
+		gameSceneRoot.getChildren().add(quitButton);
+		
+		ColorAdjust adjustNormal = new ColorAdjust();
+		adjustNormal.setBrightness(0);
+		ColorAdjust adjustEntered = new ColorAdjust();
+		adjustEntered.setBrightness(-0.5);
+		ColorAdjust adjustClicked = new ColorAdjust();
+		adjustClicked.setBrightness(-0.8);
+		
+		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				quitButton.setEffect(adjustEntered);
+			}
+		});
+		
+		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				quitButton.setEffect(adjustNormal);
+			}
+		});
+		
+		quitButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				quitButton.setEffect(adjustClicked);
+				gameSceneRoot.getChildren().remove(unitBarPane);
+				gameSceneRoot.getChildren().remove(avatarPlayer1);
+				gameSceneRoot.getChildren().remove(avatarPlayer2);
+				primaryStage.setScene(getMainmenuScene());
+			}
+		});
+		
+		quitButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				quitButton.setEffect(adjustEntered);
 			}
 		});
 
