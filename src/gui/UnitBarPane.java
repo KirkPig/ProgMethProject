@@ -4,7 +4,6 @@ package gui;
 
 import java.util.ArrayList;
 
-import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.effect.ColorAdjust;
