@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import unit.base.Unit;
 
 public class UnitBarCell extends Pane {
-	Unit unit = null;
+	private Unit unit = null;
 	private double scale = 0.5;
 
 	public UnitBarCell(Unit unit) {
