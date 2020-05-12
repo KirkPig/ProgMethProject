@@ -6,6 +6,7 @@ import gui.CaptainPicPane;
 import gui.CaptainSkillPane;
 import gui.ImageUrl;
 import gui.TeamPicPane;
+import gui.TutorialPane;
 import gui.UnitBarPane;
 import gui.UnitPane;
 import gui.WinPane;
@@ -148,24 +149,24 @@ public class Main extends Application {
 		mainmenuSceneRoot.getChildren().add(mainmenuLego);
 
 		ImageView mainmenuForegroundLeft = new ImageView(new Image(ImageUrl.mainmenuForegroundLeft));
-		mainmenuForegroundLeft.setX(201);
+		mainmenuForegroundLeft.setX(50);
 		mainmenuForegroundLeft.setY(218);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundLeft);
 
 		ImageView mainmenuForegroundRight = new ImageView(new Image(ImageUrl.mainmenuForegroundRight));
-		mainmenuForegroundRight.setX(1206);
+		mainmenuForegroundRight.setX(1356);
 		mainmenuForegroundRight.setY(215);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundRight);
 
 		ImageView mainmenuForegroundDown = new ImageView(new Image(ImageUrl.mainmenuForegroundDown));
 		mainmenuForegroundDown.setX(0);
-		mainmenuForegroundDown.setY(720);
+		mainmenuForegroundDown.setY(770);
 		mainmenuSceneRoot.getChildren().add(mainmenuForegroundDown);
 
 		VBox playButton = new VBox();
 		ImageView playButtonImage = new ImageView(new Image(ImageUrl.mainmenuPlayButton));
 		playButton.getChildren().add(playButtonImage);
-		playButton.setTranslateX(680);
+		playButton.setTranslateX(630);
 		playButton.setTranslateY(372);
 		mainmenuSceneRoot.getChildren().add(playButton);
 
@@ -174,7 +175,7 @@ public class Main extends Application {
 		fadePlayButton.setCycleCount(Animation.INDEFINITE);
 		fadePlayButton.setFromValue(10);
 		fadePlayButton.setToValue(0.5);
-		fadePlayButton.setDuration(Duration.millis(300));
+		fadePlayButton.setDuration(Duration.millis(500));
 		fadePlayButton.setNode(playButton);
 		fadePlayButton.play();
 
@@ -212,7 +213,7 @@ public class Main extends Application {
 		VBox quitButton = new VBox();
 		ImageView quitButtonImage = new ImageView(new Image(ImageUrl.mainmenuQuitButton));
 		quitButton.getChildren().add(quitButtonImage);
-		quitButton.setTranslateX(1051);
+		quitButton.setTranslateX(1101);
 		quitButton.setTranslateY(372);
 		mainmenuSceneRoot.getChildren().add(quitButton);
 
@@ -221,7 +222,7 @@ public class Main extends Application {
 		fadeQuitButton.setCycleCount(Animation.INDEFINITE);
 		fadeQuitButton.setFromValue(10);
 		fadeQuitButton.setToValue(0.5);
-		fadeQuitButton.setDuration(Duration.millis(300));
+		fadeQuitButton.setDuration(Duration.millis(500));
 		fadeQuitButton.setNode(quitButton);
 		fadeQuitButton.play();
 
@@ -252,6 +253,53 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				primaryStage.close();
+			}
+
+		});
+		
+		VBox tutorialButton = new VBox();
+		ImageView tutorialButtonImage = new ImageView(new Image(ImageUrl.mainmenuTutorialButton));
+		tutorialButton.getChildren().add(tutorialButtonImage);
+		tutorialButton.setTranslateX(797);
+		tutorialButton.setTranslateY(634);
+		mainmenuSceneRoot.getChildren().add(tutorialButton);
+		
+		FadeTransition fadeTutorialButton = new FadeTransition();
+		fadeTutorialButton.setAutoReverse(true);
+		fadeTutorialButton.setCycleCount(Animation.INDEFINITE);
+		fadeTutorialButton.setFromValue(10);
+		fadeTutorialButton.setToValue(0.5);
+		fadeTutorialButton.setDuration(Duration.millis(500));
+		fadeTutorialButton.setNode(tutorialButton);
+		fadeTutorialButton.play();
+		
+		tutorialButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeTutorialButton.stop();
+				tutorialButton.setOpacity(1.0);
+			}
+
+		});
+
+		tutorialButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				fadeTutorialButton.play();
+			}
+
+		});
+
+		tutorialButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				mainmenuSceneRoot.getChildren().add(getTutorial());
 			}
 
 		});
@@ -946,6 +994,139 @@ public class Main extends Application {
 		background.setTranslateX(0);
 		background.setTranslateY(0);
 		tutorialPane.getChildren().add(background);
+		
+		TutorialPane pane = new TutorialPane(0);
+		pane.setTranslateX(300);
+		pane.setTranslateY(150);
+		tutorialPane.getChildren().add(pane);
+		
+		ImageView tutorialBackButton = new ImageView(new Image(ImageUrl.selectTeamBackButton));
+		tutorialBackButton.setTranslateX(26);
+		tutorialBackButton.setTranslateY(969);
+		tutorialPane.getChildren().add(tutorialBackButton);
+		
+		ColorAdjust adjustNormal = new ColorAdjust();
+		adjustNormal.setBrightness(0);
+		ColorAdjust adjustEntered = new ColorAdjust();
+		adjustEntered.setBrightness(-0.5);
+		ColorAdjust adjustClicked = new ColorAdjust();
+		adjustClicked.setBrightness(-0.8);
+		
+		tutorialBackButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				tutorialBackButton.setEffect(adjustEntered);
+			}
+		});
+		
+		tutorialBackButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				tutorialBackButton.setEffect(adjustNormal);
+			}
+		});
+		
+		tutorialBackButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				tutorialBackButton.setEffect(adjustClicked);
+				primaryStage.setScene(getMainmenuScene());
+			}
+		});
+		
+		ImageView leftButton = new ImageView(new Image(ImageUrl.selectTeamLeftButton));
+		leftButton.setTranslateX(41);
+		leftButton.setTranslateY(432);
+		tutorialPane.getChildren().add(leftButton);
+		
+		leftButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton.setEffect(adjustEntered);
+			}
+		});
+		
+		leftButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton.setEffect(adjustNormal);
+			}
+		});
+		
+		leftButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton.setEffect(adjustClicked);
+				pane.pageNumDown();
+				pane.setImageUrl();
+			}
+		});
+		
+		leftButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				leftButton.setEffect(adjustEntered);
+			}
+		});
+		
+		ImageView rightButton = new ImageView(new Image(ImageUrl.selectTeamRightButton));
+		rightButton.setTranslateX(1814);
+		rightButton.setTranslateY(432);
+		tutorialPane.getChildren().add(rightButton);
+		
+		rightButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton.setEffect(adjustEntered);
+			}
+		});
+		
+		rightButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton.setEffect(adjustNormal);
+			}
+		});
+		
+		rightButton.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton.setEffect(adjustClicked);
+				pane.pageNumUp();
+				pane.setImageUrl();
+			}
+		});
+		
+		rightButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				rightButton.setEffect(adjustEntered);
+			}
+		});
+		
+		
 		
 		return tutorialPane;
 	}

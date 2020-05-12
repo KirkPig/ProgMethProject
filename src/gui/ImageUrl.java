@@ -17,6 +17,7 @@ public class ImageUrl {
 	public static final String mainmenuForegroundDown = "file:res/ui/mainmenu/forground3.png";
 	public static final String mainmenuPlayButton = "file:res/ui/mainmenu/button_play.png";
 	public static final String mainmenuQuitButton = "file:res/ui/mainmenu/button_quit.png";
+	public static final String mainmenuTutorialButton = "file:res/ui/mainmenu/tutorial.png";
 	//Select Team
 	
 	public static final String selectTeamLogo = "file:res/ui/select_team/selectteam_title.png";
@@ -76,5 +77,20 @@ public class ImageUrl {
 	public static final String mainmenuButton = "file:res/ui/win_screen/mainmenu.png";
 	public static final String restartButton = "file:res/ui/win_screen/restart.png";
 	public static final String drawBackground = "file:res/ui/win_screen/Draw.png";
+	
+	//tutorial
+	public static final String page1 = "file:res/ui/tutorial/page1.png";
+	public static final String page2 = "file:res/ui/tutorial/page2.png";
+	public static final String page3 = "file:res/ui/tutorial/page3.png";
+	public static final String page4 = "file:res/ui/tutorial/page4.png";
+	public static final String page5 = "file:res/ui/tutorial/page5.png";
+	public static final String page6 = "file:res/ui/tutorial/page6.png";
+	public static final String page7 = "file:res/ui/tutorial/page7.png";
+	public static final String page8 = "file:res/ui/tutorial/page8.png";
+	public static final String page9 = "file:res/ui/tutorial/page9.png";
+	public static final String page10 = "file:res/ui/tutorial/page10.png";
+	public static final String page11 = "file:res/ui/tutorial/page11.png";
+	public static final String page12 = "file:res/ui/tutorial/page12.png";
+	
 
 }
