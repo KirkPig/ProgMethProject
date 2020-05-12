@@ -24,13 +24,13 @@ import unit.captain.Kane;
 import unit.captain.Silva;
 
 public class UnitBarPane extends Group {
-	private String UnitBarUrl;
+	private String unitBarUrl;
 	private UnitPane unitPane;
 	private boolean isShow = true;
 
 	public UnitBarPane(UnitPane unitPane) {
 		this.unitPane = unitPane;
-		this.UnitBarUrl = ImageUrl.unitBar;
+		this.unitBarUrl = ImageUrl.unitBar;
 		updateBarCell();
 		
 	}
@@ -39,7 +39,7 @@ public class UnitBarPane extends Group {
 
 	public void updateBarCell() {
 		getChildren().clear();
-		ImageView background = new ImageView(new Image(this.UnitBarUrl));
+		ImageView background = new ImageView(new Image(this.unitBarUrl));
 		background.setTranslateX(0);
 		background.setTranslateY(0);
 		this.getChildren().add(background);
