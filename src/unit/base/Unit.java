@@ -8,7 +8,7 @@ import unit.Defender;
 import unit.Empty;
 import unit.captain.Silva;
 
-public abstract class Unit implements Movable{
+public abstract class Unit{
 	
 	private String name;
 	private Coordinate coordinate;
