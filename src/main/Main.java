@@ -36,6 +36,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.GameController;
@@ -43,6 +44,9 @@ import logic.Owner;
 
 public class Main extends Application {
 	public static Stage primaryStage;
+	public static AudioClip sound1 = new AudioClip("file:res/sound/intro.mp3");
+	public static AudioClip sound2 = new AudioClip("file:res/sound/crowd.mp3");
+	public static AudioClip sound3 = new AudioClip("file:res/sound/win.mp3");
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -126,11 +130,11 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
+				sound1.play();
 				primaryStage.setScene(getMainmenuScene());
 			}
 
 		});
-
 		coverSceneRoot.getChildren().add(playButton);
 
 		Scene coverScene = new Scene(coverSceneRoot, 1920, 1017);
@@ -303,6 +307,57 @@ public class Main extends Application {
 			}
 
 		});
+		
+		ImageView soundButton = new ImageView();
+		sound3.stop();
+		if(sound1.isPlaying()) {
+			soundButton.setImage(new Image(ImageUrl.soundOn));
+		}else {
+			soundButton.setImage(new Image(ImageUrl.soundOff));
+		}
+		soundButton.setTranslateX(1747);
+		soundButton.setTranslateY(23);
+		mainmenuSceneRoot.getChildren().add(soundButton);
+		
+		soundButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.7);;
+			}
+
+		});
+
+		soundButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(1);;
+			}
+
+		});
+
+		soundButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.1);
+				if(sound1.isPlaying()) {
+					sound1.stop();
+					soundButton.setImage(new Image(ImageUrl.soundOff));
+				}else {
+					sound1.play();
+					soundButton.setImage(new Image(ImageUrl.soundOn));
+				}
+				
+
+			}
+
+		});
+		
 		
 		//Test Tutorial
 		//mainmenuSceneRoot.getChildren().add(getTutorial());
@@ -483,6 +538,10 @@ public class Main extends Application {
 			public void handle(long now) {
 				// TODO Auto-generated method stub
 				if(GameController.isGameEnd()) {
+					if(sound2.isPlaying()) {
+						sound3.play();
+						sound2.stop();
+					}
 					WinPane winPane = new WinPane();
 					winPane.setTranslateX(0);
 					winPane.setTranslateY(0);
@@ -553,6 +612,10 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
+				if(sound2.isPlaying()) {
+					sound2.stop();
+					sound1.play();
+				}
 				quitButton.setEffect(adjustClicked);
 				gameSceneRoot.getChildren().remove(unitBarPane);
 				gameSceneRoot.getChildren().remove(avatarPlayer1);
@@ -569,7 +632,65 @@ public class Main extends Application {
 				quitButton.setEffect(adjustEntered);
 			}
 		});
+		
+		//soundButton
+		ImageView soundButton = new ImageView();
+		if(sound2.isPlaying()) {
+			soundButton.setImage(new Image(ImageUrl.soundOn));
+		}else {
+			soundButton.setImage(new Image(ImageUrl.soundOff));
+		}
+		soundButton.setTranslateX(1747);
+		soundButton.setTranslateY(23);
+		gameSceneRoot.getChildren().add(soundButton);
+		
+		soundButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.7);;
+			}
+
+		});
+
+		soundButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(1);;
+			}
+
+		});
+
+		soundButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.1);
+				if(sound2.isPlaying() && !GameController.isGameEnd()) {
+					sound2.stop();
+					soundButton.setImage(new Image(ImageUrl.soundOff));
+				}else if(!sound2.isPlaying() && !GameController.isGameEnd()) {
+					sound2.play();
+					soundButton.setImage(new Image(ImageUrl.soundOn));
+				}
+				
+				if(sound3.isPlaying() && GameController.isGameEnd()) {
+					sound3.stop();
+					soundButton.setImage(new Image(ImageUrl.soundOff));
+				}else if(!sound3.isPlaying() && GameController.isGameEnd()){
+					sound3.play();
+					soundButton.setImage(new Image(ImageUrl.soundOn));
+				}
+				
+
+			}
+
+		});
+		
 		return gameScene;
 	}
 
@@ -904,6 +1025,10 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
+				if(sound1.isPlaying()) {
+					sound1.stop();
+					sound2.play();
+				}
 				playButton.setEffect(adjustClicked);
 				String team1 = null, team2 = null;
 				switch(teamPicPane1.getTeamNum()) {
@@ -972,8 +1097,63 @@ public class Main extends Application {
 		});
 		
 		/*
-		 * Select Time
+		 * Sound
 		 */
+		
+		ImageView soundButton = new ImageView();
+		sound3.stop();
+		if(sound1.isPlaying()) {
+			soundButton.setImage(new Image(ImageUrl.soundOn));
+		}else {
+			soundButton.setImage(new Image(ImageUrl.soundOff));
+		}
+		soundButton.setTranslateX(1747);
+		soundButton.setTranslateY(23);
+		ColorAdjust color = new ColorAdjust();
+		color.setBrightness(1);
+		soundButton.setEffect(color);
+		selectTeamSceneRoot.getChildren().add(soundButton);
+		
+		
+		soundButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.7);;
+			}
+
+		});
+
+		soundButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(1);;
+			}
+
+		});
+
+		soundButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.1);
+				if(sound1.isPlaying()) {
+					sound1.stop();
+					soundButton.setImage(new Image(ImageUrl.soundOff));
+				}else {
+					sound1.play();
+					soundButton.setImage(new Image(ImageUrl.soundOn));
+				}
+				
+
+			}
+
+		});
+		
 
 		Scene selectTeamScene = new Scene(selectTeamSceneRoot, 1920, 1017);
 		return selectTeamScene;
@@ -1124,6 +1304,59 @@ public class Main extends Application {
 				// TODO Auto-generated method stub
 				rightButton.setEffect(adjustEntered);
 			}
+		});
+		
+		ImageView soundButton = new ImageView();
+		if(sound1.isPlaying()) {
+			soundButton.setImage(new Image(ImageUrl.soundOn));
+		}else {
+			soundButton.setImage(new Image(ImageUrl.soundOff));
+		}
+		soundButton.setTranslateX(1747);
+		soundButton.setTranslateY(23);
+		ColorAdjust color = new ColorAdjust();
+		color.setBrightness(1);
+		soundButton.setEffect(color);
+		tutorialPane.getChildren().add(soundButton);
+		
+		
+		soundButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.7);;
+			}
+
+		});
+
+		soundButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(1);;
+			}
+
+		});
+
+		soundButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundButton.setOpacity(0.1);
+				if(sound1.isPlaying()) {
+					sound1.stop();
+					soundButton.setImage(new Image(ImageUrl.soundOff));
+				}else {
+					sound1.play();
+					soundButton.setImage(new Image(ImageUrl.soundOn));
+				}
+				
+
+			}
+
 		});
 		
 		

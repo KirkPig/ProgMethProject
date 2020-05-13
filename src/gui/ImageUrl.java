@@ -18,6 +18,10 @@ public class ImageUrl {
 	public static final String mainmenuPlayButton = "file:res/ui/mainmenu/button_play.png";
 	public static final String mainmenuQuitButton = "file:res/ui/mainmenu/button_quit.png";
 	public static final String mainmenuTutorialButton = "file:res/ui/mainmenu/tutorial.png";
+	
+	//soundButton
+	public static final String soundOn = "file:res/ui/mainmenu/soundOn.png";
+	public static final String soundOff = "file:res/ui/mainmenu/soundOff.png";
 	//Select Team
 	
 	public static final String selectTeamLogo = "file:res/ui/select_team/selectteam_title.png";
