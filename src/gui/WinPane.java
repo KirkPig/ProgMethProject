@@ -80,9 +80,9 @@ public class WinPane extends Group {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if(Main.sound3.isPlaying()) {
-					Main.sound3.stop();
-					Main.sound1.play();
+				if(Main.soundWin.isPlaying()) {
+					Main.soundWin.stop();
+					Main.soundIntro.play();
 				}
 				Main.primaryStage.setScene(Main.getSelectTeamScene());
 			}
@@ -112,9 +112,9 @@ public class WinPane extends Group {
 			@Override
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if(Main.sound3.isPlaying()) {
-					Main.sound3.stop();
-					Main.sound1.play();
+				if(Main.soundWin.isPlaying()) {
+					Main.soundWin.stop();
+					Main.soundIntro.play();
 				}
 				Main.primaryStage.setScene(Main.getMainmenuScene());
 			}

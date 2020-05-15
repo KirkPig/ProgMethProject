@@ -44,9 +44,9 @@ import logic.Owner;
 
 public class Main extends Application {
 	public static Stage primaryStage;
-	public static AudioClip sound1 = new AudioClip("file:res/sound/intro.mp3");
-	public static AudioClip sound2 = new AudioClip("file:res/sound/crowd.mp3");
-	public static AudioClip sound3 = new AudioClip("file:res/sound/win.mp3");
+	public static AudioClip soundIntro = new AudioClip("file:res/sound/intro.mp3");
+	public static AudioClip soundGame = new AudioClip("file:res/sound/crowd.mp3");
+	public static AudioClip soundWin = new AudioClip("file:res/sound/win.mp3");
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -130,7 +130,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				sound1.play();
+				soundIntro.play();
 				primaryStage.setScene(getMainmenuScene());
 			}
 
@@ -309,8 +309,8 @@ public class Main extends Application {
 		});
 		
 		ImageView soundButton = new ImageView();
-		sound3.stop();
-		if(sound1.isPlaying()) {
+		soundWin.stop();
+		if(soundIntro.isPlaying()) {
 			soundButton.setImage(new Image(ImageUrl.soundOn));
 		}else {
 			soundButton.setImage(new Image(ImageUrl.soundOff));
@@ -345,11 +345,11 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				soundButton.setOpacity(0.1);
-				if(sound1.isPlaying()) {
-					sound1.stop();
+				if(soundIntro.isPlaying()) {
+					soundIntro.stop();
 					soundButton.setImage(new Image(ImageUrl.soundOff));
 				}else {
-					sound1.play();
+					soundIntro.play();
 					soundButton.setImage(new Image(ImageUrl.soundOn));
 				}
 				
@@ -538,9 +538,9 @@ public class Main extends Application {
 			public void handle(long now) {
 				// TODO Auto-generated method stub
 				if(GameController.isGameEnd()) {
-					if(sound2.isPlaying()) {
-						sound3.play();
-						sound2.stop();
+					if(soundGame.isPlaying()) {
+						soundWin.play();
+						soundGame.stop();
 					}
 					WinPane winPane = new WinPane();
 					winPane.setTranslateX(0);
@@ -612,9 +612,9 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(sound2.isPlaying()) {
-					sound2.stop();
-					sound1.play();
+				if(soundGame.isPlaying()) {
+					soundGame.stop();
+					soundIntro.play();
 				}
 				quitButton.setEffect(adjustClicked);
 				gameSceneRoot.getChildren().remove(unitBarPane);
@@ -635,7 +635,7 @@ public class Main extends Application {
 		
 		//soundButton
 		ImageView soundButton = new ImageView();
-		if(sound2.isPlaying()) {
+		if(soundGame.isPlaying()) {
 			soundButton.setImage(new Image(ImageUrl.soundOn));
 		}else {
 			soundButton.setImage(new Image(ImageUrl.soundOff));
@@ -670,19 +670,19 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				soundButton.setOpacity(0.1);
-				if(sound2.isPlaying() && !GameController.isGameEnd()) {
-					sound2.stop();
+				if(soundGame.isPlaying() && !GameController.isGameEnd()) {
+					soundGame.stop();
 					soundButton.setImage(new Image(ImageUrl.soundOff));
-				}else if(!sound2.isPlaying() && !GameController.isGameEnd()) {
-					sound2.play();
+				}else if(!soundGame.isPlaying() && !GameController.isGameEnd()) {
+					soundGame.play();
 					soundButton.setImage(new Image(ImageUrl.soundOn));
 				}
 				
-				if(sound3.isPlaying() && GameController.isGameEnd()) {
-					sound3.stop();
+				if(soundWin.isPlaying() && GameController.isGameEnd()) {
+					soundWin.stop();
 					soundButton.setImage(new Image(ImageUrl.soundOff));
-				}else if(!sound3.isPlaying() && GameController.isGameEnd()){
-					sound3.play();
+				}else if(!soundWin.isPlaying() && GameController.isGameEnd()){
+					soundWin.play();
 					soundButton.setImage(new Image(ImageUrl.soundOn));
 				}
 				
@@ -1025,9 +1025,9 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(sound1.isPlaying()) {
-					sound1.stop();
-					sound2.play();
+				if(soundIntro.isPlaying()) {
+					soundIntro.stop();
+					soundGame.play();
 				}
 				playButton.setEffect(adjustClicked);
 				String team1 = null, team2 = null;
@@ -1101,8 +1101,8 @@ public class Main extends Application {
 		 */
 		
 		ImageView soundButton = new ImageView();
-		sound3.stop();
-		if(sound1.isPlaying()) {
+		soundWin.stop();
+		if(soundIntro.isPlaying()) {
 			soundButton.setImage(new Image(ImageUrl.soundOn));
 		}else {
 			soundButton.setImage(new Image(ImageUrl.soundOff));
@@ -1141,11 +1141,11 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				soundButton.setOpacity(0.1);
-				if(sound1.isPlaying()) {
-					sound1.stop();
+				if(soundIntro.isPlaying()) {
+					soundIntro.stop();
 					soundButton.setImage(new Image(ImageUrl.soundOff));
 				}else {
-					sound1.play();
+					soundIntro.play();
 					soundButton.setImage(new Image(ImageUrl.soundOn));
 				}
 				
@@ -1307,7 +1307,7 @@ public class Main extends Application {
 		});
 		
 		ImageView soundButton = new ImageView();
-		if(sound1.isPlaying()) {
+		if(soundIntro.isPlaying()) {
 			soundButton.setImage(new Image(ImageUrl.soundOn));
 		}else {
 			soundButton.setImage(new Image(ImageUrl.soundOff));
@@ -1346,11 +1346,11 @@ public class Main extends Application {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				soundButton.setOpacity(0.1);
-				if(sound1.isPlaying()) {
-					sound1.stop();
+				if(soundIntro.isPlaying()) {
+					soundIntro.stop();
 					soundButton.setImage(new Image(ImageUrl.soundOff));
 				}else {
-					sound1.play();
+					soundIntro.play();
 					soundButton.setImage(new Image(ImageUrl.soundOn));
 				}
 				
