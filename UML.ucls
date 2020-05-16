@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="unit.Attacker" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/Attacker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2345" y="3425"/>    
+    <position height="-1" width="-1" x="2325" y="3045"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="unit.BoxToBox" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/BoxToBox.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2605" y="3418"/>    
+    <position height="-1" width="-1" x="2585" y="3038"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="unit.Defender" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/Defender.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2865" y="3399"/>    
+    <position height="-1" width="-1" x="2845" y="3019"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="unit.Goalkeeper" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/Goalkeeper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3178" y="3432"/>    
+    <position height="-1" width="-1" x="3158" y="3052"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="unit.God" project="ProgMethProject" file="/ProgMethProject/src/unit/God.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3465" y="3426"/>    
+    <position height="-1" width="-1" x="3445" y="3046"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="unit.Playmaker" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/Playmaker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3752" y="3451"/>    
+    <position height="-1" width="-1" x="3732" y="3071"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="unit.Empty" project="ProgMethProject" file="/ProgMethProject/src/unit/Empty.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1999" y="3418"/>    
+    <position height="-1" width="-1" x="1979" y="3038"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="unit.Captain" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/Captain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="159" width="179" x="3993" y="3373"/>    
+    <position height="159" width="179" x="3973" y="2993"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <interface id="10" language="java" name="unit.base.Movable" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/base/Movable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2259" y="2239"/>    
+    <position height="-1" width="-1" x="2864" y="3631"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </interface>  
   <interface id="11" language="java" name="unit.base.Skilled" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/base/Skilled.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4113" y="4259"/>    
+    <position height="-1" width="-1" x="3953" y="3965"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </interface>  
   <class id="12" language="java" name="unit.captain.Henderson" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/captain/Henderson.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3706" y="3806"/>    
+    <position height="-1" width="-1" x="3546" y="3512"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="unit.captain.Kane" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/captain/Kane.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3979" y="3853"/>    
+    <position height="-1" width="-1" x="3819" y="3559"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="unit.captain.Mcguire" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/captain/Mcguire.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4260" y="3833"/>    
+    <position height="-1" width="-1" x="4100" y="3539"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="unit.captain.Silva" project="ProgMethProject" 
     file="/ProgMethProject/src/unit/captain/Silva.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4566" y="3846"/>    
+    <position height="-1" width="-1" x="4406" y="3552"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
