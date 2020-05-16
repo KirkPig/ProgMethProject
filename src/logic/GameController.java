@@ -108,28 +108,28 @@ public class GameController {
 	public static void moveUnit(int x1, int y1, int x2, int y2) throws UnitMoveException {
 
 		if (!gameBoard.getUnit(x1, y1).isMovable()) {
-			throw new UnitMoveException(1);
+			throw new UnitMoveException("Unit is not movale");
 		}
 		Unit unit1 = gameBoard.getUnit(x1, y1);
 		Unit unit2 = gameBoard.getUnit(x2, y2);
 		if (!unit1.getMoveUnit().contains(unit2)) {
 			if(unit1 instanceof Silva) {
 				if(!unit2.isSelected()) {
-					throw new UnitMoveException(5);
+					throw new UnitMoveException("Unit is not movale");
 				}
 			}else if(unit1 instanceof Kane){
 				if(!((Kane) unit1).useSkill().contains(unit2)) {
-					throw new UnitMoveException(2);
+					throw new UnitMoveException("Unit is not movale");
 				}else {
 					((Kane) unit1).setSkillUsable(false);
 				}
 			}else {
-				throw new UnitMoveException(2);
+				throw new UnitMoveException("Unit is not movale");
 			}
 			
 		}
 		if(!getCurrentPlayer().isPlaceCaptain()) {
-			throw new UnitMoveException(4);
+			throw new UnitMoveException("Unit is not movale");
 		}
 		gameBoard.moveUnit(x1, y1, x2, y2, getCurrentPlayer());
 		
