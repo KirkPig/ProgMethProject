@@ -15,7 +15,6 @@ import unit.base.Unit;
 public class UnitCell extends Pane {
 
 	private Coordinate coordinate = null;
-	private double scale = 0.5;
 
 	public UnitCell(int x, int y) {
 		// TODO Auto-generated constructor stub
@@ -49,14 +48,6 @@ public class UnitCell extends Pane {
 			setOpacity(1);
 		}
 			
-	}
-
-	public double getScale() {
-		return scale;
-	}
-
-	public void setScale(double scale) {
-		this.scale = scale;
 	}
 
 	public Coordinate getCoordinate() {

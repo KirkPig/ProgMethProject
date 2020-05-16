@@ -11,7 +11,6 @@ import unit.base.Unit;
 
 public class UnitBarCell extends Pane {
 	private Unit unit = null;
-	private double scale = 0.5;
 
 	public UnitBarCell(Unit unit) {
 		// TODO Auto-generated constructor stub
@@ -30,14 +29,6 @@ public class UnitBarCell extends Pane {
 		this.setBackground(new Background(new BackgroundImage(unitImage, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		
-	}
-
-	public double getScale() {
-		return scale;
-	}
-
-	public void setScale(double scale) {
-		this.scale = scale;
 	}
 
 }
