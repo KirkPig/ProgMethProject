@@ -64,7 +64,7 @@ public class GameBoard {
 
 	public void printBoard() {
 		int k = 0;
-		for (var row : units) {
+		for (var row: units) {
 			String rowstring = "";
 			if (k % 2 == 1) {
 				rowstring += " ";
